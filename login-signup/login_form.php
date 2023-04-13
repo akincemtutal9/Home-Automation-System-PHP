@@ -1,3 +1,7 @@
+<?php
+include '../php/login.php'
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,6 +15,13 @@
     <div class="form-container">
         <form action="" method="post">
             <h2>Login</h2>
+            <?php
+      if(isset($error)){
+         foreach($error as $error){
+            echo '<span class="error-msg">'.$error.'</span>';
+         };
+      };
+      ?>
             <input type="email" name="email" required placeholder="Enter your email">
             <input type="password" name="password" required placeholder="Enter your password">
             <input type="submit" name="submit" value="Login" class="form-btn">
