@@ -1,3 +1,7 @@
+<?php 
+include '../php/session_admin.php'
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,11 +15,11 @@
     <div class="container">
         <div class="content">
             <h2>HI, <span>admin</span></h2>
-            <h1>Welcome <span></span></h1>
+            <h1>Welcome <span> <?php echo $_SESSION['admin_name'] ?> </span></h1>
             <p>this is an admin page</p>
             <a href="../login-signup/login_form.php" class="btn">Login</a>
             <a href="../login-signup/register_form.php" class="btn">Register</a>
-            <a href="../login-signup/logout.php" class="btn">Logout</a>
+            <a href="../php/logout.php" class="btn">Logout</a>
         </div>
     </div>
 </body>
