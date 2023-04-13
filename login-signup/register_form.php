@@ -1,3 +1,7 @@
+<?php
+include '../php/register.php'
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,7 +16,14 @@
 <body>
     <div class="form-container">
         <form action="" method="post" onsubmit="return validateForm()" name="register_form">
-            <h2>Register</h2>
+            <h2>Register</h2>            
+            <?php 
+            if(isset($error)){
+                foreach($error as $error){
+                    echo '<span class = "error-msg">'.$error.'</span>';
+                }
+            }
+            ?>
             <input type="text" name="name" required placeholder="Enter your name">
             <input type="text" name="surname" required placeholder="Enter your last name">
             <input type="email" name="email" required placeholder="Enter your email">
