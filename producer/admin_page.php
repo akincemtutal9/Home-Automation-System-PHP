@@ -13,9 +13,9 @@
             <h2>HI, <span>admin</span></h2>
             <h1>Welcome <span></span></h1>
             <p>this is an admin page</p>
-            <a href="../login-signup/login_form.html" class="btn">Login</a>
-            <a href="../login-signup/register_form.html" class="btn">Register</a>
-            <a href="../login-signup/logout.html" class="btn">Logout</a>
+            <a href="../login-signup/login_form.php" class="btn">Login</a>
+            <a href="../login-signup/register_form.php" class="btn">Register</a>
+            <a href="../login-signup/logout.php" class="btn">Logout</a>
         </div>
     </div>
 </body>

@@ -23,7 +23,7 @@
                 <option value="admin">admin</option>            
             </select>
             <input type="submit" name="submit" value="register" class="form-btn">
-            <p>Already have an account ? <a href="../login-signup/login_form.html">Login</a> </p>
+            <p>Already have an account ? <a href="../login-signup/login_form.php">Login</a> </p>
         </form>
     </div>
 </body>
