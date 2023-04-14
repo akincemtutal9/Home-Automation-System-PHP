@@ -75,7 +75,7 @@
   width: 500px;
 }
 
-.form-container form h3 {
+.form-container form h2 {
   font-size: 30px;
   text-transform: uppercase;
   margin-bottom: 10px;
@@ -188,6 +188,12 @@ select {
       flex-direction: column;
       align-items: flex-start;
       
+  }
+  .navbar h1 span{
+    background: crimson;
+    color: #fff;
+    border-radius: 5px;
+    padding: 0px 10px;
   }
 
   .toggle-button {
