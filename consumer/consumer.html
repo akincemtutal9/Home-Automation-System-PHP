@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.css" integrity="sha512-Z0kTB03S7BU+JFU0nw9mjSBcRnZm2Bvm0tzOX9/OuOuz01XQfOpa0w/N9u6Jf2f1OAdegdIPWZ9nIZZ+keEvBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel='stylesheet' href='../css/style.css'>
+    <script src='main.js'></script>
+</head>
+<body>
+    <div class="main">
+        <nav class="navbar">
+            <div class="logo">LOGO</div>
+            
+                <a href="#" class="toggle-button">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+                </a>
+                <div class="navbar-links">
+                <ul>
+                    <li><a href="#">Account</a></li>  
+                    <li><a href="index.html">Logout</a></li> 
+                </ul>
+            </div>
+        </nav>  
+
+        
+
+        <div class="room-container">
+            <div class="card">
+                <div class="room-info">
+                    <h3>Living Room</h3>
+                    <span>3 devices</span>
+                </div>
+                <div class="room-icon">
+                    <i class="fa-solid fa-couch fa-2xl" style="color: #dc143c;"></i>
+                </div>
+            </div>
+            <div class="card">
+                <div class="room-info">
+                    <h3>Bedroom</h3>
+                    <span>3 devices</span>
+                </div>
+                <div class="room-icon">
+                    <i class="fa-solid fa-bed-empty fa-2xl" style="color: #dc143c;"></i>
+                </div>
+            </div>
+            <div class="card">
+                <div class="room-info">
+                    <h3>Bathroom</h3>
+                    <span>3 devices</span>
+                </div>
+                <div class="room-icon">
+                    <i class="fa-solid fa-shower fa-2xl" style="color: #dc143c;"></i>
+                </div>
+            </div>
+            <div class="card">
+                <div class="room-info">
+                    <h3>Children Room</h3>
+                    <span>3 devices</span>
+                </div>
+                <div class="room-icon">
+                    <i class="fa-solid fa-teddy-bear fa-2xl" style="color: #dc143c;"></i>
+                </div>
+            </div>
+            <div class="card">
+                <div class="room-info">
+                    <h3>Kitchen</h3>
+                    <span>3 devices</span>
+                </div>
+                <div class="room-icon">
+                    <i class="fa-solid fa-kitchen-set fa-2xl" style="color: #dc143c;"></i>
+                </div>
+            </div>
+            <div class="card">
+                <div class="room-info">
+                    <h3>Storeroom</h3>
+                    <span>3 devices</span>
+                </div>
+                <div class="room-icon">
+                    <i class="fa-solid fa-warehouse-full fa-2xl" style="color: #dc143c;"></i>
+                </div>
+            </div>
+        </div>
+
+        <footer class="footer">
+            <div class="box">
+                
+                <span>
+                    <i class="fa-solid fa-envelope" style="color: #dc143c;"></i>
+                    555-555-55-55
+                </span>
+                <span>
+                    <i class="fa-solid fa-phone" style="color: #dc143c;"></i>    
+                    123-456-78-90
+                </span>
+                <span>
+                    <i class="fa-solid fa-envelope" style="color: #dc143c;"></i>
+                    abc@gmail.com
+                </span>
+                <span>
+                    <i class="fa-sharp fa-solid fa-location-dot" style="color: #dc143c;"></i>
+                    Antalya, Turkey
+                </span>
+            </div>
+    
+            <div class="box">
+                <span>
+                    <i class="fa-brands fa-facebook" style="color: #dc143c;"></i>
+                    Facebook
+                </span>
+                <span>
+                    <i class="fa-brands fa-instagram" style="color: #dc143c;"></i>
+                    Instagram
+                </span>
+                <span>
+                    <i class="fa-brands fa-twitter" style="color: #dc143c;"></i>
+                    Twitter
+                </span>
+                <span>
+                    <i class="fa-brands fa-linkedin" style="color: #dc143c;"></i>
+                    LinkedIn
+                </span>
+            </div>
+            
+          </footer>
+    </div>
+    <script>
+        const toggleButton = document.getElementsByClassName('toggle-button')[0]
+        const navbarLinks = document.getElementsByClassName('navbar-links')[0]
+
+        toggleButton.addEventListener('click', () => {
+            navbarLinks.classList.toggle('active')
+        })  
+      </script>
+</body>
+</html>

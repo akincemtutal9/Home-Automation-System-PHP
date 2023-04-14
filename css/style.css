@@ -280,3 +280,43 @@ select {
   gap: 1rem;
   margin: 2rem;
 }
+
+.main{
+  background-color: white;
+}
+
+.main .navbar {
+  background-color: crimson;
+}
+.room-container {
+  padding-top: 45px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.room-container .card {
+  display: flex;
+  justify-content: space-between;
+  background-color: white;
+  height: 165px;
+  width: 500px;
+  margin: 20px;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
+  padding: 20px;
+  border-radius: 5px;
+}
+
+.room-container .card:hover {
+  background-color: #eee;
+}
+
+.room-info {
+  padding-top: 30px;
+}
+
+.room-icon{
+  padding-top: 45px;
+}
+
