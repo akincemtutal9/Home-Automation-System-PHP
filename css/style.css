@@ -295,6 +295,10 @@ select {
   flex-wrap: wrap;
 }
 
+.room-container .to-devices {
+  color: #333;
+}
+
 .room-container .card {
   display: flex;
   justify-content: space-between;
