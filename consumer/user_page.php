@@ -26,6 +26,7 @@ include '../php/session_user.php'
             <div class="navbar-links">
             <ul>
                 <li><a href="#">Home</a></li>
+                <li><a href="../consumer/consumer.html">Rooms</a></li>
                 <li><a href="../login-signup/login_form.php">Login</a></li>
                 <li><a href="#"><span> <?php echo $_SESSION['user_name'] ?> </span></a></li>
             </ul>

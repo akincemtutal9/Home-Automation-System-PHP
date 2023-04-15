@@ -4,7 +4,6 @@ include '../php/session_admin.php'
 
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <style>
         *{
@@ -19,7 +18,7 @@ include '../php/session_admin.php'
     integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
     <link rel="stylesheet" href="../css/adminstyle.css">
-    <title>Admin Dashboard</title>
+    <title>Admin Rooms</title>
 </head>
 
 <body>
@@ -29,9 +28,9 @@ include '../php/session_admin.php'
             <div class="sidebar-heading text-center py-4 primary-text fs-4 fw-bold text-uppercase border-bottom"><i
                     class="fas fa-user me-2"></i>Home Auto</div>
             <div class="list-group list-group-flush my-3">
-                <a href="../producer/admin_page.php" class="list-group-item list-group-item-action bg-transparent second-text active"><i
+                <a href="../producer/admin_page.php" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
                         class="fas fa-calendar-alt me-2"></i>Dashboard</a>
-                <a href="../producer/admin_rooms.php" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
+                <a href="../producer/admin_rooms.php" class="list-group-item list-group-item-action bg-transparent second-text active"><i
                         class="fas fa-door-open"></i> Rooms</a>
                 <a href="../producer/admin_devices.php" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
                         class="fas fa-hammer"></i> Devices</a>
@@ -52,7 +51,7 @@ include '../php/session_admin.php'
             <nav class="navbar navbar-expand-lg navbar-light bg-transparent py-4 px-4">
                 <div class="d-flex align-items-center">
                     <i class="fas fa-align-left primary-text fs-4 me-3" id="menu-toggle"></i>
-                    <h2 class="fs-2 m-0">Dashboard</h2>
+                    <h2 class="fs-2 m-0">Rooms</h2>
                 </div>
 
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -78,91 +77,75 @@ include '../php/session_admin.php'
                 </div>
             </nav>
 
-            <div class="container-fluid px-4">
-                <div class="row g-3 my-2">
-                    <div class="col-md-3">
-                        <div class="p-3 bg-white shadow-sm d-flex justify-content-around align-items-center rounded">
+
+
+            <div class="container-fluid px-5">
+                <div class="row g-4 my-2">
+                    <div class="col-md-4">
+                        <div class="p-5 bg-white shadow-sm d-flex justify-content-around align-items-center rounded">
                             <div>
-                                <h3 class="fs-2">1</h3>
-                                <p class="fs-5">Home Automation</p>
+                                <h3 class="fs-2">Living Room</h3>
+                                <p class="fs-5"></p>
                             </div>
                             <i class="fas fa-car fs-1 primary-text border rounded-full secondary-bg p-3"></i>
                         </div>
                     </div>
 
-                    <div class="col-md-3">
-                        <div class="p-3 bg-white shadow-sm d-flex justify-content-around align-items-center rounded">
+                    <div class="col-md-4">
+                        <div class="p-5 bg-white shadow-sm d-flex justify-content-around align-items-center rounded">
                             <div>
-                                <h3 class="fs-2">49</h3>
-                                <p class="fs-5">Sales</p>
+                                <h3 class="fs-2">Bedroom</h3>
+                                <p class="fs-5"></p>
                             </div>
                             <i
                                 class="fas fa-hand-holding-usd fs-1 primary-text border rounded-full secondary-bg p-3"></i>
                         </div>
                     </div>
 
-                    <div class="col-md-3">
-                        <div class="p-3 bg-white shadow-sm d-flex justify-content-around align-items-center rounded">
+                    <div class="col-md-4">
+                        <div class="p-5 bg-white shadow-sm d-flex justify-content-around align-items-center rounded">
                             <div>
-                                <h3 class="fs-2">38</h3>
-                                <p class="fs-5">Delivery</p>
+                                <h3 class="fs-2">Bathroom</h3>
+                                <p class="fs-5"></p>
                             </div>
                             <i class="fas fa-truck fs-1 primary-text border rounded-full secondary-bg p-3"></i>
                         </div>
                     </div>
 
-                    <div class="col-md-3">
-                        <div class="p-3 bg-white shadow-sm d-flex justify-content-around align-items-center rounded">
+                    <div class="col-md-4">
+                        <div class="p-5 bg-white shadow-sm d-flex justify-content-around align-items-center rounded">
                             <div>
-                                <h3 class="fs-2">%25</h3>
-                                <p class="fs-5">Increase</p>
+                                <h3 class="fs-2">Children Room</h3>
+                                <p class="fs-5"></p>
+                            </div>
+                            <i class="fas fa-chart-line fs-1 primary-text border rounded-full secondary-bg p-3"></i>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="p-5 bg-white shadow-sm d-flex justify-content-around align-items-center rounded">
+                            <div>
+                                <h3 class="fs-2">Kitchen</h3>
+                                <p class="fs-5"></p>
+                            </div>
+                            <i class="fas fa-chart-line fs-1 primary-text border rounded-full secondary-bg p-3"></i>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="p-5 bg-white shadow-sm d-flex justify-content-around align-items-center rounded">
+                            <div>
+                                <h3 class="fs-2">Storeroom</h3>
+                                <p class="fs-5"></p>
                             </div>
                             <i class="fas fa-chart-line fs-1 primary-text border rounded-full secondary-bg p-3"></i>
                         </div>
                     </div>
                 </div>
 
-                <div class="row my-5">
-                    <h3 class="fs-4 mb-3">Recent Requests</h3>
-                    <div class="col">
-                        <table class="table bg-white rounded shadow-sm  table-hover">
-                            <thead>
-                                <tr>
-                                    <th scope="col" width="50">#</th>
-                                    <th scope="col">Request</th>
-                                    <th scope="col">Consumer</th>
-                                    <th scope="col">Accept or Reject</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <th scope="row">1</th>
-                                    <td>Light</td>
-                                    <td>Akin</td>
-                                    <td>BUTTON</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">2</th>
-                                    <td>Air Conditioner</td>
-                                    <td>Cem</td>
-                                    <td>BUTTON</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">3</th>
-                                    <td>Vacuum Cleaner</td>
-                                    <td>Burak</td>
-                                    <td>BUTTON</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">4</th>
-                                    <td>Washing Machine</td>
-                                    <td>AkinCem</td>
-                                    <td>BUTTON</td>
-                                </tr>                             
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
+
+
+
 
             </div>
         </div>
