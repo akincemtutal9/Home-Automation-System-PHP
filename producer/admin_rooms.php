@@ -64,6 +64,33 @@ include '../php/session_admin.php'
                     </ul>
                 </div>
             </nav>
+
+
+
+
+
+            <!-- <div id="check-device-buttons-container">
+  <button id="check-device-button-id1" class="check-device-button">Check device 1</button>
+  <button id="check-device-button-id2" class="check-device-button">Check device 2</button>
+  <button id="check-device-button-id3" class="check-device-button">Check device 3</button>
+</div>
+
+
+<div id="new-views-container">
+  <div class="new-view" style="display: none;">
+    <p>This is the new view for device 1!</p>
+    <button class="undo-button">Undo</button>
+  </div>
+  <div class="new-view" style="display: none;">
+    <p>This is the new view for device 2!</p>
+    <button class="undo-button">Undo</button>
+  </div>
+  <div class="new-view" style="display: none;">
+    <p>This is the new view for device 3!</p>
+    <button class="undo-button">Undo</button>
+  </div>
+</div> -->
+
             <div class="container-fluid px-5">
                 <div class="row g-4 my-2">
                     <div class="col-md-4">
@@ -73,7 +100,11 @@ include '../php/session_admin.php'
                                 <p class="fs-5">x devices</p>
                             </div>
                             <br>
-                            <button class="btn btn-primary mt-auto">Check Devices</button>
+                            <button class="btn btn-primary mt-auto check-device-button">Check Devices</button>
+                            <div class="new-view" style="display: none;">
+                                <p>This is the new view for device 1!</p>
+                                <button class="undo-button">Undo</button>
+                            </div>
                         </div>
                     </div>
                     <div class="col-md-4">
@@ -83,7 +114,11 @@ include '../php/session_admin.php'
                                 <p class="fs-5">x devices</p>
                             </div>
                             <br>
-                            <button class="btn btn-primary mt-auto">Check Devices</button>
+                            <button class="btn btn-primary mt-auto check-device-button">Check Devices</button>
+                            <div class="new-view" style="display: none;">
+                                <p>This is the new view for device 1!</p>
+                                <button class="undo-button">Undo</button>
+                            </div>
                         </div>
                     </div>
                     <div class="col-md-4">
@@ -93,7 +128,11 @@ include '../php/session_admin.php'
                                 <p class="fs-5">x devices</p>
                             </div>
                             <br>
-                            <button class="btn btn-primary mt-auto">Check Devices</button>
+                            <button class="btn btn-primary mt-auto check-device-button">Check Devices</button>
+                            <div class="new-view" style="display: none;">
+                                <p>This is the new view for device 1!</p>
+                                <button class="undo-button">Undo</button>
+                            </div>
                         </div>
                     </div>
                     <div class="col-md-4">
@@ -103,7 +142,11 @@ include '../php/session_admin.php'
                                 <p class="fs-5">x devices</p>
                             </div>
                             <br>
-                            <button class="btn btn-primary mt-auto">Check Devices</button>
+                            <button class="btn btn-primary mt-auto check-device-button">Check Devices</button>
+                            <div class="new-view" style="display: none;">
+                                <p>This is the new view for device 1!</p>
+                                <button class="undo-button">Undo</button>
+                            </div>
                         </div>
                     </div>
                     <div class="col-md-4">
@@ -113,7 +156,11 @@ include '../php/session_admin.php'
                                 <p class="fs-5">x devices</p>
                             </div>
                             <br>
-                            <button class="btn btn-primary mt-auto">Check Devices</button>
+                            <button class="btn btn-primary mt-auto check-device-button">Check Devices</button>
+                            <div class="new-view" style="display: none;">
+                                <p>This is the new view for device 1!</p>
+                                <button class="undo-button">Undo</button>
+                            </div>
                         </div>
                     </div>
                     <div class="col-md-4">
@@ -123,9 +170,17 @@ include '../php/session_admin.php'
                                 <p class="fs-5">x devices</p>
                             </div>
                             <br>
-                            <button class="btn btn-primary mt-auto">Check Devices</button>
+                            <button class="btn btn-primary mt-auto check-device-button">Check Devices</button>
+                            <div class="new-view" style="display: none;">
+                                <p>This is the new view for device 1!</p>
+                                <button class="undo-button">Undo</button>
+                            </div>
                         </div>
                     </div>
+
+
+
+
 
                 </div>
             </div>
@@ -142,6 +197,7 @@ include '../php/session_admin.php'
             el.classList.toggle("toggled");
         };
     </script>
+    <script src="../js/togglebutton.js"></script>
 </body>
 
 </html>

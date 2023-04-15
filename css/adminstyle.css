@@ -391,3 +391,6 @@ margin: 5px;
     }
   }
   
+  #new-view {
+    display: none;
+  }
