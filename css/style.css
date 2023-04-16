@@ -524,7 +524,7 @@ label {
 }
 
 .vacuum-cleaner-modes input[type=radio]:checked + label:hover {
-  background-color: #f00; /* seçili butonun arkaplan rengi kırmızı olsun */
+  background-color: #f00; 
 }
 
 .air-conditioner-modes {
