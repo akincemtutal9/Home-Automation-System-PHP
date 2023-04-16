@@ -250,6 +250,41 @@ body {
     text-align: center;
   }
 
+  input[type=text], select, textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-top: 6px;
+    margin-bottom: 16px;
+    resize: vertical;
+  }
+  .container {
+    border-radius: 5px;
+    background-color: white;
+    padding: 20px;
+  }
+
+  .container .support {
+    text-align: center;
+  }
+  .container .support input[type="submit"]{
+    background-color: #eee;
+    height: 30px;
+    width: 120px;
+    cursor: pointer;
+    border-radius: 3px;
+    
+  }
+
+  .container .support input[type="submit"]:hover {
+    background-color: crimson;
+    color: white;
+  }
+  
+  
+
   
   
  
