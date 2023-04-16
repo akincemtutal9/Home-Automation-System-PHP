@@ -221,6 +221,35 @@ body {
     padding-left: 10px;
   }
 
+  .user-info-board .info-input {
+    padding-left: 10px;
+  }
+
+  .user-info-board .info-input input{
+    height: 30px;
+    padding-left: 10px;
+    width: 170%;
+    border-radius: 3px;
+  }
+
+  .user-infos input[type="submit"] {
+    height: 30px;
+    width: 120px;
+    cursor: pointer;
+    border-radius: 3px;
+    
+    
+  }
+
+  .user-infos input[type="submit"]:hover {
+    background-color: crimson;
+    color: white;
+  }
+  
+  .edit-button{
+    text-align: center;
+  }
+
   
   
  
