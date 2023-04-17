@@ -1,5 +1,6 @@
 <?php
-include '../php/session_admin.php'
+include '../php/session_admin.php';
+include '../php/light.php';
 ?>
 
 <!DOCTYPE html>
@@ -26,7 +27,8 @@ include '../php/session_admin.php'
             font-size: 1.5rem;
             font-weight: 500;
         }
-        .center-div{
+
+        .center-div {
             display: flex;
             justify-content: center;
             align-items: center;
@@ -87,32 +89,6 @@ include '../php/session_admin.php'
                 </div>
             </nav>
 
-
-
-
-
-            <!-- <div id="check-device-buttons-container">
-  <button id="check-device-button-id1" class="check-device-button">Check device 1</button>
-  <button id="check-device-button-id2" class="check-device-button">Check device 2</button>
-  <button id="check-device-button-id3" class="check-device-button">Check device 3</button>
-</div>
-
-
-<div id="new-views-container">
-  <div class="new-view" style="display: none;">
-    <p>This is the new view for device 1!</p>
-    <button class="undo-button">Undo</button>
-  </div>
-  <div class="new-view" style="display: none;">
-    <p>This is the new view for device 2!</p>
-    <button class="undo-button">Undo</button>
-  </div>
-  <div class="new-view" style="display: none;">
-    <p>This is the new view for device 3!</p>
-    <button class="undo-button">Undo</button>
-  </div>
-</div> -->
-
             <div class="container-fluid px-5">
                 <div class="row g-4 my-2">
                     <div class="col-lg-4">
@@ -134,10 +110,13 @@ include '../php/session_admin.php'
                                                     Light
                                                 </span>
                                                 <label class="switch">
-                                                    <input type="checkbox" name="living-room-light">
+                                                    <input type="checkbox" name="living-room-light" onchange="document.getElementById('light-form').submit();" <?php echo $status == "ON" ? "checked" : ""; ?>>
                                                     <span class="slider round"></span>
                                                 </label>
                                             </div>
+                                            <form method="post" id="light-form">
+                                                <input type="hidden" name="light" value="<?php echo $status == "ON" ? "off" : "on"; ?>">
+                                            </form>
 
                                             <div class="attribute">
                                                 <h4>Color</h4>
@@ -189,11 +168,9 @@ include '../php/session_admin.php'
 
                                         <div class="device mv-2">
                                             <div class="device-status between-row">
-                                                <span class="span-big">
-                                                    Air-Conditioner
-                                                </span>
+                                                <span class="span-big">Air-Conditioner</span>
                                                 <label class="switch">
-                                                    <input type="checkbox">
+                                                    <input type="checkbox" name="air-conditioner-status">
                                                     <span class="slider round"></span>
                                                 </label>
                                             </div>
@@ -201,14 +178,14 @@ include '../php/session_admin.php'
                                                 <h4>Mode</h4>
                                                 <div class="air-conditioner-modes">
                                                     <div class="mode-control">
-                                                        <input type="radio" id="mode-heat-1" class="modecontrol-radio" value="sun" name="air-conditioner-mode">
-                                                        <label for="mode-heat-1" class="mode-label">
+                                                        <input type="radio" id="mode-sunny" class="modecontrol-radio" value="sunny" name="air-conditioner-mode">
+                                                        <label for="mode-sunny" class="mode-label">
                                                             <i class="fas fa-sun fa-2xl"></i>
                                                         </label>
                                                     </div>
                                                     <div class="mode-control">
-                                                        <input type="radio" id="mode-cold-1" class="modecontrol-radio" value="ice" name="air-conditioner-mode">
-                                                        <label for="mode-cold-1" class="mode-label">
+                                                        <input type="radio" id="mode-snowy" class="modecontrol-radio" value="snowy" name="air-conditioner-mode">
+                                                        <label for="mode-snowy" class="mode-label">
                                                             <i class="fas fa-snowflake fa-2xl"></i>
                                                         </label>
                                                     </div>
@@ -218,14 +195,53 @@ include '../php/session_admin.php'
                                                 <h4>Temperature</h4>
                                                 <div class="air-conditioner-temperature">
                                                     <div class="mode-control">
-                                                        <label for="mode-range-1" class="mode-label">
-                                                            20
-                                                        </label>
-                                                        <input type="range" id="mode-range-1" class="modecontrol-radio" value="temperature" name="temperature-1">
+                                                        <label for="mode-range-1" class="mode-label">20</label>
+                                                        <input type="range" id="mode-range-1" class="modecontrol-radio" value="temperature" name="air-conditioner-temperature">
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
+
+
+                                        <!-- <div class="device mv-2">
+                                                <div class="device-status between-row">
+                                                    <span class="span-big">
+                                                        Air-Conditioner
+                                                    </span>
+                                                    <label class="switch">
+                                                        <input type="checkbox">
+                                                        <span class="slider round"></span>
+                                                    </label>
+                                                </div>
+                                                <div class="attribute">
+                                                    <h4>Mode</h4>
+                                                    <div class="air-conditioner-modes">
+                                                        <div class="mode-control">
+                                                            <input type="radio" id="mode-heat-1" class="modecontrol-radio" value="sun" name="air-conditioner-mode">
+                                                            <label for="mode-heat-1" class="mode-label">
+                                                                <i class="fas fa-sun fa-2xl"></i>
+                                                            </label>
+                                                        </div>
+                                                        <div class="mode-control">
+                                                            <input type="radio" id="mode-cold-1" class="modecontrol-radio" value="ice" name="air-conditioner-mode">
+                                                            <label for="mode-cold-1" class="mode-label">
+                                                                <i class="fas fa-snowflake fa-2xl"></i>
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="attribute">
+                                                    <h4>Temperature</h4>
+                                                    <div class="air-conditioner-temperature">
+                                                        <div class="mode-control">
+                                                            <label for="mode-range-1" class="mode-label">
+                                                                20
+                                                            </label>
+                                                            <input type="range" id="mode-range-1" class="modecontrol-radio" value="temperature" name="temperature-1">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div> -->
                                     </div>
                                 </div>
                                 <div class="center-div">
@@ -304,11 +320,6 @@ include '../php/session_admin.php'
                             </div>
                         </div>
                     </div>
-
-
-
-
-
                 </div>
             </div>
         </div>
