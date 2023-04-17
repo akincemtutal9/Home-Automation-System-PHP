@@ -394,3 +394,13 @@ margin: 5px;
   #new-view {
     display: none;
   }
+
+  .mv-2{
+    margin: 2rem 0px;
+  }
+  .between-row{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+  }
