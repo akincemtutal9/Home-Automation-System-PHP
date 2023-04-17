@@ -564,3 +564,15 @@ label {
     grid-gap: 10px;
   }
 }
+
+.temp-humid-show {
+  padding-top: 10px;
+}
+
+.temp-show {
+  color: rgb(179, 0, 0);
+}
+
+.humid-show {
+  color: aqua;
+}
