@@ -124,6 +124,21 @@ body {
     padding: 0px 10px;
   }
 
+  .navbar-links .nav-middle {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+  .navbar-links .nav-middle li a {
+    display: flex;
+    flex-direction: column;
+    color: white;
+  }
+
+  .navbar-links .nav-middle li a:hover {
+    color: #333;
+  }
+
   .toggle-button {
       display: flex;
       
@@ -151,6 +166,26 @@ body {
   .navbar-links.active {
       display: flex;
   }
+
+  .user-page {
+        display: flex;
+        flex-direction: column;
+        margin-top: -70px;
+    }
+
+    .user-page .sidebar-user {
+        max-width: 484px;
+        margin-left: auto;
+        margin-right: auto;
+
+    }
+
+    .user-page .user-info-board {
+        margin: 10px;
+        max-width: 484px;
+        margin-left: auto;
+        margin-right: auto; 
+    }
 }
 
  .main .navbar {
