@@ -156,7 +156,7 @@ select {
 }
 
 .nav-logout li {
-  background-color: #333;
+  background-color: #b6decd;
 }
 
 .navbar-links .nav-logout li a {
@@ -164,7 +164,7 @@ select {
 }
 
 .navbar-links .nav-logout li a:hover {
-  color: #333;
+  color: #b6decd;
 }
 
 .navbar-links ul {
@@ -180,7 +180,7 @@ select {
   border: solid;
   margin: 10px;
   border-width: thin;
-  border-color: #333;
+  border-color: #b6decd;
   border-radius: 10px;
   height: 50px;
 }
@@ -273,6 +273,8 @@ select {
   .navbar-links.active {
       display: flex;
   }
+
+  
 }
 
 .background-image {
@@ -357,11 +359,14 @@ select {
   color: #333;
 }
 .room-container {
-  padding-top: 20px;
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  background-color: white;
+  max-width: 1200px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  align-items: start;
+  margin: auto; 
+  padding: 40px;
+  margin-top: -10px;
+ 
 }
 
 .room-container .to-devices {
@@ -369,13 +374,19 @@ select {
 }
 
 .room-container .card {
+
   display: flex;
+  flex-direction: row;
   justify-content: space-between;
   background-color: white;
-  height: 165px;
-  width: 500px;
-  margin: 20px;
   box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  border-radius: 5px;
+  width: 90%;
+  border: solid;
+  border-width: thin;
+  border-color: #dfe3eb;
+  margin: 5px;
   box-sizing: border-box;
   padding: 20px;
   border-radius: 5px;
@@ -404,6 +415,7 @@ select {
   grid-gap: 20px;
   margin: auto; 
   padding: 40px;
+  margin-top: -15px;
 }
 
 .device-container .device {
@@ -461,11 +473,11 @@ select {
 }
 
 input:checked + .slider {
-  background-color: crimson;
+  background-color: #cbf7e4;
 }
 
 input:focus + .slider {
-  box-shadow: 0 0 1px crimson;
+  box-shadow: 0 0 1px #cbf7e4;
 }
 
 input:checked + .slider:before {
@@ -485,7 +497,10 @@ input:checked + .slider:before {
 .attribute {
   margin-top: 1rem;
   background: white;
-  box-shadow: 0 2px 12px 0 #dfe3eb;
+  border: solid;
+  border-width: thin;
+  border-color: #b6decd;
+  border-radius: 3px;
   padding: 1rem;
 }
 
@@ -578,12 +593,12 @@ label {
 }
 
 .vacuum-cleaner-modes input[type=radio]:checked + label {
-  background-color: crimson;
-  color: #fff;
+  background-color: #cbf7e4;
+  color: black;
 }
 
 .vacuum-cleaner-modes input[type=radio]:checked + label:hover {
-  background-color: #f00; 
+  background-color: #b6decd; 
 }
 
 .air-conditioner-modes {
@@ -616,11 +631,19 @@ label {
   .device-container {
     grid-template-columns: 1fr;
   }
+
+  .room-container {
+    grid-template-columns: 1fr;
+  }
 }
 
 @media (max-width: 480px) {
   .device-container {
     grid-gap: 10px;
+  }
+
+  .room-container {
+    grid-template-columns: 1fr;
   }
 }
 
