@@ -5,13 +5,13 @@ session_start();
 
 if(isset($_POST['submit'])){
 
-   //$name = mysqli_real_escape_string($conn, $_POST['name']); Burda gerek yok
+   $name = mysqli_real_escape_string($conn, $_POST['name']); 
    $email = mysqli_real_escape_string($conn, $_POST['email']);
    $pass = md5($_POST['password']);
-   //$cpass = md5($_POST['cpassword']); Burda gerek yok
-   //$user_type = $_POST['user_type']; Burda gerek yok
+   $cpass = md5($_POST['cpassword']); 
+   $user_type = $_POST['user_type']; 
 
-   $select = " SELECT * FROM user_admin WHERE email = '$email' && password = '$pass' ";
+   $select = " SELECT * FROM user WHERE email = '$email' && password = '$pass' ";
 
    $result = mysqli_query($conn, $select);
 
@@ -26,7 +26,7 @@ if(isset($_POST['submit'])){
 
       }elseif($row['user_type'] == 'user'){
          $_SESSION['user_name'] = $row['name'];
-         header('location:../consumer/user_page.php');
+         header('location:../consumer/consumernew.html');
 
       }
      
