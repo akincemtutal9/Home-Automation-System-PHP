@@ -26,7 +26,7 @@ if(isset($_POST['submit'])){
 
       }elseif($row['user_type'] == 'user'){
          $_SESSION['user_name'] = $row['name'];
-         header('location:../consumer/consumernew.html');
+         header('location:../consumer/consumernew.php');
 
       }
      

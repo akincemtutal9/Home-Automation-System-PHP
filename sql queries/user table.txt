@@ -1,0 +1,15 @@
+CREATE TABLE `home_automation`.`user` ( 
+`userID` INT UNSIGNED NOT NULL AUTO_INCREMENT, 
+`user_type` VARCHAR(5) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL , 
+`name` VARCHAR(40) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL , 
+`surname` VARCHAR(40) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL , 
+`phone_number` VARCHAR(20) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL , 
+`address` VARCHAR(120) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL , 
+`email` VARCHAR(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL , 
+`age` INT(3) UNSIGNED NOT NULL ,
+`password` VARCHAR(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL ,
+PRIMARY KEY (`userID`), 
+UNIQUE `unique` (`email`),
+CONSTRAINT `room_to_user`
+FOREIGN KEY (userID)
+REFERENCES user(userID) ON UPDATE CASCADE ON DELETE RESTRICT ) ENGINE = InnoDB;

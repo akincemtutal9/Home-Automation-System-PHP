@@ -1,0 +1,10 @@
+CREATE TABLE `home_automation`.`air_conditioner` ( 
+`deviceID` INT UNSIGNED NOT NULL, 
+`acID` INT UNSIGNED NOT NULL AUTO_INCREMENT , 
+`mode` VARCHAR(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL , 
+`temperature` INT NOT NULL , 
+`isOpen` TINYINT(1) NOT NULL , 
+PRIMARY KEY (`acID`), 
+CONSTRAINT `ac_to_device`
+FOREIGN KEY (deviceID)
+REFERENCES device(deviceID) ON UPDATE CASCADE ON DELETE RESTRICT ) ENGINE = InnoDB;

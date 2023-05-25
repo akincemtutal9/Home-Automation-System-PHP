@@ -1,0 +1,11 @@
+CREATE TABLE `home_automation`.`room` ( 
+`userID` INT UNSIGNED NOT NULL, 
+`roomID` INT UNSIGNED NOT NULL AUTO_INCREMENT , 
+`room_name` VARCHAR(40) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL , 
+`temperature` INT  NOT NULL , 
+`humidity` INT NOT NULL , 
+`icon` VARCHAR(150) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL , 
+PRIMARY KEY (`roomID`), 
+CONSTRAINT `room_to_user`
+FOREIGN KEY (userID)
+REFERENCES user(userID) ON UPDATE CASCADE ON DELETE RESTRICT ) ENGINE = InnoDB;

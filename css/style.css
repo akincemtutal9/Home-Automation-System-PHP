@@ -110,7 +110,7 @@ select {
   color: #333;
 }
 .form-container form p a {
-  color: crimson;
+  color: #b6decd;
 }
 .form-container form span .error-msg{
   margin:10px 0;
