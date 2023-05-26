@@ -2,12 +2,12 @@
 include '../database/config.php';
 
 // Check if a user ID was provided via GET request
-if (isset($_GET['id'])) {
+if (isset($_GET['userID'])) {
     // Get the user ID from the GET request
-    $id = $_GET['id'];
+    $id = $_GET['userID'];
 
     // Create a query to delete the user with the provided ID
-    $sql = "DELETE FROM user_admin WHERE id = $id AND user_type ='user'";
+    $sql = "DELETE FROM user WHERE userID = $userid AND user_type ='user'";
 
     // Execute the query
     if (mysqli_query($conn, $sql)) {

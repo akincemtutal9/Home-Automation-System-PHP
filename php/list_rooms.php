@@ -14,8 +14,9 @@ if (mysqli_num_rows($result) > 0) {
         echo "<th scope=\"row\">" . $row["userID"] . "</th>";
         echo "<td>" . $row["email"] . "</td>";
         echo "<td>" . $row["name"] . "</td>";
+        echo "<td>" . "0" . "</td>";
         echo "<td>";
-        echo "<button class=\"btn btn-primary mt-auto\">Edit</button> ";
+        echo "<button class=\"btn btn-primary mt-auto\">Edit Device</button> ";
         echo "<button class=\"btn btn-danger mt-auto\" onclick=\"deleteUser(" . $row["userID"] . ")\">Delete</button>";
         echo "</td>";
         echo "</tr>";
