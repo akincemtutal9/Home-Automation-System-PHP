@@ -16,7 +16,8 @@ if (mysqli_num_rows($result) > 0) {
         echo "<td>" . $row["name"] . "</td>";
         echo "<td>" . "0" . "</td>";
         echo "<td>";
-        echo "<button class=\"btn btn-primary mt-auto\">Edit Device</button> ";
+        echo "<button onclick=\"location.href='admin_edit_room.html';\" class=\"btn btn-success white mt-auto data-bs-toggle=\"modal\" data-bs-target=\"#myModal\">Edit Room</button> ";
+        echo "<button class=\"btn btn-primary mt-auto\">Edit Devices</button> ";
         echo "<button class=\"btn btn-danger mt-auto\" onclick=\"deleteUser(" . $row["userID"] . ")\">Delete</button>";
         echo "</td>";
         echo "</tr>";
@@ -28,4 +29,3 @@ if (mysqli_num_rows($result) > 0) {
 // Close the database connection
 mysqli_close($conn);
 ?>
-

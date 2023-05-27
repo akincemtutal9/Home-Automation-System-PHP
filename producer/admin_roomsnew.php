@@ -73,15 +73,45 @@ include '../php/session_admin.php';
                    
                         
                         <div class="d-flex mb-3">
-                            <div class="me-auto p-2"><h3>Rooms</h3></div>
+                            <div class="me-auto "><h3>Rooms</h3></div>
                             
-                            <button type="button" onclick="location.href='add_room.php'" class="btn btn-primary h-75">
+                            <button type="button"  class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-circle" viewBox="0 0 16 16">
                                     <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"></path>
                                     <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"></path>
                                 </svg>
                                 Add Room
                             </button>
+                            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">Add Room</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <form action="" method="post">
+                                                <div class="row w-75 m-auto ">
+                                                    <div class="col-md-12 mt-2"><label class="labels">Room Name</label><input type="text" class="form-control " placeholder="Enter Room Name" value=""></div>
+                                                        <div class="col-md-12 mt-2"><label class="labels">Temperature</label><input type="text" class="form-control" value="" placeholder="Enter Temperature"></div>
+                                                        <div class="col-md-12 mt-2"><label class="labels">Humidity</label><input type="text" class="form-control" placeholder="Enter Humidity" value=""></div>
+                                                        <div class="col-md-12 mt-2"><label class="labels">Icon</label>
+                                                        <select class="form-select" aria-label="Default select example">
+                                                                <option value="1">Bedroom</option>
+                                                                <option value="2">Kitchen</option>
+                                                                <option value="3">Children Room</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                            <button type="button" class="btn btn-primary">Save changes</button>
+                                        </div>
+                                    </form>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                           
                         
@@ -103,7 +133,9 @@ include '../php/session_admin.php';
                                 <?php 
                                 include '../php/list_rooms.php';                                
                                 ?>
+                                
                             </tbody>
+                            
                         </table>
                     </div>
                 </div>
