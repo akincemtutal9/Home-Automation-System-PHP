@@ -7,6 +7,7 @@ if (isset($_SESSION['user_id'])) {
    
     die('User is not found');
 }
+
 // Create a query to select all users from the users table
 $sql = "SELECT * FROM room WHERE userID ='$user_id'";
 
@@ -17,12 +18,16 @@ $result = mysqli_query($conn, $sql);
 if (mysqli_num_rows($result) > 0) {
     // Loop through the result set and display each user's data in a table row
     while ($row = mysqli_fetch_assoc($result)) {
-        
-        echo "<a href=\"living-room.html\" class=\"to-devices\">
+        $roomID = $row["roomID"];
+        $_SESSION['roomID'] = $roomID;
+        $sql2 = "SELECT COUNT(*) AS row_count FROM device WHERE roomID = '$roomID'; ";
+        $result2 = mysqli_query($conn, $sql2);
+        $row2 = mysqli_fetch_assoc($result2);
+        echo "<a href=\"devices.php?roomID=" . $row["roomID"]. " \" class=\"to-devices\">
                     <div class=\"card\">
                         <div class=\"room-info\">
                             <h3>" . $row["room_name"] . "</h3>
-                            <span>3 devices</span>
+                            <span>" . $row2["row_count"] . " devices</span>
                             <div class=\"temp-humid-show\">
                                 <div class=\"temp-show\">
                                     <span>

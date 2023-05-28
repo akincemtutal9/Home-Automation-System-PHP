@@ -34,7 +34,7 @@ include '../php/session_user.php';
                     <a href="consumernew.html" class="list-group-item list-group-item-action bg-transparent second-text active"><i class="fas fa-door-open"></i> Rooms</a>
                     
                     <a href="statistics.html" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i class="fas fa-calendar-alt me-2"></i>Statistics</a>
-                    <a href="profil.html" class="list-group-item list-group-item-action bg-transparent second-text "><i class="fas fa-user me-2"></i>Account</a>
+                    <a href="profil.php" class="list-group-item list-group-item-action bg-transparent second-text "><i class="fas fa-user me-2"></i>Account</a>
                     <a href="#" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i class="fas fa-star me-2"></i>Chart</a>
                     <a href="../index.html" class="list-group-item list-group-item-action bg-transparent text-danger fw-bold"><i class="fas fa-power-off me-2"></i>Logout</a>
                 </div>
@@ -72,7 +72,7 @@ include '../php/session_user.php';
                 <div class="room-container">
                     <?php
 
-                        include 'list_room.php';
+                        include '../php/user_list_room.php';
                     ?>
         
                 </div>

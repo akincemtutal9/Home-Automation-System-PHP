@@ -1,3 +1,6 @@
+<?php
+include '../php/session_user.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -31,7 +34,7 @@
                 <a href="consumer.html" class="list-group-item list-group-item-action bg-transparent second-text active"><i class="fas fa-door-open"></i> Rooms</a>
                 
                 <a href="statistics.html" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i class="fas fa-calendar-alt me-2"></i>Statistics</a>
-                <a href="profil.html" class="list-group-item list-group-item-action bg-transparent second-text "><i class="fas fa-user me-2"></i>Account</a>
+                <a href="profil.php" class="list-group-item list-group-item-action bg-transparent second-text "><i class="fas fa-user me-2"></i>Account</a>
                 <a href="#" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i class="fas fa-star me-2"></i>Chart</a>
                 <a href="../index.html" class="list-group-item list-group-item-action bg-transparent text-danger fw-bold"><i class="fas fa-power-off me-2"></i>Logout</a>
             </div>
@@ -54,7 +57,7 @@
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle second-text fw-bold" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                <i class="fas fa-user me-2"></i><?php echo $_SESSION['admin_name']  ?>
+                                <i class="fas fa-user me-2"></i><?php echo $_SESSION['user_name']  ?>
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <li><a class="dropdown-item" href="#">Profile</a></li>
@@ -74,7 +77,7 @@
                     </div>
                     <div class="actions">
                         <ul>
-                            <li><a href="profil.html" class="chosen"> My Account</a></li>
+                            <li><a href="profil.php" class="chosen"> My Account</a></li>
                             <li><a href="profiledit.html" class="not-chosen">Edit Account</a></li>
                             <li><a href="profilsupport.html" class="not-chosen">Support</a></li>
                             <li><a href="profilpassword.html" class="not-chosen">Change Password</a></li>
@@ -85,17 +88,10 @@
                     <h1>My Account</h1>
                     <div class="user-infos">
                         <div class="">
+                        <?php
+                            include '../php/user_profil.php';
+                        ?>
                             
-                            <div class="row ">
-                                <div class="col-md-6"><label class="labels">Name</label><input type="text" class="form-control form-control-sm" placeholder="Burak" value="" readonly></div>
-                                <div class="col-md-6"><label class="labels">Surname</label><input type="text" class="form-control form-control-sm" value="" placeholder="Sazlı" readonly></div>
-                            </div>
-                            <div class="row ">
-                                <div class="col-md-12"><label class="labels">Mobile Number</label><input type="text" class="form-control form-control-sm" placeholder="5512028390" value="" readonly></div>
-                                <div class="col-md-12"><label class="labels">Address Line 1</label><input type="text" class="form-control form-control-sm" placeholder="Antalya" value="" readonly></div>
-                                <div class="col-md-12"><label class="labels">Email ID</label><input type="text" class="form-control form-control-sm" placeholder="buraksazli0@gmail.com" value="" readonly></div>
-                                <div class="col-md-12"><label class="labels">Age</label><input type="text" class="form-control form-control-sm" placeholder="23" value="" readonly></div>
-                            </div>
                         </div>
                     </div>
                 </div>

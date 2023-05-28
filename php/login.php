@@ -25,7 +25,7 @@ if(isset($_POST['submit'])){
          header('location:../producer/admin_page.php');
 
       }elseif($row['user_type'] == 'user'){
-         $_SESSION['user_id'] = $row['userID'];
+         
          $_SESSION['user_name'] = $row['name'];
          header('location:../consumer/consumernew.php');
 
