@@ -7,7 +7,7 @@ if (isset($_GET['userID'])) {
     $id = $_GET['userID'];
 
     // Create a query to delete the user with the provided ID
-    $sql = "DELETE FROM user WHERE userID = $userid AND user_type ='user'";
+    $sql = "DELETE FROM user WHERE userID = $id AND user_type ='user'";
 
     // Execute the query
     if (mysqli_query($conn, $sql)) {
