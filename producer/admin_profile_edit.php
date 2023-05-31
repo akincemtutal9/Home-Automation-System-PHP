@@ -1,6 +1,7 @@
 <?php
 include '../php/session_admin.php';
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -21,13 +22,13 @@ include '../php/session_admin.php';
     <script src="../js/deleteuser.js"></script>
     
     
-    <title>Account</title>
+    <title>Edit Account</title>
 </head>
 
 <body>
     <div class="d-flex" id="wrapper">
         <!-- Sidebar -->
-        <?php include '../producer/admin_sidebar.php' ?>
+        <?php include '../producer/admin_sidebar.php'?>
         <!-- /#sidebar-wrapper -->
 
         <!-- Page Content -->
@@ -42,22 +43,43 @@ include '../php/session_admin.php';
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
-                 <!--ADMIN dropdown-menu -->
-                 <?php include '../producer/admin_dropdown.php'?>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle second-text fw-bold" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="fas fa-user me-2"></i><?php echo $_SESSION['admin_name']  ?>
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="#">Profile</a></li>
+                                <li><a class="dropdown-item" href="#">Settings</a></li>
+                                <li><a class="dropdown-item" href="../login-signup/login_form.php">Logout</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
             </nav>
 
             <div class="user-page">
+                
                 <!--PROFILE SIDERBAR INCLUDE-->
                 <?php include '../producer/admin_profile_sidebar.php' ?>
-                
+
                 <div class="user-info-board">
-                    <h1>My Account</h1>
+                    <h1>Edit Account</h1>
                     <div class="user-infos">
                         <div class="">
-                        <?php
-                            include '../php/admin_profil.php';
-                        ?>
                             
+                            <div class="row ">
+                                <div class="col-md-6"><label class="labels">Name</label><input type="text" class="form-control form-control-sm" placeholder="first name" value=""></div>
+                                <div class="col-md-6"><label class="labels">Surname</label><input type="text" class="form-control form-control-sm" value="" placeholder="surname"></div>
+                            </div>
+                            <div class="row ">
+                                <div class="col-md-12"><label class="labels">Mobile Number</label><input type="text" class="form-control form-control-sm" placeholder="enter phone number" value=""></div>
+                                <div class="col-md-12"><label class="labels">Address Line 1</label><input type="text" class="form-control form-control-sm" placeholder="enter address line 1" value=""></div>
+                                <div class="col-md-12"><label class="labels">Email ID</label><input type="text" class="form-control form-control-sm" placeholder="enter email id" value=""></div>
+                                <div class="col-md-12"><label class="labels">Age</label><input type="text" class="form-control form-control-sm" placeholder="age" value=""></div>
+                            </div>
+                            <div class=" text-center"><button class="btn btn-primary profile-button w-100" type="button">Save Profile</button></div>
                         </div>
                     </div>
                 </div>

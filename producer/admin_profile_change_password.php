@@ -51,15 +51,15 @@ include '../php/session_admin.php';
                 <?php include '../producer/admin_profile_sidebar.php' ?>
                 
                 <div class="user-info-board">
-                    <h1>My Account</h1>
-                    <div class="user-infos">
-                        <div class="">
-                        <?php
-                            include '../php/admin_profil.php';
-                        ?>
-                            
-                        </div>
-                    </div>
+                    <h1>Change Password</h1>
+                    
+                        <form  class="pt-4" action="" method="post">
+                            <div class="row ">
+                                <div class="col-md-12"><label class="labels">New Password</label><input type="text" id="subject" name="subject" placeholder="Subject"></div>
+                                <div class="col-md-12"><label class="labels">Confirm New Password</label><input type="text" id="subject" name="subject" placeholder="Subject"></div>
+                                <div class=" text-center"><button class="btn btn-primary profile-button w-100" type="button">Submit</button></div>
+                        </form>
+                     
                 </div>
             </div>
         </div>
