@@ -80,13 +80,13 @@ else {
                         <div class=\"mode-control\">
                             <input type=\"radio\" id=\"mode-heat-1\" class=\"modecontrol-radio\" value=\"sun\" name=\"air-conditioner-mode-2\">
                             <label for=\"mode-heat-1\" class=\"mode-label\">
-                                <i class=\"fas fa-sun fa-2xl\" ></i>
+                                <i class=\"fas fa-sun fa-2x\" ></i>
                             </label>
                         </div>
                         <div class=\"mode-control\">
                             <input type=\"radio\" id=\"mode-cold-1\" class=\"modecontrol-radio\" value=\"ice\" name=\"air-conditioner-mode-2\">
                             <label for=\"mode-cold-1\" class=\"mode-label\">
-                                <i class=\"fas fa-snowflake fa-2xl\" ></i>
+                                <i class=\"fas fa-snowflake fa-2x\" ></i>
                             </label>
                         </div>
                     </div>  
