@@ -70,8 +70,8 @@ include '../php/session_user.php';
             </nav>
 
             <div class="user-page">
-                <div class="sidebar-user">
-                    <div class="user-photo">
+                <div class="sidebar-user rounded">
+                    <div class="user-photo ">
                         <img src="../images/profile.png" alt="user image">
                         <h3>John Doe</h3>
                     </div>
@@ -84,7 +84,7 @@ include '../php/session_user.php';
                         </ul>
                     </div>
                 </div>
-                <div class="user-info-board">
+                <div class="user-info-board rounded">
                     <h1>My Account</h1>
                     <div class="user-infos">
                         <div class="">
