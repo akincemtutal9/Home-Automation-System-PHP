@@ -1,5 +1,14 @@
 <?php
 include '../php/session_admin.php';
+include_once '../database/config.php';
+if (count($_POST) > 0) {
+    
+    mysqli_query($conn, "UPDATE user SET name='" . $_POST['name'] . "', surname='" . $_POST['surname'] . "', phone_number='" . $_POST['phone_number'] . "', address='" . $_POST['address'] . "', email='". $_POST['email'] . "', age='". $_POST['age'] . "' WHERE userID='" . $_GET['userID'] . "'");
+
+    $message = "Record Modified Successfully";
+}
+$result = mysqli_query($conn, "SELECT * FROM user WHERE userID='" . $_GET['userID'] . "'");
+$row = mysqli_fetch_array($result);
 ?>
 
 <!DOCTYPE html>
@@ -60,23 +69,19 @@ include '../php/session_admin.php';
             </nav>
 
             <div class="user-page">
-
-                <!--PROFILE SIDERBAR INCLUDE-->
-                <?php include '../producer/admin_profile_sidebar.php' ?>
-
                 <div class="user-info-board">
-                    <h1>Edit Account</h1>
+                    <h1>Edit Account <?php echo $row['name'] ?></h1>
                     <div class="user-infos">
                         <form name="editProfile" method="post" action="">
                             <div class="row">
-                                <input name="name" class="col-md-6"><label class="labels">Name</label><input type="text" class="form-control form-control-sm" placeholder="first name" value=""></inp>
-                                <input name="surname" class="col-md-6"><label class="labels">Surname</label><input type="text" class="form-control form-control-sm" value="" placeholder="surname"></input>
+                                <div name="name" class="col-md-6"><label class="labels">Name</label><input name="name" type="text" class="form-control form-control-sm" placeholder="first name" value=""></div>
+                                <div name="surname" class="col-md-6"><label class="labels">Surname</label><input name="surname" type="text" class="form-control form-control-sm" value="" placeholder="surname"></div>
                             </div>
                             <div class="row">
-                                <input name ="phone_number" class="col-md-12"><label class="labels">Mobile Number</label><input type="text" class="form-control form-control-sm" placeholder="enter phone number" value=""></input>
-                                <input name ="address" class="col-md-12"><label class="labels">Address Line 1</label><input type="text" class="form-control form-control-sm" placeholder="enter address line 1" value=""></input>
-                                <input name ="email" class="col-md-12"><label class="labels">Email ID</label><input type="text" class="form-control form-control-sm" placeholder="enter email id" value=""></input>
-                                <input name ="age" class="col-md-12"><label class="labels">Age</label><input type="text" class="form-control form-control-sm" placeholder="age" value=""></input>
+                                <div name ="phone_number" class="col-md-12"><label class="labels">Mobile Number</label><input name="phone_number" type="text" class="form-control form-control-sm" placeholder="enter phone number" value=""></div>
+                                <div name ="address" class="col-md-12"><label class="labels">Address Line 1</label><input name="address" type="text" class="form-control form-control-sm" placeholder="enter address line 1" value=""></div>
+                                <div name ="email" class="col-md-12"><label class="labels">Email ID</label><input name="email" type="text" class="form-control form-control-sm" placeholder="enter email id" value=""></div>
+                                <div name ="age" class="col-md-12"><label class="labels">Age</label><input name="age" type="text" class="form-control form-control-sm" placeholder="age" value=""></div>
                             </div>
                             <div  class=" text-center"><input class="btn btn-primary profile-button w-100" name="submit" type="submit" value="Save Profile"></input></div>
                         </form>
