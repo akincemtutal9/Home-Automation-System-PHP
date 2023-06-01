@@ -116,9 +116,26 @@ else {
             
             </style>
             
+            <script>
+                function submitForm() {
+                    var form = document.getElementById(\"form-" . $row['device_type'] . $row['deviceID'] . "\");
+                    var formData = new FormData(form);
+                    var xhr = new XMLHttpRequest();
+                    xhr.open(\"POST\", \"veritabani.php\", true);
+                    xhr.onreadystatechange = function() {
+                        if (xhr.readyState === 4 && xhr.status === 200) {
+                            var response = xhr.responseText;
+                            console.log(\"data added successfully.\");
+                            } else {
+                            // İşlem hatalı olduğunda
+                            console.error(\"data adding error: \" + xhr.statusText);
+                            }
+                        }
+                    };
+                    xhr.send(formData);
+                }
+            </script>
 
-                
-           
             ";
                 
 
