@@ -62,7 +62,7 @@ include '../php/session_user.php';
                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                     <li><a class="dropdown-item" href="#">Profile</a></li>
                                     <li><a class="dropdown-item" href="#">Settings</a></li>
-                                    <li><a class="dropdown-item" href="../login-signup/login_form.php">Logout</a></li>
+                                    <li><a class="dropdown-item" href="../php/logout.php">Logout</a></li>
                                 </ul>
                             </li>
                         </ul>

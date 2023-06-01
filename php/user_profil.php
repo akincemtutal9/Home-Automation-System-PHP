@@ -1,12 +1,12 @@
 <?php
 include '../database/config.php';
-if (isset($_SESSION['userID'])) {
-    $user_id = $_SESSION['userID'];
+if (isset($_SESSION['user_id'])) {
+    $user_id = $_SESSION['user_id'];
 } else {
    
     die('User is not found');
 }
-$user_id = $_SESSION['userID'];
+
 // Create a query to select all users from the users table
 $sql = "SELECT * FROM user WHERE userID ='$user_id'";
 

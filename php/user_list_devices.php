@@ -1,7 +1,13 @@
 <?php
 include '../database/config.php';
-
-$user_id = $_SESSION['userID'];
+if (isset($_SESSION['userID']) && $_SESSION['loggedin']) {
+    $user_id = $_SESSION['user_id'];
+    $loggedin =  $_SESSION['loggedin'];
+} else {
+   
+    die('User is not found');
+}
+$user_id = $_SESSION['user_id'];
 $room_id = $_GET['roomID'];
 
 // Create a query to select all users from the users table
@@ -115,7 +121,7 @@ else {
               }
             
             </style>
-            
+
             <script>
                 function submitForm() {
                     var form = document.getElementById(\"form-" . $row['device_type'] . $row['deviceID'] . "\");
