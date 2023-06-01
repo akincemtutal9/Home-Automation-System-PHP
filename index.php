@@ -1,3 +1,6 @@
+<?php 
+include './php/session_user_index.php';
+?>
 <!DOCTYPE html>
 <html>
 <head>

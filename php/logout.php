@@ -1,8 +1,9 @@
 <?php 
-include '../database/config.php';
 session_start();
+$_SESSION = array();
+
 session_destroy();
-unset($_SESSION['loggedin']);
-unset($_SESSION['user_id']);
-header('location:../index.html');
+
+header('location:../login-signup/login_form.php');
+exit();
 ?>

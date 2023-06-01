@@ -2,7 +2,11 @@
 include '../database/config.php';
 
 session_start();
-
+if(isset($_SESSION['user_id'])) {
+   
+   header('location:../consumer/consumernew.php');
+   exit();
+}
 if(isset($_POST['submit'])){
 
    $name = mysqli_real_escape_string($conn, $_POST['name']); 
