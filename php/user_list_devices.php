@@ -1,8 +1,8 @@
 <?php
 include '../database/config.php';
-if (isset($_SESSION['userID']) && $_SESSION['loggedin']) {
+if (isset($_SESSION['user_id']) ) {
     $user_id = $_SESSION['user_id'];
-    $loggedin =  $_SESSION['loggedin'];
+   
 } else {
    
     die('User is not found');
