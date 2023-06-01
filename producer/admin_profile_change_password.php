@@ -1,9 +1,24 @@
 <?php
 include '../php/session_admin.php';
+session_regenerate_id();
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $userID = $_SESSION['admin_id'];
+
+    $password = md5($_POST['password']);
+    // Retrieve the form input values
+    echo $userID;
+    // Perform the update query
+    $query = "UPDATE user SET password = '$password' WHERE userID='$userID'";
+    mysqli_query($conn, $query);
+
+    // Redirect to a success page or do any additional processing
+    header("Location:../producer/admin_profile.php",$userID);
+    exit;
+}
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <style>
         * {
@@ -51,13 +66,12 @@ include '../php/session_admin.php';
                 <?php include '../producer/admin_profile_sidebar.php' ?>
                 
                 <div class="user-info-board">
-                    <h1>Change Password</h1>
-                    
+                    <h1>Change Password</h1>     
                         <form  class="pt-4" action="" method="post">
                             <div class="row ">
-                                <div class="col-md-12"><label class="labels">New Password</label><input type="text" id="subject" name="subject" placeholder="Subject"></div>
-                                <div class="col-md-12"><label class="labels">Confirm New Password</label><input type="text" id="subject" name="subject" placeholder="Subject"></div>
-                                <div class=" text-center"><button class="btn btn-primary profile-button w-100" type="button">Submit</button></div>
+                                <div class="col-md-12"><label class="labels">New Password</label><input name="password" type="text" id="subject" name="subject" placeholder="Subject"></div>
+                                <div class="col-md-12"><label class="labels">Confirm New Password</label><input name= "password" type="text" id="subject" name="subject" placeholder="Subject"></div>
+                                <div class=" text-center"><input class="btn btn-primary profile-button w-100" type="submit" name="submit" value="Change Password" ></input></div>
                         </form>
                      
                 </div>

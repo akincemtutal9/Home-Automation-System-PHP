@@ -1,5 +1,41 @@
 <?php
 include '../php/session_admin.php';
+
+// Assuming you have already established a database connection
+// $conn = mysqli_connect("hostname", "username", "password", "database_name");
+$user_name = $_SESSION['admin_name'];
+
+$user_id;
+
+$sql2 = "SELECT * FROM user WHERE name = '$user_name'"; // Enclose $user_name with single quotes
+
+$result2 = mysqli_query($conn, $sql2);
+
+// Fetch the user ID from the result set
+if ($row2 = mysqli_fetch_assoc($result2)) {
+    $user_id = $row2['userID'];
+}
+
+// Create a query to select the user with the obtained user ID and additional condition
+$sql = "SELECT * FROM user WHERE userID = '$user_id' AND name = '$user_name'"; // Enclose $user_id and $user_name with single quotes
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    
+    // Retrieve the form input values
+    $name = $_POST['name'];
+    $surname = $_POST['surname'];
+    $phone_number = $_POST['phone_number'];
+    $address = $_POST['address'];
+    $email = $_POST['email'];
+    $age = $_POST['age'];
+
+    // Perform the update query
+    $query = "UPDATE user SET name='$name', surname='$surname', phone_number='$phone_number', address='$address', email='$email', age='$age' WHERE userID='$user_id'";
+    mysqli_query($conn, $query);
+
+    // Redirect to a success page or do any additional processing
+    header("Location:../producer/admin_profile.php");
+    exit;
+}
 ?>
 
 <!DOCTYPE html>
@@ -69,16 +105,16 @@ include '../php/session_admin.php';
                     <div class="user-infos">
                         <form name="editProfile" method="post" action="">
                             <div class="row">
-                                <input name="name" class="col-md-6"><label class="labels">Name</label><input type="text" class="form-control form-control-sm" placeholder="first name" value=""></inp>
-                                <input name="surname" class="col-md-6"><label class="labels">Surname</label><input type="text" class="form-control form-control-sm" value="" placeholder="surname"></input>
-                            </div>
-                            <div class="row">
-                                <input name ="phone_number" class="col-md-12"><label class="labels">Mobile Number</label><input type="text" class="form-control form-control-sm" placeholder="enter phone number" value=""></input>
-                                <input name ="address" class="col-md-12"><label class="labels">Address Line 1</label><input type="text" class="form-control form-control-sm" placeholder="enter address line 1" value=""></input>
-                                <input name ="email" class="col-md-12"><label class="labels">Email ID</label><input type="text" class="form-control form-control-sm" placeholder="enter email id" value=""></input>
-                                <input name ="age" class="col-md-12"><label class="labels">Age</label><input type="text" class="form-control form-control-sm" placeholder="age" value=""></input>
-                            </div>
-                            <div  class=" text-center"><input class="btn btn-primary profile-button w-100" name="submit" type="submit" value="Save Profile"></input></div>
+                                <div class="col-md-6"><label class="labels">Name</label><input name="name" type="text" class="form-control form-control-sm" placeholder="first name" value=""></div>
+                                <div class="col-md-6"><label class="labels">Surname</label><input name="surname" type="text" class="form-control form-control-sm" value="" placeholder="surname"></d>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12"><label class="labels">Mobile Number</label><input name="phone_number" type="text" class="form-control form-control-sm" placeholder="enter phone number" value=""></div>
+                                    <div name="address" class="col-md-12"><label class="labels">Address Line 1</label><input name="address" type="text" class="form-control form-control-sm" placeholder="enter address line 1" value=""></div>
+                                    <div name="email" class="col-md-12"><label class="labels">Email ID</label><input name="email" type="text" class="form-control form-control-sm" placeholder="enter email id" value=""></div>
+                                    <div name="age" class="col-md-12"><label class="labels">Age</label><input name="age" type="text" class="form-control form-control-sm" placeholder="age" value=""></d>
+                                    </div>
+                                    <div class=" text-center"><input class="btn btn-primary profile-button w-100" name="submit" type="submit" value="Save Profile"></input></div>
                         </form>
                     </div>
                 </div>
@@ -87,9 +123,6 @@ include '../php/session_admin.php';
     </div>
     <!-- /#page-content-wrapper -->
     </div>
-
-
-    
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"></script>
     <script>
         var el = document.getElementById("wrapper");

@@ -1,24 +1,17 @@
 <?php
 include '../database/config.php';
-
-$user_name = $_SESSION['admin_name'];
-
-$user_id;
-
-$sql2 = "SELECT * FROM user WHERE name = '$user_name'"; // Enclose $user_name with single quotes
-
-$result2 = mysqli_query($conn, $sql2);
-
-// Fetch the user ID from the result set
-if ($row2 = mysqli_fetch_assoc($result2)) {
-    $user_id = $row2['userID'];
+if (isset($_SESSION['admin_id'])) {
+    $user_id = $_SESSION['admin_id'];
+} else {
+   
+    die('User is not found');
 }
+$user_id = $_SESSION['admin_id'];
+// Create a query to select all users from the users table
+$sql = "SELECT * FROM user WHERE userID ='$user_id'";
 
-// Create a query to select the user with the obtained user ID and additional condition
-$sql = "SELECT * FROM user WHERE userID = '$user_id' AND name = '$user_name'"; // Enclose $user_id and $user_name with single quotes
-
+// Execute the query and get the result set
 $result = mysqli_query($conn, $sql);
-
 // Check if any users were found
 if (mysqli_num_rows($result) > 0) {
     // Loop through the result set and display each user's data in a table row
