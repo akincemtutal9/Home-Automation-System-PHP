@@ -70,39 +70,58 @@ else {
                         <h3>" . $row['device_name']."</h3>
                     </div>
                     <label class=\"switch\">
-                        <input type=\"checkbox\" name=\"bedroom-air-cond\">
+                        <input type=\"checkbox\" name=\"air-conditioner-" . $row['deviceID'] . "\">
                             <span class=\"slider round\"></span>
                     </label>
                 </div>
                 <div class=\"attribute\">
                     <h4>Mode</h4>
                     <div class=\"air-conditioner-modes\">
-                        <div class=\"mode-control\">
-                            <input type=\"radio\" id=\"mode-heat-1\" class=\"modecontrol-radio\" value=\"sun\" name=\"air-conditioner-mode-2\">
-                            <label for=\"mode-heat-1\" class=\"mode-label\">
-                                <i class=\"fas fa-sun fa-2x\" ></i>
-                            </label>
-                        </div>
-                        <div class=\"mode-control\">
-                            <input type=\"radio\" id=\"mode-cold-1\" class=\"modecontrol-radio\" value=\"ice\" name=\"air-conditioner-mode-2\">
-                            <label for=\"mode-cold-1\" class=\"mode-label\">
-                                <i class=\"fas fa-snowflake fa-2x\" ></i>
-                            </label>
-                        </div>
+                        <form class=\"d-flex w-75 justify-content-around\" id=\"form-" . $row['device_type'] . $row['deviceID'] . "\" method=\"post\">
+                            <div class=\"mode-control\">
+                                <input type=\"radio\"  id=\"mode-heat-" . $row['deviceID'] . "\" style=\"\" class=\"modecontrol-radio\" value=\"sun\" name=\"air-conditioner-mode-" . $row['deviceID'] . "\">
+                                <label for=\"mode-heat-" . $row['deviceID'] . "\" class=\"mode-label\">
+                                    <i class=\"fas fa-sun fa-2x\" ></i>
+                                </label>
+                            </div>
+                            <div class=\"mode-control\">
+                                <input type=\"radio\"  id=\"mode-cold-" . $row['deviceID'] . "\" class=\"modecontrol-radio\" value=\"ice\" name=\"air-conditioner-mode-" . $row['deviceID'] . "\">
+                                <label for=\"mode-cold-" . $row['deviceID'] . "\" class=\"mode-label\">
+                                    <i class=\"fas fa-snowflake fa-2x\" ></i>
+                                </label>
+                            </div>
+                        </form>
                     </div>  
                 </div>
                 <div class=\"attribute\">
                     <h4>Temperature</h4>
                     <div class=\"air-conditioner-temperature\">
                         <div class=\"mode-control\">
-                            <label for=\"mode-range-1\" class=\"mode-label\">
+                            <label for=\"mode-range-" . $row['deviceID'] . "\" class=\"mode-label\">
                                 20
                             </label>
-                            <input type=\"range\" id=\"mode-range-1\" class=\"modecontrol-radio\" value=\"temperature\" name=\"temperature-2\"> 
+                            <input type=\"range\" id=\"mode-range-" . $row['deviceID'] . "\" class=\"modecontrol-radio\" value=\"temperature\" name=\"temperature-" . $row['deviceID'] . "\"> 
                         </div>
                     </div>  
                 </div>
-            </div>";
+            </div>
+            <style>
+            .air-conditioner-modes input[type=\"radio\"][id=\"mode-heat-" . $row['deviceID'] ."\"]:checked + label{
+                color: yellow;
+              }
+              
+              .air-conditioner-modes .mode-control input[type=\"radio\"][id=\"mode-cold-" . $row['deviceID'] ."\"]:checked + label {
+                color: aqua;
+              }
+            
+            </style>
+            
+
+                
+           
+            ";
+                
+
             }
 
             elseif($row['device_type'] == "dishwasher") {

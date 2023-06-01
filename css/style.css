@@ -612,13 +612,6 @@ label {
   transition: color 0.3s;
 }
 
-.air-conditioner-modes input[type="radio"][id="mode-heat-1"]:checked + label{
-  color: yellow;
-}
-
-.air-conditioner-modes .mode-control input[type="radio"][id="mode-cold-1"]:checked + label {
-  color: aqua;
-}
 
 .air-conditioner-temperature {
   display: flex;
