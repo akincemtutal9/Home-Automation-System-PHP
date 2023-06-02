@@ -33,6 +33,7 @@ else {
                 $result2 = mysqli_query($conn, $sql2);
                 $row2 = mysqli_fetch_assoc($result2);
                 $isOpen = $row2['isOpen'];
+                $color = $row2['color'];
 
                 echo '<div class="col-md-4">
                 <div class="p-5 bg-white shadow-sm d-flex flex-column justify-content-center align-items-center rounded">
@@ -47,15 +48,19 @@ else {
                         </div>
                     </form>
                     <div class="attribute">
-                        <h4>Color</h4>
-                        <div id="swatch">
-                            <input type="color" id="color" name="color-1" value="' . $row2['color'] . '">
-                            <div class="info">
-                                <h1>Choose</h1>
-                                <h2>Color</h2>
-                            </div>
-                        </div>
-                    </div>
+                <h4>Color</h4>
+            <div id="swatch">
+             <form id="color-form" action="../admin_php/update_light_color.php" method="post">
+            <input type="hidden" name="deviceID" value="' . $deviceID . '">
+            <input type="color" id="color" name="color" value="' . $row2['color'] . '">
+            <div class="info">
+                <h1>Choose</h1>
+                <h2>Color</h2>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+</div>
                 </div>
             </div>';
             }
@@ -303,4 +308,3 @@ else {
      
 // Close the database connection
 mysqli_close($conn);
-?>
