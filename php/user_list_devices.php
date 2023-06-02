@@ -1,5 +1,6 @@
 <?php
 include '../database/config.php';
+
 if (isset($_SESSION['user_id']) ) {
     $user_id = $_SESSION['user_id'];
    
@@ -9,6 +10,7 @@ if (isset($_SESSION['user_id']) ) {
 }
 $user_id = $_SESSION['user_id'];
 $room_id = $_GET['roomID'];
+$_SESSION['room_ID'] = $room_id;
 
 // Create a query to select all users from the users table
 
@@ -83,15 +85,15 @@ else {
                 <div class=\"attribute\">
                     <h4>Mode</h4>
                     <div class=\"air-conditioner-modes\">
-                        <form class=\"d-flex w-75 justify-content-around\" id=\"form-" . $row['device_type'] . $row['deviceID'] . "\" method=\"post\">
-                            <div class=\"mode-control\">
-                                <input type=\"radio\"  id=\"mode-heat-" . $row['deviceID'] . "\" style=\"\" class=\"modecontrol-radio\" value=\"sun\" name=\"air-conditioner-mode-" . $row['deviceID'] . "\">
+                        <form class=\"d-flex w-75 justify-content-around\"  id=\"form-" . $row['device_type'] . $row['deviceID'] . "\" method=\"post\">
+                            <div class=\"mode-control\" onclick=\"submitForm" . $row['deviceID'] ."()\">
+                                <input type=\"radio\"   id=\"mode-heat-" . $row['deviceID'] . "\" style=\"\" class=\"modecontrol-radio\" value=\"sun\" name=\"air-conditioner-mode-" . $row['deviceID'] . "\">
                                 <label for=\"mode-heat-" . $row['deviceID'] . "\" class=\"mode-label\">
                                     <i class=\"fas fa-sun fa-2x\" ></i>
                                 </label>
                             </div>
-                            <div class=\"mode-control\">
-                                <input type=\"radio\"  id=\"mode-cold-" . $row['deviceID'] . "\" class=\"modecontrol-radio\" value=\"ice\" name=\"air-conditioner-mode-" . $row['deviceID'] . "\">
+                            <div class=\"mode-control\" onclick=\"submitForm" . $row['deviceID'] ."()\">
+                                <input type=\"radio\"   id=\"mode-cold-" . $row['deviceID'] . "\" class=\"modecontrol-radio\" value=\"ice\" name=\"air-conditioner-mode-" . $row['deviceID'] . "\">
                                 <label for=\"mode-cold-" . $row['deviceID'] . "\" class=\"mode-label\">
                                     <i class=\"fas fa-snowflake fa-2x\" ></i>
                                 </label>
@@ -121,31 +123,11 @@ else {
               }
             
             </style>
-
-            <script>
-                function submitForm() {
-                    var form = document.getElementById(\"form-" . $row['device_type'] . $row['deviceID'] . "\");
-                    var formData = new FormData(form);
-                    var xhr = new XMLHttpRequest();
-                    xhr.open(\"POST\", \"veritabani.php\", true);
-                    xhr.onreadystatechange = function() {
-                        if (xhr.readyState === 4 && xhr.status === 200) {
-                            var response = xhr.responseText;
-                            console.log(\"data added successfully.\");
-                            } else {
-                            // İşlem hatalı olduğunda
-                            console.error(\"data adding error: \" + xhr.statusText);
-                            }
-                        }
-                    };
-                    xhr.send(formData);
-                }
-            </script>
-
+            
             ";
+            
                 
-
-            }
+        }
 
             elseif($row['device_type'] == "dishwasher") {
                 $sql2 = "SELECT * FROM dishwasher WHERE deviceID ='$deviceID'";
