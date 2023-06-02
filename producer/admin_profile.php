@@ -56,8 +56,7 @@ include '../php/session_admin.php';
                         <div class="">
                         <?php
                             include '../php/admin_profil.php';
-                        ?>
-                            
+                        ?>                            
                         </div>
                     </div>
                 </div>

@@ -15,11 +15,12 @@ $result2 = mysqli_query($conn, $sql2);
 if ($row2 = mysqli_fetch_assoc($result2)) {
     $user_id = $row2['userID'];
 }
-
 // Create a query to select the user with the obtained user ID and additional condition
 $sql = "SELECT * FROM user WHERE userID = '$user_id' AND name = '$user_name'"; // Enclose $user_id and $user_name with single quotes
+
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    
+    $userID = $_SESSION['admin_name'];
     // Retrieve the form input values
     $name = $_POST['name'];
     $surname = $_POST['surname'];
@@ -29,7 +30,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $age = $_POST['age'];
 
     // Perform the update query
-    $query = "UPDATE user SET name='$name', surname='$surname', phone_number='$phone_number', address='$address', email='$email', age='$age' WHERE userID='$user_id'";
+    $query = "UPDATE user SET name='$name', surname='$surname', phone_number='$phone_number', address='$address', email='$email', age='$age' WHERE userID='$userID'";
     mysqli_query($conn, $query);
 
     // Redirect to a success page or do any additional processing
@@ -79,20 +80,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle second-text fw-bold" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                <i class="fas fa-user me-2"></i><?php echo $_SESSION['admin_name']  ?>
-                            </a>
-                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="#">Profile</a></li>
-                                <li><a class="dropdown-item" href="#">Settings</a></li>
-                                <li><a class="dropdown-item" href="../login-signup/login_form.php">Logout</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div>
+                <?php include '../producer/admin_dropdown.php'?>
             </nav>
 
             <div class="user-page">

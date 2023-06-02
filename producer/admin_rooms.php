@@ -65,7 +65,7 @@ include '../php/session_admin.php';
                  <?php include '../producer/admin_dropdown.php'?>
             </nav>
 
-            <div class="container-fluid px-5">
+            <!-- <div class="container-fluid px-5">
                 <div class="row g-4 my-2">
                     <div class="col-lg-4">
                         <div class="p-5 bg-white shadow-sm d-flex flex-column justify-content-center align-items-center rounded">
@@ -76,7 +76,7 @@ include '../php/session_admin.php';
                             <br>
                             <button class="btn btn-primary mt-auto check-device-button">Check Devices</button>
                             <div class="new-view" style="display: none;">
-                                <!-- <p>This is the new view for device 1!</p> -->
+                                <p>This is the new view for device 1!</p> 
 
                                 <div class="Scroll-Area">
                                     <div>
@@ -86,12 +86,12 @@ include '../php/session_admin.php';
                                                     Light
                                                 </span>
                                                 <label class="switch">
-                                                    <input type="checkbox" name="living-room-light" onchange="document.getElementById('light-form').submit();" <?php echo $status == "ON" ? "checked" : ""; ?>>
+                                                    <input type="checkbox" name="living-room-light">
                                                     <span class="slider round"></span>
                                                 </label>
                                             </div>
                                             <form method="post" id="light-form">
-                                                <input type="hidden" name="light" value="<?php echo $status == "ON" ? "off" : "on"; ?>">
+                                                <input type="hidden" name="light" value="">
                                             </form>
 
                                             <div class="attribute">
@@ -179,7 +179,7 @@ include '../php/session_admin.php';
                                         </div>
 
 
-                                        <!-- <div class="device mv-2">
+                                        <div class="device mv-2">
                                                 <div class="device-status between-row">
                                                     <span class="span-big">
                                                         Air-Conditioner
@@ -217,7 +217,7 @@ include '../php/session_admin.php';
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div> -->
+                                            </div> 
                                     </div>
                                 </div>
                                 <div class="center-div">
@@ -296,7 +296,33 @@ include '../php/session_admin.php';
                             </div>
                         </div>
                     </div>
+                </div> -->
+            
+                <div class="container-fluid px-4">
+                <div class="row my-5">
+                    <h3 class="fs-4 mb-3">Consumers Rooms</h3>
+                    <div class="col">
+                        <table class="table bg-white rounded shadow-sm  table-hover">
+                            <thead>
+                                <tr>
+                                    <th scope="col" width="50">id</th>
+                                    <th scope="col">Email</th>
+                                    <th scope="col">Name</th>
+                                    <th scope="col">Check Rooms</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- LIST USERS -->
+                                <?php 
+                                include '../php/list_users_rooms.php';                                
+                                ?>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
+            
+            
+            
             </div>
         </div>
     </div>
