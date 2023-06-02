@@ -60,6 +60,8 @@ include '../php/session_admin.php';
             // Loop through the result set and display each user's data in a table row
             while ($row = mysqli_fetch_assoc($result)) {
                 $roomID = $row["roomID"];
+                $userID = $row['userID'];
+                $_SESSION['userID'] = $userID;
                 $_SESSION['roomID'] = $roomID;
                 $sql2 = "SELECT COUNT(*) AS row_count FROM device WHERE roomID = '$roomID'; ";
                 $result2 = mysqli_query($conn, $sql2);
@@ -77,7 +79,7 @@ include '../php/session_admin.php';
                         <br>
                         <a href='../producer/admin_edit_room.php?roomID=<?php echo $roomID?>' class="btn btn-primary mt-auto check-device-button">Edit Room</a>
                         <br>
-                        <button class="btn btn-primary mt-auto check-device-button">Check Devices</button>
+                        <a href="../producer/admin_edit_devices.php?userID=<?php echo $_GET['userID']; ?>&roomID=<?php echo $roomID; ?>" class="btn btn-primary mt-auto check-device-button">Edit Devices</a>
 
 
                     </div>
