@@ -41,26 +41,37 @@ else {
                 $sql2 = "SELECT * FROM light WHERE deviceID ='$deviceID'";
                 $result2 = mysqli_query($conn, $sql2);
                 $row2 = mysqli_fetch_assoc($result2);
-                
+                $isOpen = $row2['isOpen'];
                 echo "<div class=\"device\">
                     <div class=\"device-status\">
                         <div class=\"device-name\">
                             <h3>" . $row['device_name']."</h3>
                         </div>
-                        <label class=\"switch\">
-                            <input type=\"checkbox\" name=\"bedroom-light\">
-                                <span class=\"slider round\"></span>
-                        </label>
+                        <form action=\"../admin_php/update_device_status.php\" method=\"post\">
+                        <input type=\"hidden\" name=\"deviceID\" value=\"" . $row['deviceID'] . "\">
+                        <div class=\"device-status\">
+                            <button type=\"submit\" name=\"status\" value=\"1\" class=\"me-2 btn " . ($isOpen == 1 ? 'btn-primary' : 'btn-secondary') . "\">On</button>
+                            <button type=\"submit\" name=\"status\" value=\"0\" class=\"btn " . ($isOpen == 0 ? 'btn-danger' : 'btn-secondary') . "\">Off</button>
+                        </div>
+                    </form>
                     </div>
                     
-                    <div class=\"attribute\">
+                    <div class=\"attribute \">
                         <h4>Color</h4>
-
-                        <div id=\"swatch\">
-                            <input type=\"color\" id=\"color\" name=\"color-1\" value=\"". $row2['color'] ."\">
+                        
+                        <div class=\"ps-2\" id=\"swatch\">
+                        <form id=\"color-form\" action=\"../admin_php/update_light_color.php\" method=\"post\"><div class=\"d-flex\">
+                            <input type=\"hidden\" name=\"deviceID\" value=\"" . $row['deviceID'] . "\">
+                            <input type=\"color\" id=\"color\" name=\"color\" value=\"" . $row2['color'] . "\">
                             <div class=\"info\">
-                            <h1>Choose</h1>
-                            <h2>Color</h2>
+                                <h1>Choose</h1>
+                                <h2>Color</h2>
+                            </div>
+                        </div>
+                        <div class=\"ps-4\">
+                            <button type=\"submit\" class=\"btn  mt-1 btn-primary\">Submit</button>
+                         </div>
+                    </form>
                             </div>
                         </div>
                     </div>
@@ -71,16 +82,19 @@ else {
                 $sql2 = "SELECT * FROM air_conditioner WHERE deviceID ='$deviceID'";
                 $result2 = mysqli_query($conn, $sql2);
                 $row2 = mysqli_fetch_assoc($result2);
-                
+                $isOpen = $row2['isOpen'];
                 echo "<div class=\"device\">
                 <div class=\"device-status\">
                     <div class=\"device-name\">
                         <h3>" . $row['device_name']."</h3>
                     </div>
-                    <label class=\"switch\">
-                        <input type=\"checkbox\" name=\"air-conditioner-" . $row['deviceID'] . "\">
-                            <span class=\"slider round\"></span>
-                    </label>
+                    <form action=\"../admin_php/update_device_status.php\" method=\"post\">
+                        <input type=\"hidden\" name=\"deviceID\" value=\"" . $row['deviceID'] . "\">
+                        <div class=\"device-status\">
+                            <button type=\"submit\" name=\"status\" value=\"1\" class=\"me-2 btn " . ($isOpen == 1 ? 'btn-primary' : 'btn-secondary') . "\">On</button>
+                            <button type=\"submit\" name=\"status\" value=\"0\" class=\"btn " . ($isOpen == 0 ? 'btn-danger' : 'btn-secondary') . "\">Off</button>
+                        </div>
+                    </form>
                 </div>
                 <div class=\"attribute\">
                     <h4>Mode</h4>
@@ -133,16 +147,19 @@ else {
                 $sql2 = "SELECT * FROM dishwasher WHERE deviceID ='$deviceID'";
                 $result2 = mysqli_query($conn, $sql2);
                 $row2 = mysqli_fetch_assoc($result2);
-                
+                $isOpen = $row2['isOpen'];
                 echo "<div class=\"device\">
                 <div class=\"device-status\">
                     <div class=\"device-name\">
                         <h3>" . $row['device_name']."</h3>
                     </div>
-                    <label class=\"switch\">
-                        <input type=\"checkbox\" name=\"kitchen-dishwasher\">
-                            <span class=\"slider round\"></span>
-                    </label>
+                    <form action=\"../admin_php/update_device_status.php\" method=\"post\">
+                        <input type=\"hidden\" name=\"deviceID\" value=\"" . $row['deviceID'] . "\">
+                        <div class=\"device-status\">
+                            <button type=\"submit\" name=\"status\" value=\"1\" class=\"me-2 btn " . ($isOpen == 1 ? 'btn-primary' : 'btn-secondary') . "\">On</button>
+                            <button type=\"submit\" name=\"status\" value=\"0\" class=\"btn " . ($isOpen == 0 ? 'btn-danger' : 'btn-secondary') . "\">Off</button>
+                        </div>
+                    </form>
                 </div>
             </div>";
             }
@@ -151,16 +168,19 @@ else {
                 $sql2 = "SELECT * FROM electric_blanket WHERE deviceID ='$deviceID'";
                 $result2 = mysqli_query($conn, $sql2);
                 $row2 = mysqli_fetch_assoc($result2);
-                
+                $isOpen = $row2['isOpen'];
                 echo "<div class=\"device\">
                 <div class=\"device-status\">
                     <div class=\"device-name\">
                         <h3>" . $row['device_name']."</h3>
                     </div>
-                    <label class=\"switch\">
-                        <input type=\"checkbox\" name=\"bedroom-blanket\">
-                            <span class=\"slider round\"></span>
-                    </label>
+                    <form action=\"../admin_php/update_device_status.php\" method=\"post\">
+                        <input type=\"hidden\" name=\"deviceID\" value=\"" . $row['deviceID'] . "\">
+                        <div class=\"device-status\">
+                            <button type=\"submit\" name=\"status\" value=\"1\" class=\"me-2 btn " . ($isOpen == 1 ? 'btn-primary' : 'btn-secondary') . "\">On</button>
+                            <button type=\"submit\" name=\"status\" value=\"0\" class=\"btn " . ($isOpen == 0 ? 'btn-danger' : 'btn-secondary') . "\">Off</button>
+                        </div>
+                    </form>
                 </div>
             </div>";
             }
@@ -169,16 +189,19 @@ else {
                 $sql2 = "SELECT * FROM fan WHERE deviceID ='$deviceID'";
                 $result2 = mysqli_query($conn, $sql2);
                 $row2 = mysqli_fetch_assoc($result2);
-                
+                $isOpen = $row2['isOpen'];
                 echo "<div class=\"device\">
                 <div class=\"device-status\">
                     <div class=\"device-name\">
                         <h3>" . $row['device_name']."</h3>
                     </div>
-                    <label class=\"switch\">
-                        <input type=\"checkbox\" name=\"kitchen-fan\">
-                            <span class=\"slider round\"></span>
-                    </label>
+                    <form action=\"../admin_php/update_device_status.php\" method=\"post\">
+                        <input type=\"hidden\" name=\"deviceID\" value=\"" . $row['deviceID'] . "\">
+                        <div class=\"device-status\">
+                            <button type=\"submit\" name=\"status\" value=\"1\" class=\"me-2 btn " . ($isOpen == 1 ? 'btn-primary' : 'btn-secondary') . "\">On</button>
+                            <button type=\"submit\" name=\"status\" value=\"0\" class=\"btn " . ($isOpen == 0 ? 'btn-danger' : 'btn-secondary') . "\">Off</button>
+                        </div>
+                    </form>
                 </div>
                 <div class=\"attribute\">
                     <h4>Speed</h4>
@@ -211,16 +234,19 @@ else {
                 $sql2 = "SELECT * FROM robot_toy WHERE deviceID ='$deviceID'";
                 $result2 = mysqli_query($conn, $sql2);
                 $row2 = mysqli_fetch_assoc($result2);
-                
+                $isOpen = $row2['isOpen'];
                 echo "<div class=\"device\">
                 <div class=\"device-status\">
                     <div class=\"device-name\">
                         <h3>" . $row['device_name']."</h3>
                     </div>
-                    <label class=\"switch\">
-                        <input type=\"checkbox\" name=\"children-room-toy\">
-                            <span class=\"slider round\"></span>
-                    </label>
+                    <form action=\"../admin_php/update_device_status.php\" method=\"post\">
+                        <input type=\"hidden\" name=\"deviceID\" value=\"" . $row['deviceID'] . "\">
+                        <div class=\"device-status\">
+                            <button type=\"submit\" name=\"status\" value=\"1\" class=\"me-2 btn " . ($isOpen == 1 ? 'btn-primary' : 'btn-secondary') . "\">On</button>
+                            <button type=\"submit\" name=\"status\" value=\"0\" class=\"btn " . ($isOpen == 0 ? 'btn-danger' : 'btn-secondary') . "\">Off</button>
+                        </div>
+                    </form>
                 </div>
             </div> ";
             }
@@ -229,16 +255,19 @@ else {
                 $sql2 = "SELECT * FROM robot_vacum_cleaner WHERE deviceID ='$deviceID'";
                 $result2 = mysqli_query($conn, $sql2);
                 $row2 = mysqli_fetch_assoc($result2);
-                
+                $isOpen = $row2['isOpen'];
                 echo "<div class=\"device\">
                 <div class=\"device-status\">
                     <div class=\"device-name\">
                         <h3>" . $row['device_name']."</h3>
                     </div>
-                    <label class=\"switch\">
-                        <input type=\"checkbox\">
-                            <span class=\"slider round\"></span>
-                    </label>
+                    <form action=\"../admin_php/update_device_status.php\" method=\"post\">
+                        <input type=\"hidden\" name=\"deviceID\" value=\"" . $row['deviceID'] . "\">
+                        <div class=\"device-status\">
+                            <button type=\"submit\" name=\"status\" value=\"1\" class=\"me-2 btn " . ($isOpen == 1 ? 'btn-primary' : 'btn-secondary') . "\">On</button>
+                            <button type=\"submit\" name=\"status\" value=\"0\" class=\"btn " . ($isOpen == 0 ? 'btn-danger' : 'btn-secondary') . "\">Off</button>
+                        </div>
+                    </form>
                 </div>
                 <div class=\"attribute\">
                     <h4>Mode</h4>
@@ -271,16 +300,19 @@ else {
                 $sql2 = "SELECT * FROM washing_machine WHERE deviceID ='$deviceID'";
                 $result2 = mysqli_query($conn, $sql2);
                 $row2 = mysqli_fetch_assoc($result2);
-                
+                $isOpen = $row2['isOpen'];
                 echo "<div class=\"device\">
                 <div class=\"device-status\">
                     <div class=\"device-name\">
                         <h3>" . $row['device_name']."</h3>
                     </div>
-                    <label class=\"switch\">
-                        <input type=\"checkbox\">
-                            <span class=\"slider round\"></span>
-                    </label>
+                    <form action=\"../admin_php/update_device_status.php\" method=\"post\">
+                        <input type=\"hidden\" name=\"deviceID\" value=\"" . $row['deviceID'] . "\">
+                        <div class=\"device-status\">
+                            <button type=\"submit\" name=\"status\" value=\"1\" class=\"me-2 btn " . ($isOpen == 1 ? 'btn-primary' : 'btn-secondary') . "\">On</button>
+                            <button type=\"submit\" name=\"status\" value=\"0\" class=\"btn " . ($isOpen == 0 ? 'btn-danger' : 'btn-secondary') . "\">Off</button>
+                        </div>
+                    </form>
                 </div>
                 <div class=\"attribute\">
                     <h4>Mode</h4>

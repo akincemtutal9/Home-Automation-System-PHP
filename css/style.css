@@ -506,6 +506,7 @@ input:checked + .slider:before {
 
 #swatch{
   display: flex;
+  flex-direction: row;
   margin-left: auto;
   margin-right: auto;
   max-width: 150px;
