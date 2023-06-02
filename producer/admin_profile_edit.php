@@ -5,22 +5,14 @@ include '../php/session_admin.php';
 // $conn = mysqli_connect("hostname", "username", "password", "database_name");
 $user_name = $_SESSION['admin_name'];
 
-$user_id;
+$user_id = $_SESSION['admin_id'];
 
-$sql2 = "SELECT * FROM user WHERE name = '$user_name'"; // Enclose $user_name with single quotes
-
-$result2 = mysqli_query($conn, $sql2);
-
-// Fetch the user ID from the result set
-if ($row2 = mysqli_fetch_assoc($result2)) {
-    $user_id = $row2['userID'];
-}
 // Create a query to select the user with the obtained user ID and additional condition
 $sql = "SELECT * FROM user WHERE userID = '$user_id' AND name = '$user_name'"; // Enclose $user_id and $user_name with single quotes
 
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $userID = $_SESSION['admin_name'];
+    $user_id = $_SESSION['admin_id'];
     // Retrieve the form input values
     $name = $_POST['name'];
     $surname = $_POST['surname'];
@@ -30,7 +22,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $age = $_POST['age'];
 
     // Perform the update query
-    $query = "UPDATE user SET name='$name', surname='$surname', phone_number='$phone_number', address='$address', email='$email', age='$age' WHERE userID='$userID'";
+    $query = "UPDATE user SET name='$name', surname='$surname', phone_number='$phone_number', address='$address', email='$email', age='$age' WHERE userID='$user_id'";
     mysqli_query($conn, $query);
 
     // Redirect to a success page or do any additional processing

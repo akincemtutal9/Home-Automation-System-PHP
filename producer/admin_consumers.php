@@ -54,7 +54,7 @@ include '../php/session_admin.php';
                                     <th scope="col" width="50">id</th>
                                     <th scope="col">Email</th>
                                     <th scope="col">Name</th>
-                                    <th scope="col">Update/Delete</th>
+                                    <th scope="col">Edit/Delete</th>
                                 </tr>
                             </thead>
                             <tbody>
