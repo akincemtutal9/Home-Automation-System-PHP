@@ -26,7 +26,12 @@ if(isset($_POST['submit'])){
       if($row['user_type'] == 'admin'){
 
          $_SESSION['admin_name'] = $row['name'];
+         $_SESSION['admin_surname'] = $row['surname'];
          $_SESSION['admin_id'] = $row['userID'];
+         $_SESSION['admin_email'] = $row['email'];
+         $_SESSION['admin_age'] = $row['age'];
+         $_SESSION['admin_phonenumber'] = $row['phone_number'];
+         $_SESSION['admin_address'] = $row['address'];
          header('location:../producer/admin_page.php');
 
       }elseif($row['user_type'] == 'user'){

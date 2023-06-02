@@ -85,14 +85,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <div class="user-infos">
                         <form name="editProfile" method="post" action="">
                             <div class="row">
-                                <div class="col-md-6"><label class="labels">Name</label><input name="name" type="text" class="form-control form-control-sm" placeholder="first name" value=""></div>
-                                <div class="col-md-6"><label class="labels">Surname</label><input name="surname" type="text" class="form-control form-control-sm" value="" placeholder="surname"></d>
+                                <div class="col-md-6"><label class="labels">Name</label><input name="name" type="text" class="form-control form-control-sm" placeholder="first name" value="<?php echo $_SESSION['admin_name'] ?>"></div>
+                                <div class="col-md-6"><label class="labels">Surname</label><input name="surname" type="text" class="form-control form-control-sm" value="<?php echo $_SESSION['admin_surname'] ?>" placeholder="surname"></d>
                                 </div>
                                 <div class="row">
-                                    <div class="col-md-12"><label class="labels">Mobile Number</label><input name="phone_number" type="text" class="form-control form-control-sm" placeholder="enter phone number" value=""></div>
-                                    <div name="address" class="col-md-12"><label class="labels">Address Line 1</label><input name="address" type="text" class="form-control form-control-sm" placeholder="enter address line 1" value=""></div>
-                                    <div name="email" class="col-md-12"><label class="labels">Email ID</label><input name="email" type="text" class="form-control form-control-sm" placeholder="enter email id" value=""></div>
-                                    <div name="age" class="col-md-12"><label class="labels">Age</label><input name="age" type="text" class="form-control form-control-sm" placeholder="age" value=""></d>
+                                    <div class="col-md-12"><label class="labels">Mobile Number</label><input name="phone_number" type="text" class="form-control form-control-sm" placeholder="enter phone number" value="<?php echo $_SESSION['admin_phonenumber'] ?>"></div>
+                                    <div name="address" class="col-md-12"><label class="labels">Address Line 1</label><input name="address" type="text" class="form-control form-control-sm" placeholder="enter address line 1" value="<?php echo $_SESSION['admin_address'] ?>"></div>
+                                    <div name="email" class="col-md-12"><label class="labels">Email ID</label><input name="email" type="text" class="form-control form-control-sm" placeholder="enter email id" value="<?php echo $_SESSION['admin_email'] ?>"></div>
+                                    <div name="age" class="col-md-12"><label class="labels">Age</label><input name="age" type="text" class="form-control form-control-sm" placeholder="age" value="<?php echo $_SESSION['admin_age'] ?>"></d>
                                     </div>
                                     <div class=" text-center"><input class="btn btn-primary profile-button w-100" name="submit" type="submit" value="Save Profile"></input></div>
                         </form>
