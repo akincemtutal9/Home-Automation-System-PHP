@@ -1,7 +1,40 @@
 <?php
 include '../php/session_admin.php';
-?>
 
+// Assuming you have already established a database connection
+// $conn = mysqli_connect("hostname", "username", "password", "database_name");
+
+$room_id = $_GET['roomID'];
+
+// Create a query to select the user with the obtained user ID and additional condition
+$sql = "SELECT * FROM room WHERE roomID = '$room_id'"; // Enclose $user_id and $user_name with single quotes
+        
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $room_id = $_GET['roomID'];
+    // Retrieve the form input values
+    $room_name = $_POST['room_name'];
+    $temperature = $_POST['temperature'];
+    $humidity = $_POST['humidity'];
+
+    // Perform the update query
+    $query = "UPDATE room SET room_name='$room_name', temperature='$temperature', humidity='$humidity' WHERE roomID = $room_id";
+    mysqli_query($conn, $query);
+    $result = mysqli_query($conn, $sql);
+
+    if (mysqli_num_rows($result) > 0) {
+        // Loop through the result set and display each user's data in a table row
+        $row = mysqli_fetch_assoc($result);
+        echo $row;
+    } else {
+        echo "No editable found";
+    }
+   
+    // Redirect to a success page or do any additional processing
+    header("Location: ../producer/admin_edit_room.php?roomID=" . $room_id);
+    exit;
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -26,18 +59,10 @@ include '../php/session_admin.php';
 <body>
     <div class="d-flex" id="wrapper">
         <!-- Sidebar -->
-        <div class="bg-white" id="sidebar-wrapper">
-            <div class="sidebar-heading text-center py-4 primary-text fs-4 fw-bold text-uppercase border-bottom"><i class="fas fa-user me-2"></i>Home Auto</div>
-            <div class="list-group list-group-flush my-3">
-                <a href="../producer/admin_page.php" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i class="fas fa-calendar-alt me-2"></i>Dashboard</a>
-                <a href="../producer/admin_rooms.php" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i class="fas fa-door-open"></i> Rooms</a>
-                <a href="../producer/admin_devices.php" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i class="fas fa-hammer"></i> Devices</a>
-                <a href="../producer/admin_consumers.php" class="list-group-item list-group-item-action bg-transparent second-text active"><i class="fas fa-user me-2"></i>Consumers</a>
-                <a href="#" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i class="fas fa-star me-2"></i>Reviews</a>
-                <a href="#" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i class="fas fa-message-dots me-2"></i>Messages</a>
-                <a href="../login-signup/login_form.php" class="list-group-item list-group-item-action bg-transparent text-danger fw-bold"><i class="fas fa-power-off me-2"></i>Logout</a>
-            </div>
-        </div>
+        <?php 
+        include '../producer/admin_sidebar.php';
+
+        ?>
         <!-- /#sidebar-wrapper -->
 
         <!-- Page Content -->
@@ -52,20 +77,7 @@ include '../php/session_admin.php';
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle second-text fw-bold" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                <i class="fas fa-user me-2"></i><?php echo $_SESSION['admin_name']  ?>
-                            </a>
-                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="#">Profile</a></li>
-                                <li><a class="dropdown-item" href="#">Settings</a></li>
-                                <li><a class="dropdown-item" href="../login-signup/login_form.php">Logout</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div>
+                <?php include '../producer/admin_dropdown.php';?>
             </nav>
 
             <div class="container-fluid px-4">
@@ -77,12 +89,10 @@ include '../php/session_admin.php';
                       </div>
 
                       <div class="container d-flex justify-content-center">
-                        <form action="" method="post" style="width:50vw; min-width:300px;">
-                          
-                  
+                        <form action="" method="post" style="width:50vw; min-width:300px;">                 
                           <div class="mb-3">
                             <label class="form-label bg-secondary text-white rounded w-25 text-center">Room Name:</label>
-                            <input type="text" class="form-control" name="room_name" value="<?php echo $row['room_name'] ?>">
+                            <input type="text" class="form-control" name="room_name" value="">
                           </div>
 
                           <div class="row mb-3">
@@ -97,16 +107,16 @@ include '../php/session_admin.php';
                             </div>
                           </div>
                   
-                          <div class="mb-3">
+                          <!-- <div class="mb-3">
                             <label class="form-label bg-secondary text-white rounded w-25 text-center">Icon:</label>
                             <select class="form-select" aria-label="Default select example">
                                 <option value="1">Bedroom</option>
                                 <option value="2">Kitchen</option>
                                 <option value="3">Children Room</option>
                             </select>
-                          </div>                  
+                          </div>                   -->
                           <div class="text-center">
-                            <button type="submit" class="btn btn-primary m-auto mt-2 " name="submit">Update</button>
+                            <input type="submit" class="btn btn-primary m-auto mt-2 " name="submit" value="Update"></input>
                             
                           </div>
                         </form>

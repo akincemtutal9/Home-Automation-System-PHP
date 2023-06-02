@@ -75,13 +75,11 @@ include '../php/session_admin.php';
                             <p class="fs-5"><?php echo $row["icon"]; ?> icon</p>
                         </div>
                         <br>
+                        <a href='../producer/admin_edit_room.php?roomID=<?php echo $roomID?>' class="btn btn-primary mt-auto check-device-button">Edit Room</a>
+                        <br>
                         <button class="btn btn-primary mt-auto check-device-button">Check Devices</button>
-                        <div class="new-view" style="display: none;">
-                            <!-- <p>This is the new view for device 1!</p> -->
-                            <div class="center-div">
-                                <button class="undo-button btn btn-primary">Undo</button>
-                            </div>
-                        </div>
+
+
                     </div>
                 </div>
                 <?php

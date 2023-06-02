@@ -18,7 +18,7 @@ if (mysqli_num_rows($result) > 0) {
         echo "<a href='../producer/admin_check_rooms.php?userID=" . $row["userID"] . "' class='btn btn-primary mt-auto'>Check Rooms</a>";
         echo "</td>";
         echo "</tr>";
-    }
+        }
 } else {
     echo "No users found";
 }
