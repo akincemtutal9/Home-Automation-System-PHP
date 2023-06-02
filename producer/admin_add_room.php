@@ -18,8 +18,8 @@ include '../php/session_admin.php';
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
     <link rel="stylesheet" href="../css/adminstyle.css">
     <script src="../js/deleteuser.js"></script>
-
-
+    
+    
     <title>Admin Dashboard</title>
 </head>
 
@@ -34,61 +34,37 @@ include '../php/session_admin.php';
             <nav class="navbar navbar-expand-lg navbar-light bg-transparent py-4 px-4">
                 <div class="d-flex align-items-center">
                     <i class="fas fa-align-left primary-text fs-4 me-3" id="menu-toggle"></i>
-                    <h2 class="fs-2 m-0">Create Device</h2>
+                    <h2 class="fs-2 m-0">Add Room</h2>
                 </div>
 
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <!--ADMIN dropdown-menu -->
-                <?php include '../producer/admin_dropdown.php' ?>
+                <?php include '../producer/admin_dropdown.php'?>
             </nav>
 
             <div class="container-fluid px-4">
                 <div class="row my-5 mb-2">
                     <div class="col-12 text-center">
-                        <h3>Create Light</h3>
-                        <p class="text-muted">Click update after creating device</p>
+                        <h3>Create Room</h3>
+                        <p class="text-muted">Click update after creating room</p>
                     </div>
 
                     <div class="col-12 col-md-6 offset-md-3">
-                        <form action="../admin_php/create_light.php?" method="post">
+                        <form action="../admin_php/create_room.php?" method="post">
                             <div class="mb-3 d-flex-column align-items-center">
-                                <input type="hidden" name="roomID" value="<?php echo $_GET['roomID']; ?>">
-                                <label class="form-label rounded-pill px-3 py-2" style="color: #000000; font-weight: bold;">Device Name:</label>
-                                <input type="text" class="form-control form-control-lg rounded-pill border-0 shadow flex-grow-1" name="device_name" value="" placeholder="Device Name" style="border-radius: 20px;">
+                                <input type="hidden" name="userID" value="<?php echo $_GET['userID'] ?>">
+                                <label class="form-label rounded-pill px-3 py-2" style="color: #000000; font-weight: bold;">Room Name:</label>
+                                <input type="text" class="form-control form-control-lg rounded-pill border-0 shadow flex-grow-1" name="room_name" value="" placeholder="Room Name" style="border-radius: 20px;">
                             </div>
                             <div class="text-center">
-                                <input type="submit" class="btn btn-primary btn-lg mt-2 rounded-pill w-100" name="submit" value="Create Device" style="border-radius: 20px;">
+                                <input type="submit" class="btn btn-primary btn-lg mt-2 rounded-pill w-100" name="submit" value="Create Room" style="border-radius: 20px;">
                             </div>
                         </form>
                     </div>
                 </div>
             </div>
-
-
-            <div class="container-fluid px-4">
-                <div class="row my-5 mb-2">
-                    <div class="col-12 text-center">
-                        <h3>Create Light</h3>
-                        <p class="text-muted">Click update after creating device</p>
-                    </div>
-
-                    <div class="col-12 col-md-6 offset-md-3">
-                        <form action="../admin_php/create_light.php?" method="post">
-                            <div class="mb-3 d-flex-column align-items-center">
-                                <input type="hidden" name="roomID" value="<?php echo $_GET['roomID']; ?>">
-                                <label class="form-label rounded-pill px-3 py-2" style="color: #000000; font-weight: bold;">Device Name:</label>
-                                <input type="text" class="form-control form-control-lg rounded-pill border-0 shadow flex-grow-1" name="device_name" value="" placeholder="Device Name" style="border-radius: 20px;">
-                            </div>
-                            <div class="text-center">
-                                <input type="submit" class="btn btn-primary btn-lg mt-2 rounded-pill w-100" name="submit" value="Create Device" style="border-radius: 20px;">
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-
         </div>
     </div>
     <!-- /#page-content-wrapper -->

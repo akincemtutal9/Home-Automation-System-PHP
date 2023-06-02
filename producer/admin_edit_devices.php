@@ -4,8 +4,6 @@ include '../php/session_admin.php';
 $user_id = $_GET['userID'];
 $room_id = $_GET['roomID'];
 
-echo $user_id;
-echo $room_id;
 ?>
 
 <!DOCTYPE html>
@@ -52,7 +50,7 @@ echo $room_id;
             </nav>
 
             <div class="container-fluid px-5">
-                <<div class="d-flex justify-content-end align-items-center w-100">
+                <div class="d-flex justify-content-end align-items-center w-100">
                     <a href='../producer/admin_add_device.php?userID=<?php echo $user_id?>&roomID=<?php echo $room_id?>' class="btn btn-success btn-lg">
                         <span class="fw-bold">+</span> Add Device To This Room
                     </a>

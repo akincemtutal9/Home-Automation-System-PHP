@@ -9,26 +9,25 @@ $room_id = $_GET['roomID'];
 
 $sql3 = "SELECT * FROM room WHERE userID='$user_id' AND roomID = '$room_id'";
 $result3 = mysqli_query($conn, $sql3);
-if (mysqli_num_rows($result3) == 0){
-    
+if (mysqli_num_rows($result3) == 0) {
+
     echo "There is no device";
-}
-else {
-    
+} else {
+
     // Execute the query and get the result set
     $sql = "SELECT * FROM device AS d
         INNER JOIN room AS r ON d.roomID = r.roomID
         WHERE d.roomID = '$room_id' AND 
         r.userID='$user_id';";
-        $result = mysqli_query($conn, $sql);
+    $result = mysqli_query($conn, $sql);
 
     // Check if any users were found
     if (mysqli_num_rows($result) > 0) {
-        
+
         // Loop through the result set and display each user's data in a table row
         while ($row = mysqli_fetch_assoc($result)) {
-            $deviceID=$row['deviceID'];
-            if($row['device_type'] == "light") {
+            $deviceID = $row['deviceID'];
+            if ($row['device_type'] == "light") {
                 $sql2 = "SELECT * FROM light WHERE deviceID ='$deviceID'";
                 $result2 = mysqli_query($conn, $sql2);
                 $row2 = mysqli_fetch_assoc($result2);
@@ -63,17 +62,15 @@ else {
 </div>
                 </div>
             </div>';
-            }
-
-            elseif($row['device_type'] == "air conditioner") {
+            } elseif ($row['device_type'] == "air conditioner") {
                 $sql2 = "SELECT * FROM air_conditioner WHERE deviceID ='$deviceID'";
                 $result2 = mysqli_query($conn, $sql2);
                 $row2 = mysqli_fetch_assoc($result2);
-                
+
                 echo "<div class=\"device\">
                 <div class=\"device-status\">
                     <div class=\"device-name\">
-                        <h3>" . $row['device_name']."</h3>
+                        <h3>" . $row['device_name'] . "</h3>
                     </div>
                     <label class=\"switch\">
                         <input type=\"checkbox\" name=\"air-conditioner-" . $row['deviceID'] . "\">
@@ -84,13 +81,13 @@ else {
                     <h4>Mode</h4>
                     <div class=\"air-conditioner-modes\">
                         <form class=\"d-flex w-75 justify-content-around\"  id=\"form-" . $row['device_type'] . $row['deviceID'] . "\" method=\"post\">
-                            <div class=\"mode-control\" onclick=\"submitForm" . $row['deviceID'] ."()\">
+                            <div class=\"mode-control\" onclick=\"submitForm" . $row['deviceID'] . "()\">
                                 <input type=\"radio\"   id=\"mode-heat-" . $row['deviceID'] . "\" style=\"\" class=\"modecontrol-radio\" value=\"sun\" name=\"air-conditioner-mode-" . $row['deviceID'] . "\">
                                 <label for=\"mode-heat-" . $row['deviceID'] . "\" class=\"mode-label\">
                                     <i class=\"fas fa-sun fa-2x\" ></i>
                                 </label>
                             </div>
-                            <div class=\"mode-control\" onclick=\"submitForm" . $row['deviceID'] ."()\">
+                            <div class=\"mode-control\" onclick=\"submitForm" . $row['deviceID'] . "()\">
                                 <input type=\"radio\"   id=\"mode-cold-" . $row['deviceID'] . "\" class=\"modecontrol-radio\" value=\"ice\" name=\"air-conditioner-mode-" . $row['deviceID'] . "\">
                                 <label for=\"mode-cold-" . $row['deviceID'] . "\" class=\"mode-label\">
                                     <i class=\"fas fa-snowflake fa-2x\" ></i>
@@ -112,30 +109,26 @@ else {
                 </div>
             </div>
             <style>
-            .air-conditioner-modes input[type=\"radio\"][id=\"mode-heat-" . $row['deviceID'] ."\"]:checked + label{
+            .air-conditioner-modes input[type=\"radio\"][id=\"mode-heat-" . $row['deviceID'] . "\"]:checked + label{
                 color: yellow;
               }
               
-              .air-conditioner-modes .mode-control input[type=\"radio\"][id=\"mode-cold-" . $row['deviceID'] ."\"]:checked + label {
+              .air-conditioner-modes .mode-control input[type=\"radio\"][id=\"mode-cold-" . $row['deviceID'] . "\"]:checked + label {
                 color: aqua;
               }
             
             </style>
             
             ";
-            
-                
-        }
-
-            elseif($row['device_type'] == "dishwasher") {
+            } elseif ($row['device_type'] == "dishwasher") {
                 $sql2 = "SELECT * FROM dishwasher WHERE deviceID ='$deviceID'";
                 $result2 = mysqli_query($conn, $sql2);
                 $row2 = mysqli_fetch_assoc($result2);
-                
+
                 echo "<div class=\"device\">
                 <div class=\"device-status\">
                     <div class=\"device-name\">
-                        <h3>" . $row['device_name']."</h3>
+                        <h3>" . $row['device_name'] . "</h3>
                     </div>
                     <label class=\"switch\">
                         <input type=\"checkbox\" name=\"kitchen-dishwasher\">
@@ -143,17 +136,15 @@ else {
                     </label>
                 </div>
             </div>";
-            }
-
-            elseif($row['device_type'] == "electric blanket") {
+            } elseif ($row['device_type'] == "electric blanket") {
                 $sql2 = "SELECT * FROM electric_blanket WHERE deviceID ='$deviceID'";
                 $result2 = mysqli_query($conn, $sql2);
                 $row2 = mysqli_fetch_assoc($result2);
-                
+
                 echo "<div class=\"device\">
                 <div class=\"device-status\">
                     <div class=\"device-name\">
-                        <h3>" . $row['device_name']."</h3>
+                        <h3>" . $row['device_name'] . "</h3>
                     </div>
                     <label class=\"switch\">
                         <input type=\"checkbox\" name=\"bedroom-blanket\">
@@ -161,17 +152,15 @@ else {
                     </label>
                 </div>
             </div>";
-            }
-
-            elseif($row['device_type'] == "fan") {
+            } elseif ($row['device_type'] == "fan") {
                 $sql2 = "SELECT * FROM fan WHERE deviceID ='$deviceID'";
                 $result2 = mysqli_query($conn, $sql2);
                 $row2 = mysqli_fetch_assoc($result2);
-                
+
                 echo "<div class=\"device\">
                 <div class=\"device-status\">
                     <div class=\"device-name\">
-                        <h3>" . $row['device_name']."</h3>
+                        <h3>" . $row['device_name'] . "</h3>
                     </div>
                     <label class=\"switch\">
                         <input type=\"checkbox\" name=\"kitchen-fan\">
@@ -203,17 +192,15 @@ else {
                 </div>
                 
             </div>";
-            }
-
-            elseif($row['device_type'] == "robot toy") {
+            } elseif ($row['device_type'] == "robot toy") {
                 $sql2 = "SELECT * FROM robot_toy WHERE deviceID ='$deviceID'";
                 $result2 = mysqli_query($conn, $sql2);
                 $row2 = mysqli_fetch_assoc($result2);
-                
+
                 echo "<div class=\"device\">
                 <div class=\"device-status\">
                     <div class=\"device-name\">
-                        <h3>" . $row['device_name']."</h3>
+                        <h3>" . $row['device_name'] . "</h3>
                     </div>
                     <label class=\"switch\">
                         <input type=\"checkbox\" name=\"children-room-toy\">
@@ -221,17 +208,15 @@ else {
                     </label>
                 </div>
             </div> ";
-            }
-
-            elseif($row['device_type'] == "robot vacuum cleaner") {
+            } elseif ($row['device_type'] == "robot vacuum cleaner") {
                 $sql2 = "SELECT * FROM robot_vacum_cleaner WHERE deviceID ='$deviceID'";
                 $result2 = mysqli_query($conn, $sql2);
                 $row2 = mysqli_fetch_assoc($result2);
-                
+
                 echo "<div class=\"device\">
                 <div class=\"device-status\">
                     <div class=\"device-name\">
-                        <h3>" . $row['device_name']."</h3>
+                        <h3>" . $row['device_name'] . "</h3>
                     </div>
                     <label class=\"switch\">
                         <input type=\"checkbox\">
@@ -263,17 +248,15 @@ else {
                 </div>
                 
             </div> ";
-            }
-
-            elseif($row['device_type'] == "washing machine") {
+            } elseif ($row['device_type'] == "washing machine") {
                 $sql2 = "SELECT * FROM washing_machine WHERE deviceID ='$deviceID'";
                 $result2 = mysqli_query($conn, $sql2);
                 $row2 = mysqli_fetch_assoc($result2);
-                
+
                 echo "<div class=\"device\">
                 <div class=\"device-status\">
                     <div class=\"device-name\">
-                        <h3>" . $row['device_name']."</h3>
+                        <h3>" . $row['device_name'] . "</h3>
                     </div>
                     <label class=\"switch\">
                         <input type=\"checkbox\">
@@ -303,8 +286,8 @@ else {
         }
     } else {
         echo "No Device Found";
-    } 
+    }
 }
-     
+
 // Close the database connection
 mysqli_close($conn);
