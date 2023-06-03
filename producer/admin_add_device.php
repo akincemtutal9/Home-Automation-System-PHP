@@ -64,10 +64,10 @@ include '../php/session_admin.php';
                         </form>
                     </div>
                 </div>
-            </div>
+            
 
 
-            <div class="container-fluid px-4">
+            
                 <div class="row my-5 mb-2">
                     <div class="col-12 text-center">
                         <h3>Create Air Conditioner</h3>
@@ -87,9 +87,9 @@ include '../php/session_admin.php';
                         </form>
                     </div>
                 </div>
-            </div>
+            
 
-            <div class="container-fluid px-4">
+            
                 <div class="row my-5 mb-2">
                     <div class="col-12 text-center">
                         <h3>Create Dishwasher</h3>
@@ -105,6 +105,26 @@ include '../php/session_admin.php';
                             </div>
                             <div class="text-center">
                                 <input type="submit" class="btn btn-primary btn-lg mt-2 rounded-pill w-100" name="submit" value="Create Dishwasher" style="border-radius: 20px;">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                       
+                <div class="row my-5 mb-2">
+                    <div class="col-12 text-center">
+                        <h3>Create Electric Blancet</h3>
+                        <p class="text-muted">Click update after creating device</p>
+                    </div>
+
+                    <div class="col-12 col-md-6 offset-md-3">
+                        <form action="../admin_php/create_electric_blanket.php?" method="post">
+                            <div class="mb-3 d-flex-column align-items-center">
+                                <input type="hidden" name="roomID" value="<?php echo $_GET['roomID']; ?>">
+                                <label class="form-label rounded-pill px-3 py-2" style="color: #000000; font-weight: bold;">Electric Blanket Name:</label>
+                                <input type="text" class="form-control form-control-lg rounded-pill border-0 shadow flex-grow-1" name="device_name" value="" placeholder="Electric Blanket Name" style="border-radius: 20px;">
+                            </div>
+                            <div class="text-center">
+                                <input type="submit" class="btn btn-primary btn-lg mt-2 rounded-pill w-100" name="submit" value="Create Electric Blanket" style="border-radius: 20px;">
                             </div>
                         </form>
                     </div>
