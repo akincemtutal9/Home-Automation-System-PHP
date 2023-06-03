@@ -42,7 +42,8 @@ if (mysqli_num_rows($result3) == 0) {
                     <form action="../admin_php/update_light_status.php" method="post">
                         <input type="hidden" name="deviceID" value="' . $deviceID . '">
                         <div class="device-status">
-                            <button type="submit" name="status" value="1" class="btn ' . ($isOpen == 1 ? 'btn-primary' : 'btn-secondary') . '">On</button>
+                        <h3>Status</h3>    
+                        <button type="submit" name="status" value="1" class="btn ' . ($isOpen == 1 ? 'btn-primary' : 'btn-secondary') . '">On</button>
                             <button type="submit" name="status" value="0" class="btn ' . ($isOpen == 0 ? 'btn-danger' : 'btn-secondary') . '">Off</button>
                         </div>
                     </form>
