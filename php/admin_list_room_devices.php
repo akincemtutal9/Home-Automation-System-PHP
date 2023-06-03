@@ -90,7 +90,7 @@ if (mysqli_num_rows($result3) == 0) {
                     <div class="device-status">
                     <div class="device-name">
                     </div>
-                    <form action="../admin_php/update_aircon_status.php" method="post">
+                    <form action="" method="post">
                         <input type="hidden" name="deviceID" value="' . $deviceID . '">
                         <div class="aircon-status">
                             <h3>Mode</h3>
