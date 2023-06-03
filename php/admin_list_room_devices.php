@@ -240,7 +240,7 @@ if (mysqli_num_rows($result3) == 0) {
                         </div>
                     </form>
             
-                    <h4>Speed</h4> 
+                    <h4>Mode</h4> 
                     <form action="../admin_php/update_vacuum_mode.php" method="post">
                         <input type="hidden" name="deviceID" value="' . $deviceID . '">
                         <div class="aircon-status">
@@ -255,36 +255,33 @@ if (mysqli_num_rows($result3) == 0) {
                 $sql2 = "SELECT * FROM washing_machine WHERE deviceID ='$deviceID'";
                 $result2 = mysqli_query($conn, $sql2);
                 $row2 = mysqli_fetch_assoc($result2);
+                $isOpenWashingMachine = $row2['isOpen'];
+                $modeWashingMachine = $row2['mode'];
 
-                echo "<div class=\"device\">
-                <div class=\"device-status\">
-                    <div class=\"device-name\">
-                        <h3>" . $row['device_name'] . "</h3>
+                echo '<div class="col-md-4">
+                <div class="p-5 bg-white shadow-sm d-flex flex-column justify-content-center align-items-center rounded">
+                    <div>
+                        <h3 class="fs-2">' . $row['device_name'] . '</h3>
                     </div>
-                    <label class=\"switch\">
-                        <input type=\"checkbox\">
-                            <span class=\"slider round\"></span>
-                    </label>
-                </div>
-                <div class=\"attribute\">
-                    <h4>Mode</h4>
-                    <div class=\"vacuum-cleaner-modes\">
-                        <div class=\"mode-control\">
-                            <input type=\"radio\" id=\"mode-auto-1\" class=\"modecontrol-radio\" value=\"wash\" name=\"washing-machine-name-1\">
-                            <label for=\"mode-auto-1\" class=\"mode-label\">
-                                <span class=\"checkmark\">Wash</span>
-                            </label>
+                    <form action="../admin_php/update_washingmachine_status.php" method="post">
+                        <input type="hidden" name="deviceID" value="' . $deviceID . '">
+                        <div class="device-status">
+                            <h3>Status</h3>
+                            <button type="submit" name="isOpenWashingMachine" value="1" class="btn ' . ($isOpenWashingMachine == 1 ? 'btn-primary' : 'btn-secondary') . '">On</button>
+                            <button type="submit" name="isOpenWashingMachine" value="0" class="btn ' . ($isOpenWashingMachine == 0 ? 'btn-danger' : 'btn-secondary') . '">Off</button>
                         </div>
-                        <div class=\"mode-control\">
-                            <input type=\"radio\" id=\"mode-spot-1\" class=\"modecontrol-radio\" value=\"spot\" name=\"washing-machine-name-1\">
-                            <label for=\"mode-spot-1\" class=\"mode-label\">
-                                <span class=\"checkmark\">Dry</span>
-                            </label>
+                    </form>
+            
+                    <h4>Mode</h4> 
+                    <form action="../admin_php/update_washingmachine_mode.php" method="post">
+                        <input type="hidden" name="deviceID" value="' . $deviceID . '">
+                        <div class="aircon-status">
+                            <button type="submit" name="modeWashingMachine" value="wash" class="btn ' . ($modeWashingMachine == 'wash' ? 'btn-primary' : 'btn-secondary') . '">wash</button>
+                            <button type="submit" name="modeWashingMachine" value="dry" class="btn ' . ($modeWashingMachine == 'dry' ? 'btn-danger' : 'btn-secondary') . '">dry</button>
                         </div>
-                    </div>  
+                    </form>
                 </div>
-                
-            </div> ";
+            </div>';
             }
         }
     } else {
