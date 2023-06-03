@@ -127,18 +127,23 @@ if (mysqli_num_rows($result3) == 0) {
                 $sql2 = "SELECT * FROM dishwasher WHERE deviceID ='$deviceID'";
                 $result2 = mysqli_query($conn, $sql2);
                 $row2 = mysqli_fetch_assoc($result2);
+                $isOpenDishwasher = $row2['isOpen'];
 
-                echo "<div class=\"device\">
-                <div class=\"device-status\">
-                    <div class=\"device-name\">
-                        <h3>" . $row['device_name'] . "</h3>
+                echo '<div class="col-md-4">
+                <div class="p-5 bg-white shadow-sm d-flex flex-column justify-content-center align-items-center rounded">
+                    <div>
+                        <h3 class="fs-2">' . $row['device_name'] . '</h3>
                     </div>
-                    <label class=\"switch\">
-                        <input type=\"checkbox\" name=\"kitchen-dishwasher\">
-                            <span class=\"slider round\"></span>
-                    </label>
+                    <form action="../admin_php/update_dishwasher_status.php" method="post">
+                        <input type="hidden" name="deviceID" value="' . $deviceID . '">
+                        <div class="device-status">
+                            <h3>Status</h3>
+                            <button type="submit" name="statusDishwasher" value="1" class="btn ' . ($isOpenDishwasher == 1 ? 'btn-primary' : 'btn-secondary') . '">On</button>
+                            <button type="submit" name="statusDishwasher" value="0" class="btn ' . ($isOpenDishwasher == 0 ? 'btn-danger' : 'btn-secondary') . '">Off</button>
+                        </div>
+                    </form>
                 </div>
-            </div>";
+            </div>';
             } elseif ($row['device_type'] == "electric blanket") {
                 $sql2 = "SELECT * FROM electric_blanket WHERE deviceID ='$deviceID'";
                 $result2 = mysqli_query($conn, $sql2);
