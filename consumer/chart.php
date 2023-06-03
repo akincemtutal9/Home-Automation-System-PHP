@@ -67,12 +67,14 @@ include '../php/session_user.php';
                     </ul>
                 </div>
             </nav>
-            <div class="m-3 bg-light w-25 rounded" style="height: 300px">
-                <canvas id="pieChart"></canvas> 
-                <span class="bg-light ps-5 pe-5 ms-4">Pie Chart for Device Types</span>
-            </div>
-            <div class="m-3 bg-light  rounded" >
-                <canvas id="barChart" width="800" height="400"></canvas>
+            <div class="d-flex flex-md-row flex-column">
+                <div class="m-3 bg-light w-25 rounded" style="height: 300px">
+                    <canvas id="pieChart"></canvas> 
+                    <span class="bg-light ps-5 pe-5 ms-4">Pie Chart for Device Types</span>
+                </div>
+                <div class="m-3 bg-light  rounded" >
+                    <canvas id="barChart" width="800" height="400"></canvas>
+                </div>
             </div>
                 
 
