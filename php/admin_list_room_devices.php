@@ -155,7 +155,7 @@ if (mysqli_num_rows($result3) == 0) {
                     <div>
                         <h3 class="fs-2">' . $row['device_name'] . '</h3>
                     </div>
-                    <form action="../admin_php/update_dishwasher_status.php" method="post">
+                    <form action="../admin_php/update_electric_blanket_status.php" method="post">
                         <input type="hidden" name="deviceID" value="' . $deviceID . '">
                         <div class="device-status">
                             <h3>Status</h3>
