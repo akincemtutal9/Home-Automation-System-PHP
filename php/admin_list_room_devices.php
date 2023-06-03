@@ -169,42 +169,35 @@ if (mysqli_num_rows($result3) == 0) {
                 $sql2 = "SELECT * FROM fan WHERE deviceID ='$deviceID'";
                 $result2 = mysqli_query($conn, $sql2);
                 $row2 = mysqli_fetch_assoc($result2);
+                $isOpenFan = $row2['isOpen'];
+                $speedFan = $row2['speed'];
 
-                echo "<div class=\"device\">
-                <div class=\"device-status\">
-                    <div class=\"device-name\">
-                        <h3>" . $row['device_name'] . "</h3>
+                echo
+                '<div class="col-md-4">
+                <div class="p-5 bg-white shadow-sm d-flex flex-column justify-content-center align-items-center rounded">
+                    <div>
+                        <h3 class="fs-2">' . $row['device_name'] . '</h3>
                     </div>
-                    <label class=\"switch\">
-                        <input type=\"checkbox\" name=\"kitchen-fan\">
-                            <span class=\"slider round\"></span>
-                    </label>
+                    <form action="../admin_php/update_fan_status.php" method="post">
+                        <input type="hidden" name="deviceID" value="' . $deviceID . '">
+                        <div class="device-status">
+                            <h3>Status</h3>
+                            <button type="submit" name="statusFan" value="1" class="btn ' . ($isOpenFan == 1 ? 'btn-primary' : 'btn-secondary') . '">On</button>
+                            <button type="submit" name="statusFan" value="0" class="btn ' . ($isOpenFan == 0 ? 'btn-danger' : 'btn-secondary') . '">Off</button>
+                        </div>
+                    </form>
+            
+                    <h4>Speed</h4> 
+                    <form action="../admin_php/update_fan_speed.php" method="post">
+                        <input type="hidden" name="deviceID" value="' . $deviceID . '">
+                        <div class="aircon-status">
+                            <button type="submit" name="speedFan" value="slow" class="btn ' . ($speedFan == 'slow' ? 'btn-primary' : 'btn-secondary') . '">slow</button>
+                            <button type="submit" name="speedFan" value="medium" class="btn ' . ($speedFan == 'medium' ? 'btn-success' : 'btn-secondary') . '">medium</button>
+                            <button type="submit" name="speedFan" value="fast" class="btn ' . ($speedFan == 'fast' ? 'btn-danger' : 'btn-secondary') . '">fast</button>
+                        </div>
+                    </form>
                 </div>
-                <div class=\"attribute\">
-                    <h4>Speed</h4>
-                    <div class=\"vacuum-cleaner-modes\">
-                        <div class=\"mode-control\">
-                            <input type=\"radio\" id=\"mode-slow-1\" class=\"modecontrol-radio\" value=\"auto\" name=\"fan-name\">
-                            <label for=\"mode-slow-1\" class=\"mode-label\">
-                                <span class=\"checkmark\">Slow</span>
-                            </label>
-                        </div>
-                        <div class=\"mode-control\">
-                            <input type=\"radio\" id=\"mode-medium-1\" class=\"modecontrol-radio\" value=\"spot\" name=\"fan-name\">
-                            <label for=\"mode-medium-1\" class=\"mode-label\">
-                                <span class=\"checkmark\">Medium</span>
-                            </label>
-                        </div>
-                        <div class=\"mode-control\">
-                            <input type=\"radio\" id=\"mode-fast-1\" class=\"modecontrol-radio\" value=\"edge\" name=\"fan-name\">
-                            <label for=\"mode-fast-1\" class=\"mode-label\">
-                                <span class=\"checkmark\">Fast</span>
-                            </label>
-                        </div>
-                    </div>  
-                </div>
-                
-            </div>";
+            </div>';
             } elseif ($row['device_type'] == "robot toy") {
                 $sql2 = "SELECT * FROM robot_toy WHERE deviceID ='$deviceID'";
                 $result2 = mysqli_query($conn, $sql2);
