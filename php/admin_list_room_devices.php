@@ -58,10 +58,23 @@ if (mysqli_num_rows($result3) == 0) {
                 <h2>Color</h2>
             </div>
             <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+            </div>
+            </div>
+             <br>
+            <form action="../admin_php/delete_light.php" method="post" onsubmit="return confirmDelete()">
+            <input type="hidden" name="lightID" value="' . $deviceID . '">
+            <div class="device-status">   
+            <input type="submit" name="status" value="Delete ' . $row['device_name'] . '" class="btn btn-danger" ></input>  
+            </div>
         </form>
-    </div>
-</div>
-                </div>
+        
+            </div>
+            <script>
+            function confirmDelete() {
+                return confirm("Are you sure you want to delete?");
+            }
+            </script>
             </div>';
             } elseif ($row['device_type'] == "air conditioner") {
                 $sql2 = "SELECT * FROM air_conditioner WHERE deviceID ='$deviceID'";
@@ -112,7 +125,24 @@ if (mysqli_num_rows($result3) == 0) {
                             </form> 
                         </div>  
                     </div>
-                </div>
+                
+                    <br>
+                    <form action="../admin_php/delete_air.php" method="post" onsubmit="return confirmDelete()">
+                    <input type="hidden" name="airID" value="' . $deviceID . '">
+                    <div class="device-status">   
+                    <input type="submit" name="status" value="Delete ' . $row['device_name'] . '" class="btn btn-danger" ></input>  
+                    </div>
+                </form>
+                
+                    </div>
+                    <script>
+                    function confirmDelete() {
+                        return confirm("Are you sure you want to delete?");
+                    }
+                    </script>
+                    </div>
+
+                
                 <style>
                     .mode-button[value="sun"] {
                         background-color: yellow;
@@ -122,7 +152,10 @@ if (mysqli_num_rows($result3) == 0) {
                         background-color: blue;
                     }
                 </style>
-            </div>';
+            
+            
+            
+                </div>';
             } elseif ($row['device_type'] == "dishwasher") {
                 $sql2 = "SELECT * FROM dishwasher WHERE deviceID ='$deviceID'";
                 $result2 = mysqli_query($conn, $sql2);
