@@ -26,7 +26,7 @@ include '../php/session_user.php';
 
 <body>
     <div class="d-flex" id="wrapper">
-        <!-- Sidebar -->
+
         <div class="bg-white" id="sidebar-wrapper">
             <div class="sidebar-heading text-center py-4 primary-text fs-4 fw-bold text-uppercase border-bottom"><i class="fas fa-user me-2"></i>Home Auto</div>
             <div class="list-group list-group-flush my-3">
@@ -39,9 +39,7 @@ include '../php/session_user.php';
                 <a href="../index.html" class="list-group-item list-group-item-action bg-transparent text-danger fw-bold"><i class="fas fa-power-off me-2"></i>Logout</a>
             </div>
         </div>
-        <!-- /#sidebar-wrapper -->
 
-        <!-- Page Content -->
         <div id="page-content-wrapper">
             <nav class="navbar navbar-expand-lg navbar-light bg-transparent py-4 px-4">
                 <div class="d-flex align-items-center">
@@ -79,8 +77,8 @@ include '../php/session_user.php';
                         <ul>
                             <li><a href="profil.php" class="chosen"> My Account</a></li>
                             <li><a href="profiledit.php" class="not-chosen">Edit Account</a></li>
-                            <li><a href="profilsupport.html" class="not-chosen">Support</a></li>
-                            <li><a href="profilpassword.html" class="not-chosen">Change Password</a></li>
+                            <li><a href="profilsupport.php" class="not-chosen">Support</a></li>
+                            <li><a href="profilpassword.php" class="not-chosen">Change Password</a></li>
                         </ul>
                     </div>
                 </div>
@@ -98,7 +96,6 @@ include '../php/session_user.php';
             </div>
         </div>
     </div>
-    <!-- /#page-content-wrapper -->
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"></script>

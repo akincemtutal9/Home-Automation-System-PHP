@@ -1,3 +1,26 @@
+<?php
+include '../php/session_user.php';
+include '../database/config.php';
+
+$user_id = $_SESSION['user_id'];
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $new_password = $_POST['new_password'];
+    $again = $_POST['again'];
+    if($new_password != $again ){
+        echo "Password couldn't confirmed!";
+    }
+    else {
+        $md5_password = md5($new_password);
+        $query = "UPDATE user SET password = '$md5_password' WHERE userID = '$user_id'";
+        mysqli_query($conn, $query);
+        header("Location:profil.php");
+    exit;
+    }
+
+    
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -23,7 +46,6 @@
 
 <body>
     <div class="d-flex" id="wrapper">
-        <!-- Sidebar -->
         <div class="bg-white" id="sidebar-wrapper">
             <div class="sidebar-heading text-center py-4 primary-text fs-4 fw-bold text-uppercase border-bottom"><i class="fas fa-user me-2"></i>Home Auto</div>
             <div class="list-group list-group-flush my-3">
@@ -36,9 +58,7 @@
                 <a href="../index.html" class="list-group-item list-group-item-action bg-transparent text-danger fw-bold"><i class="fas fa-power-off me-2"></i>Logout</a>
             </div>
         </div>
-        <!-- /#sidebar-wrapper -->
 
-        <!-- Page Content -->
         <div id="page-content-wrapper">
             <nav class="navbar navbar-expand-lg navbar-light bg-transparent py-4 px-4">
                 <div class="d-flex align-items-center">
@@ -54,7 +74,7 @@
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle second-text fw-bold" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                <i class="fas fa-user me-2"></i><?php echo $_SESSION['admin_name']  ?>
+                                <i class="fas fa-user me-2"></i><?php echo $_SESSION['user_name']  ?>
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <li><a class="dropdown-item" href="#">Profile</a></li>
@@ -74,10 +94,10 @@
                     </div>
                     <div class="actions">
                         <ul>
-                            <li><a href="profil.html" class="not-chosen"> My Account</a></li>
-                            <li><a href="profiledit.html" class="not-chosen">Edit Account</a></li>
-                            <li><a href="profilsupport.html" class="not-chosen">Support</a></li>
-                            <li><a href="profilpassword.html" class="chosen">Change Password</a></li>
+                            <li><a href="profil.php" class="not-chosen"> My Account</a></li>
+                            <li><a href="profiledit.php" class="not-chosen">Edit Account</a></li>
+                            <li><a href="profilsupport.php" class="not-chosen">Support</a></li>
+                            <li><a href="profilpassword.php" class="chosen">Change Password</a></li>
                         </ul>
                     </div>
                 </div>
@@ -86,16 +106,16 @@
                     
                         <form  class="pt-4" action="" method="post">
                             <div class="row ">
-                                <div class="col-md-12"><label class="labels">New Password</label><input type="text" id="subject" name="subject" placeholder="Subject"></div>
-                                <div class="col-md-12"><label class="labels">Confirm New Password</label><input type="text" id="subject" name="subject" placeholder="Subject"></div>
-                                <div class=" text-center"><button class="btn btn-primary profile-button w-100" type="button">Submit</button></div>
+                                <div class="col-md-12"><label class="labels">New Password</label><input type="password" id="new_password" name="new_password" placeholder="New Password"></div>
+                                <div class="col-md-12"><label class="labels">Confirm New Password</label><input type="password" id="again" name="again" placeholder="Confirm"></div>
+                                <div class=" text-center"><button class="btn btn-primary profile-button w-100" type="submit">Submit</button></div>
                         </form>
                      
                 </div>
             </div>
         </div>
     </div>
-    <!-- /#page-content-wrapper -->
+
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"></script>

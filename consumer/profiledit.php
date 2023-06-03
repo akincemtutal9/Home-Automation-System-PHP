@@ -1,12 +1,15 @@
 <?php
 include '../php/session_user.php';
 include '../database/config.php';
-$user_name = $_SESSION['user_name'];
+
 
 $user_id = $_SESSION['user_id'];
 
-$sql = "SELECT * FROM user WHERE userID = '$user_id' AND name = '$user_name'";
-
+$sql = "SELECT * FROM user WHERE userID = '$user_id'";
+$result = mysqli_query($conn, $sql);
+if(mysqli_num_rows($result) > 0){
+    $row = mysqli_fetch_array($result);
+}
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $user_id = $_SESSION['user_id'];
     $name = $_POST['name'];
@@ -49,7 +52,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 <body>
     <div class="d-flex" id="wrapper">
-        <!-- Sidebar -->
         <div class="bg-white" id="sidebar-wrapper">
             <div class="sidebar-heading text-center py-4 primary-text fs-4 fw-bold text-uppercase border-bottom"><i class="fas fa-user me-2"></i>Home Auto</div>
             <div class="list-group list-group-flush my-3">
@@ -62,9 +64,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <a href="../index.html" class="list-group-item list-group-item-action bg-transparent text-danger fw-bold"><i class="fas fa-power-off me-2"></i>Logout</a>
             </div>
         </div>
-        <!-- /#sidebar-wrapper -->
 
-        <!-- Page Content -->
         <div id="page-content-wrapper">
             <nav class="navbar navbar-expand-lg navbar-light bg-transparent py-4 px-4">
                 <div class="d-flex align-items-center">
@@ -100,10 +100,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     </div>
                     <div class="actions">
                         <ul>
-                            <li><a href="profil.html" class="not-chosen"> My Account</a></li>
-                            <li><a href="profiledit.html" class="chosen">Edit Account</a></li>
-                            <li><a href="profilsupport.html" class="not-chosen">Support</a></li>
-                            <li><a href="profilpassword.html" class="not-chosen">Change Password</a></li>
+                            <li><a href="profil.php" class="not-chosen"> My Account</a></li>
+                            <li><a href="profiledit.php" class="chosen">Edit Account</a></li>
+                            <li><a href="profilsupport.php" class="not-chosen">Support</a></li>
+                            <li><a href="profilpassword.php" class="not-chosen">Change Password</a></li>
                         </ul>
                     </div>
                 </div>
@@ -113,14 +113,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         <div class="">
                             <form name="editProfile" method="post" action="">
                                 <div class="row ">
-                                    <div class="col-md-6"><label class="labels">Name</label><input type="text" name="name" class="form-control form-control-sm" placeholder="first name" value="<?php echo $_SESSION['user_name'] ?>"></div>
-                                    <div class="col-md-6"><label class="labels">Surname</label><input type="text" name="surname" class="form-control form-control-sm" value="<?php echo $_SESSION['user_surname'] ?>" placeholder="surname"></div>
+                                    <div class="col-md-6"><label class="labels">Name</label><input type="text" name="name" class="form-control form-control-sm" placeholder="first name" value="<?php echo $row['name'] ?>"></div>
+                                    <div class="col-md-6"><label class="labels">Surname</label><input type="text" name="surname" class="form-control form-control-sm" value="<?php echo $row['surname'] ?>" placeholder="surname"></div>
                                 </div>
                                 <div class="row ">
-                                    <div class="col-md-12"><label class="labels">Mobile Number</label><input type="text" name="phone_number" class="form-control form-control-sm" placeholder="enter phone number" value="<?php echo $_SESSION['user_phonenumber'] ?>"></div>
-                                    <div class="col-md-12"><label class="labels">Address Line 1</label><input type="text" name="address" class="form-control form-control-sm" placeholder="enter address line 1" value="<?php echo $_SESSION['user_address'] ?>"></div>
-                                    <div class="col-md-12"><label class="labels">Email ID</label><input type="text" name="email" class="form-control form-control-sm" placeholder="enter email id" value="<?php echo $_SESSION['user_email'] ?>"></div>
-                                    <div class="col-md-12"><label class="labels">Age</label><input type="text" name="age" class="form-control form-control-sm" placeholder="age" value="<?php echo $_SESSION['user_age'] ?>"></div>
+                                    <div class="col-md-12"><label class="labels">Mobile Number</label><input type="text" name="phone_number" class="form-control form-control-sm" placeholder="enter phone number" value="<?php echo $row['phone_number'] ?>"></div>
+                                    <div class="col-md-12"><label class="labels">Address Line 1</label><input type="text" name="address" class="form-control form-control-sm" placeholder="enter address line 1" value="<?php echo $row['address'] ?>"></div>
+                                    <div class="col-md-12"><label class="labels">Email ID</label><input type="text" name="email" class="form-control form-control-sm" placeholder="enter email id" value="<?php echo $row['email'] ?>"></div>
+                                    <div class="col-md-12"><label class="labels">Age</label><input type="text" name="age" class="form-control form-control-sm" placeholder="age" value="<?php echo $row['age'] ?>"></div>
                                 </div>
                                 <div class=" text-center"><button class="btn btn-primary profile-button w-100" type="submit">Save Profile</button></div>
                             </form>
@@ -130,7 +130,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </div>
         </div>
     </div>
-    <!-- /#page-content-wrapper -->
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"></script>
