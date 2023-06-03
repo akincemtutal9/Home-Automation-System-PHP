@@ -1,32 +1,6 @@
 <?php
 include '../php/session_user.php';
-include '../database/config.php';
-
-
-$user_id = $_SESSION['user_id'];
-
-$sql = "SELECT * FROM user WHERE userID = '$user_id'";
-$result = mysqli_query($conn, $sql);
-if(mysqli_num_rows($result) > 0){
-    $row = mysqli_fetch_array($result);
-}
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $user_id = $_SESSION['user_id'];
-    $name = $_POST['name'];
-    $surname = $_POST['surname'];
-    $phone_number = $_POST['phone_number'];
-    $address = $_POST['address'];
-    $email = $_POST['email'];
-    $age = $_POST['age'];
-    $query = "UPDATE user SET name='$name', surname='$surname', phone_number='$phone_number', address='$address', email='$email', age='$age' WHERE userID='$user_id'";
-    mysqli_query($conn, $query);
-
-    header("Location:profil.php");
-    exit;
-}
 ?>
-
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -45,13 +19,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <link rel="stylesheet" href="../css/style.css">
     <link rel='stylesheet' type='text/css' media='screen' href='../css/user-account.css'>
     <script src="../js/deleteuser.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     
     
-    <title>Edit Account</title>
+    
+    <title>Account</title>
 </head>
 
 <body>
     <div class="d-flex" id="wrapper">
+
         <div class="bg-white" id="sidebar-wrapper">
             <div class="sidebar-heading text-center py-4 primary-text fs-4 fw-bold text-uppercase border-bottom"><i class="fas fa-user me-2"></i>Home Auto</div>
             <div class="list-group list-group-flush my-3">
@@ -60,7 +37,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 
                 <a href="statistics.php" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i class="fas fa-calendar-alt me-2"></i>Statistics</a>
                 <a href="profil.php" class="list-group-item list-group-item-action bg-transparent second-text active"><i class="fas fa-user me-2"></i>Account</a>
-                <a href="chart.php" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i class="fas fa-star me-2"></i>Chart</a>
+                <a href="#" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i class="fas fa-star me-2"></i>Chart</a>
                 <a href="../php/logout.php" class="list-group-item list-group-item-action bg-transparent text-danger fw-bold"><i class="fas fa-power-off me-2"></i>Logout</a>
             </div>
         </div>
@@ -90,43 +67,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     </ul>
                 </div>
             </nav>
-
-            <div class="user-page">
-                <div class="sidebar-user">
-                    <div class="user-photo">
-                        <img src="../images/profile.png" alt="user image">
-                        <h3><?php echo $_SESSION['user_name']  ?></h3>
-                    </div>
-                    <div class="actions">
-                        <ul>
-                            <li><a href="profil.php" class="not-chosen"> My Account</a></li>
-                            <li><a href="profiledit.php" class="chosen">Edit Account</a></li>
-                            <li><a href="profilsupport.php" class="not-chosen">Support</a></li>
-                            <li><a href="profilpassword.php" class="not-chosen">Change Password</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="user-info-board">
-                    <h1>Edit Account</h1>
-                    <div class="user-infos">
-                        <div class="">
-                            <form name="editProfile" method="post" action="">
-                                <div class="row ">
-                                    <div class="col-md-6"><label class="labels">Name</label><input type="text" name="name" class="form-control form-control-sm" placeholder="first name" value="<?php echo $row['name'] ?>"></div>
-                                    <div class="col-md-6"><label class="labels">Surname</label><input type="text" name="surname" class="form-control form-control-sm" value="<?php echo $row['surname'] ?>" placeholder="surname"></div>
-                                </div>
-                                <div class="row ">
-                                    <div class="col-md-12"><label class="labels">Mobile Number</label><input type="text" name="phone_number" class="form-control form-control-sm" placeholder="enter phone number" value="<?php echo $row['phone_number'] ?>"></div>
-                                    <div class="col-md-12"><label class="labels">Address Line 1</label><input type="text" name="address" class="form-control form-control-sm" placeholder="enter address line 1" value="<?php echo $row['address'] ?>"></div>
-                                    <div class="col-md-12"><label class="labels">Email ID</label><input type="text" name="email" class="form-control form-control-sm" placeholder="enter email id" value="<?php echo $row['email'] ?>"></div>
-                                    <div class="col-md-12"><label class="labels">Age</label><input type="text" name="age" class="form-control form-control-sm" placeholder="age" value="<?php echo $row['age'] ?>"></div>
-                                </div>
-                                <div class=" text-center"><button class="btn btn-primary profile-button w-100" type="submit">Save Profile</button></div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
+            <div class="m-3 bg-light w-25 rounded" style="height: 300px">
+                <canvas id="pieChart"></canvas> 
+                <span class="bg-light ps-5 pe-5 ms-4">Pie Chart for Device Types</span>
             </div>
+            <div class="m-3 bg-light  rounded" >
+                <canvas id="barChart" width="800" height="400"></canvas>
+            </div>
+                
+
         </div>
     </div>
     </div>
@@ -140,6 +89,104 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             el.classList.toggle("toggled");
         };
     </script>
+    <script>
+
+        <?php
+        include '../database/config.php';
+        $sql = "SELECT device_type, COUNT(*) as count FROM device GROUP BY device_type";
+        $result = $conn->query($sql);
+
+        $data = array();
+        while ($row = $result->fetch_assoc()) {
+            $data[$row['device_type']] = $row['count'];
+        }
+
+        $conn->close();
+        ?>
+
+        var labels = [];
+        var values = [];
+        <?php foreach ($data as $deviceType => $count) { ?>
+            labels.push("<?php echo $deviceType; ?>");
+            values.push("<?php echo $count; ?>");
+        <?php } ?>
+        
+        var ctx = document.getElementById("pieChart").getContext("2d");
+        var pieChart = new Chart(ctx, {
+            type: 'pie',
+            data: {
+                labels: labels,
+                datasets: [{
+                    data: values,
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.7)',
+                        'rgba(54, 162, 235, 0.7)',
+                        'rgba(255, 206, 86, 0.7)',
+                        'rgba(75, 192, 192, 0.7)',
+                        'rgba(153, 102, 255, 0.7)',
+                        'rgba(255, 159, 64, 0.7)',
+                        'rgba(255, 99, 132, 0.7)'
+                    ]
+                }]
+            },
+            options: {
+                title: {
+                    display: true,
+                    responsive: false,
+                    maintainAspectRatio: false,
+                    text: 'Device Type Distribution'
+                }
+                
+            }
+        });
+    </script>
+    <script>
+        <?php
+        include '../database/config.php';
+        $sql = "SELECT DATE_FORMAT(date, '%Y/%m') as month, COUNT(*) as count FROM statistics GROUP BY month";
+        $result = $conn->query($sql);
+
+        $data = array();
+        while ($row = $result->fetch_assoc()) {
+            $data[$row['month']] = $row['count'];
+        }
+
+        $conn->close();
+        ?>
+
+        var labels = [];
+        var values = [];
+        <?php foreach ($data as $month => $count) { ?>
+            labels.push("<?php echo $month; ?>");
+            values.push("<?php echo $count; ?>");
+        <?php } ?>
+
+        var ctx = document.getElementById("barChart").getContext("2d");
+        var barChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: 'User Activity Count',
+                    data: values,
+                    backgroundColor: 'rgba(54, 162, 235, 0.7)',
+                    borderColor: 'rgba(54, 162, 235, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        precision: 0,
+                        stepSize: 1
+                    }
+                }
+            }
+        });
+
+
+    </script>    
 </body>
 
 </html>
