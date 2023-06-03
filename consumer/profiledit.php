@@ -1,3 +1,29 @@
+<?php
+include '../php/session_user.php';
+include '../database/config.php';
+$user_name = $_SESSION['user_name'];
+
+$user_id = $_SESSION['user_id'];
+
+$sql = "SELECT * FROM user WHERE userID = '$user_id' AND name = '$user_name'";
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $user_id = $_SESSION['user_id'];
+    $name = $_POST['name'];
+    $surname = $_POST['surname'];
+    $phone_number = $_POST['phone_number'];
+    $address = $_POST['address'];
+    $email = $_POST['email'];
+    $age = $_POST['age'];
+    $query = "UPDATE user SET name='$name', surname='$surname', phone_number='$phone_number', address='$address', email='$email', age='$age' WHERE userID='$user_id'";
+    mysqli_query($conn, $query);
+
+    header("Location:profil.php");
+    exit;
+}
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -54,7 +80,7 @@
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle second-text fw-bold" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                <i class="fas fa-user me-2"></i><?php echo $_SESSION['admin_name']  ?>
+                                <i class="fas fa-user me-2"></i><?php echo $_SESSION['user_name']  ?>
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <li><a class="dropdown-item" href="#">Profile</a></li>
@@ -85,18 +111,19 @@
                     <h1>Edit Account</h1>
                     <div class="user-infos">
                         <div class="">
-                            
-                            <div class="row ">
-                                <div class="col-md-6"><label class="labels">Name</label><input type="text" class="form-control form-control-sm" placeholder="first name" value=""></div>
-                                <div class="col-md-6"><label class="labels">Surname</label><input type="text" class="form-control form-control-sm" value="" placeholder="surname"></div>
-                            </div>
-                            <div class="row ">
-                                <div class="col-md-12"><label class="labels">Mobile Number</label><input type="text" class="form-control form-control-sm" placeholder="enter phone number" value=""></div>
-                                <div class="col-md-12"><label class="labels">Address Line 1</label><input type="text" class="form-control form-control-sm" placeholder="enter address line 1" value=""></div>
-                                <div class="col-md-12"><label class="labels">Email ID</label><input type="text" class="form-control form-control-sm" placeholder="enter email id" value=""></div>
-                                <div class="col-md-12"><label class="labels">Age</label><input type="text" class="form-control form-control-sm" placeholder="age" value=""></div>
-                            </div>
-                            <div class=" text-center"><button class="btn btn-primary profile-button w-100" type="button">Save Profile</button></div>
+                            <form name="editProfile" method="post" action="">
+                                <div class="row ">
+                                    <div class="col-md-6"><label class="labels">Name</label><input type="text" name="name" class="form-control form-control-sm" placeholder="first name" value="<?php echo $_SESSION['user_name'] ?>"></div>
+                                    <div class="col-md-6"><label class="labels">Surname</label><input type="text" name="surname" class="form-control form-control-sm" value="<?php echo $_SESSION['user_surname'] ?>" placeholder="surname"></div>
+                                </div>
+                                <div class="row ">
+                                    <div class="col-md-12"><label class="labels">Mobile Number</label><input type="text" name="phone_number" class="form-control form-control-sm" placeholder="enter phone number" value="<?php echo $_SESSION['user_phonenumber'] ?>"></div>
+                                    <div class="col-md-12"><label class="labels">Address Line 1</label><input type="text" name="address" class="form-control form-control-sm" placeholder="enter address line 1" value="<?php echo $_SESSION['user_address'] ?>"></div>
+                                    <div class="col-md-12"><label class="labels">Email ID</label><input type="text" name="email" class="form-control form-control-sm" placeholder="enter email id" value="<?php echo $_SESSION['user_email'] ?>"></div>
+                                    <div class="col-md-12"><label class="labels">Age</label><input type="text" name="age" class="form-control form-control-sm" placeholder="age" value="<?php echo $_SESSION['user_age'] ?>"></div>
+                                </div>
+                                <div class=" text-center"><button class="btn btn-primary profile-button w-100" type="submit">Save Profile</button></div>
+                            </form>
                         </div>
                     </div>
                 </div>

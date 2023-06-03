@@ -1,6 +1,5 @@
 <?php
 include '../php/session_user.php';
-include '../php/air-cond-control.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -19,6 +18,7 @@ include '../php/air-cond-control.php';
     <link rel="stylesheet" href="../css/adminstyle.css">
     <link rel="stylesheet" href="../css/style.css">
     <script src="../js/deleteuser.js"></script>
+    <script src="../js/slider.js"></script>
     
     
     <title>Bedroom</title>

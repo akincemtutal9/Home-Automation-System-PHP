@@ -13,7 +13,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $sql = "UPDATE air_conditioner SET mode = '$mode' WHERE deviceID = '$deviceID'";
     elseif($row['device_type'] == "fan")
         $sql = "UPDATE fan SET speed = '$mode' WHERE deviceID = $deviceID";
-    
+    elseif($row['device_type'] == "robot vacuum cleaner")
+        $sql = "UPDATE robot_vacum_cleaner SET mode = '$mode' WHERE deviceID = $deviceID";
+    elseif($row['device_type'] == "washing machine")
+        $sql = "UPDATE washing_machine SET mode = '$mode' WHERE deviceID = $deviceID";
 
     // Check if the database connection is successful
     if (!$conn) {

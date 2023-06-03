@@ -78,7 +78,7 @@ include '../php/session_user.php';
                     <div class="actions">
                         <ul>
                             <li><a href="profil.php" class="chosen"> My Account</a></li>
-                            <li><a href="profiledit.html" class="not-chosen">Edit Account</a></li>
+                            <li><a href="profiledit.php" class="not-chosen">Edit Account</a></li>
                             <li><a href="profilsupport.html" class="not-chosen">Support</a></li>
                             <li><a href="profilpassword.html" class="not-chosen">Change Password</a></li>
                         </ul>

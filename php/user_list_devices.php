@@ -12,8 +12,6 @@ $user_id = $_SESSION['user_id'];
 $room_id = $_GET['roomID'];
 $_SESSION['room_ID'] = $room_id;
 
-// Create a query to select all users from the users table
-
 
 $sql3 = "SELECT * FROM room WHERE userID='$user_id' AND roomID = '$room_id'";
 $result3 = mysqli_query($conn, $sql3);
@@ -23,18 +21,14 @@ if (mysqli_num_rows($result3) == 0){
     echo "<script>window.location.href = '$url';</script>";
 }
 else {
-    
-    // Execute the query and get the result set
     $sql = "SELECT * FROM device AS d
         INNER JOIN room AS r ON d.roomID = r.roomID
         WHERE d.roomID = '$room_id' AND 
         r.userID='$user_id';";
         $result = mysqli_query($conn, $sql);
 
-    // Check if any users were found
     if (mysqli_num_rows($result) > 0) {
         
-        // Loop through the result set and display each user's data in a table row
         while ($row = mysqli_fetch_assoc($result)) {
             $deviceID=$row['deviceID'];
             if($row['device_type'] == "light") {
@@ -43,38 +37,38 @@ else {
                 $row2 = mysqli_fetch_assoc($result2);
                 $isOpen = $row2['isOpen'];
                 echo "<div class=\"device\">
-                    <div class=\"device-status\">
-                        <div class=\"device-name\">
-                            <h3>" . $row['device_name']."</h3>
-                        </div>
-                        <form action=\"../admin_php/update_device_status.php\" method=\"post\">
-                        <input type=\"hidden\" name=\"deviceID\" value=\"" . $row['deviceID'] . "\">
                         <div class=\"device-status\">
-                            <button type=\"submit\" name=\"status\" value=\"1\" class=\"me-2 btn " . ($isOpen == 1 ? 'btn-primary' : 'btn-secondary') . "\">On</button>
-                            <button type=\"submit\" name=\"status\" value=\"0\" class=\"btn " . ($isOpen == 0 ? 'btn-danger' : 'btn-secondary') . "\">Off</button>
+                            <div class=\"device-name\">
+                                <h3>" . $row['device_name']."</h3>
+                            </div>
+                            <form action=\"../admin_php/update_device_status.php\" method=\"post\">
+                                <input type=\"hidden\" name=\"deviceID\" value=\"" . $row['deviceID'] . "\">
+                                <div class=\"device-status\">
+                                    <button type=\"submit\" name=\"status\" value=\"1\" class=\"me-2 btn " . ($isOpen == 1 ? 'btn-primary' : 'btn-secondary') . "\">On</button>
+                                    <button type=\"submit\" name=\"status\" value=\"0\" class=\"btn " . ($isOpen == 0 ? 'btn-danger' : 'btn-secondary') . "\">Off</button>
+                                </div>
+                            </form>
                         </div>
-                    </form>
-                    </div>
-                    
-                    <div class=\"attribute \">
-                        <h4>Color</h4>
                         
-                        <div class=\"ps-2\" id=\"swatch\">
-                        <form id=\"color-form\" action=\"../admin_php/update_light_color.php\" method=\"post\"><div class=\"d-flex\">
-                            <input type=\"hidden\" name=\"deviceID\" value=\"" . $row['deviceID'] . "\">
-                            <input type=\"color\" id=\"color\" name=\"color\" value=\"" . $row2['color'] . "\">
-                            <div class=\"info\">
-                                <h1>Choose</h1>
-                                <h2>Color</h2>
+                        <div class=\"attribute \">
+                            <h4>Color</h4>
+                            
+                            <div class=\"ps-2\" id=\"swatch\">
+                                <form id=\"color-form\" action=\"../admin_php/update_light_color.php\" method=\"post\">
+                                    <div class=\"d-flex\">
+                                        <input type=\"hidden\" name=\"deviceID\" value=\"" . $row['deviceID'] . "\">
+                                        <input type=\"color\" id=\"color\" name=\"color\" value=\"" . $row2['color'] . "\">
+                                        <div class=\"info\">
+                                            <h1>Choose</h1>
+                                            <h2>Color</h2>
+                                        </div>
+                                    </div>
+                                    <div class=\"ps-4\">
+                                        <button type=\"submit\" class=\"btn  mt-1 btn-primary\">Submit</button>
+                                    </div>
+                                </form>
                             </div>
                         </div>
-                        <div class=\"ps-4\">
-                            <button type=\"submit\" class=\"btn  mt-1 btn-primary\">Submit</button>
-                         </div>
-                    </form>
-                            </div>
-                        </div>
-                    </div>
                     </div>";
             }
 
@@ -84,6 +78,7 @@ else {
                 $row2 = mysqli_fetch_assoc($result2);
                 $isOpen = $row2['isOpen'];
                 $mode = $row2['mode'];
+                $temperatureAir = $row2['temperature'];
                 echo "<div class=\"device\">
                 <div class=\"device-status\">
                     <div class=\"device-name\">
@@ -123,24 +118,18 @@ else {
                     <h4>Temperature</h4>
                     <div class=\"air-conditioner-temperature\">
                         <div class=\"mode-control\">
-                            <label for=\"mode-range-" . $row['deviceID'] . "\" class=\"mode-label\">
-                                20
-                            </label>
-                            <input type=\"range\" id=\"mode-range-" . $row['deviceID'] . "\" class=\"modecontrol-radio\" value=\"temperature\" name=\"temperature-" . $row['deviceID'] . "\"> 
+                            <form action=\"../admin_php/update_aircon_temperature.php\" method=\"post\">
+                                <input type=\"hidden\" name=\"deviceID\" value=\"" . $deviceID . "\">  
+                                <label for=\"mode-range-" . $row['deviceID'] . "\" class=\"mode-label\">
+                                    <span id=\"slider-range-" . $row['deviceID'] ."\">" . $temperatureAir ."</span>
+                                </label>
+                                <input type=\"range\"  min=\"16\" max=\"32\" oninput=\"updateSliderValue(this.value, 'slider-range-". $row['deviceID']."')\" id=\"mode-range-" . $row['deviceID'] . "\" class=\"modecontrol-radio\" value=\"". $temperatureAir ."\" name=\"temperatureAir\"> 
+                                <button type=\"submit\" class=\"btn btn-primary\" onclick=\"submitTemperature" . $row['deviceID'] . "()\">Submit</button>
+                            </form>
                         </div>
                     </div>  
                 </div>
             </div>
-            <style>
-            .air-conditioner-modes input[type=\"radio\"][id=\"mode-heat-" . $row['deviceID'] ."\"]:checked + label{
-                color: yellow;
-              }
-              
-              .air-conditioner-modes .mode-control input[type=\"radio\"][id=\"mode-cold-" . $row['deviceID'] ."\"]:checked + label {
-                color: aqua;
-              }
-            
-            </style>
             
             ";
             
@@ -273,44 +262,57 @@ else {
                 $result2 = mysqli_query($conn, $sql2);
                 $row2 = mysqli_fetch_assoc($result2);
                 $isOpen = $row2['isOpen'];
+                $mode = $row2['mode'];
                 echo "<div class=\"device\">
-                <div class=\"device-status\">
-                    <div class=\"device-name\">
-                        <h3>" . $row['device_name']."</h3>
-                    </div>
-                    <form action=\"../admin_php/update_device_status.php\" method=\"post\">
-                        <input type=\"hidden\" name=\"deviceID\" value=\"" . $row['deviceID'] . "\">
                         <div class=\"device-status\">
-                            <button type=\"submit\" name=\"status\" value=\"1\" class=\"me-2 btn " . ($isOpen == 1 ? 'btn-primary' : 'btn-secondary') . "\">On</button>
-                            <button type=\"submit\" name=\"status\" value=\"0\" class=\"btn " . ($isOpen == 0 ? 'btn-danger' : 'btn-secondary') . "\">Off</button>
+                            <div class=\"device-name\">
+                                <h3>" . $row['device_name']."</h3>
+                            </div>
+                            <form action=\"../admin_php/update_device_status.php\" method=\"post\">
+                                <input type=\"hidden\" name=\"deviceID\" value=\"" . $row['deviceID'] . "\">
+                                <div class=\"device-status\">
+                                    <button type=\"submit\" name=\"status\" value=\"1\" class=\"me-2 btn " . ($isOpen == 1 ? 'btn-primary' : 'btn-secondary') . "\">On</button>
+                                    <button type=\"submit\" name=\"status\" value=\"0\" class=\"btn " . ($isOpen == 0 ? 'btn-danger' : 'btn-secondary') . "\">Off</button>
+                                </div>
+                            </form>
                         </div>
-                    </form>
-                </div>
-                <div class=\"attribute\">
-                    <h4>Mode</h4>
-                    <div class=\"vacuum-cleaner-modes\">
-                        <div class=\"mode-control\">
-                            <input type=\"radio\" id=\"mode-auto-1\" class=\"modecontrol-radio\" value=\"auto\" name=\"vacuum-cleaner-name\">
-                            <label for=\"mode-auto-1\" class=\"mode-label\">
-                                <span class=\"checkmark\">Auto</span>
-                            </label>
+                        <div class=\"attribute\">
+                            <h4>Mode</h4>
+                            <div class=\"vacuum-cleaner-modes\">
+                                <form class=\"d-flex w-100 justify-content-around\" action=\"../php/update_ac_mode.php\" method=\"post\">
+                                    <input type=\"hidden\" name=\"deviceID\" value=\"" . $row['deviceID'] . "\">
+                                        <div class=\"mode-control\">
+                                            <button type=\"submit\" name=\"mode\" value=\"auto\" class=\"btn " . ($mode == "auto" ? 'btn-primary' : 'btn-secondary') . "\">
+                                                <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"currentColor\" class=\"bi bi-1-square\" viewBox=\"0 0 16 16\">
+                                                    <path d=\"M9.283 4.002V12H7.971V5.338h-.065L6.072 6.656V5.385l1.899-1.383h1.312Z\"></path>
+                                                    <path d=\"M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2Zm15 0a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2Z\"></path>
+                                                </svg>
+                                                Auto
+                                            </button>
+                                        </div>
+                                        <div class=\"mode-control\">
+                                            <button type=\"submit\" name=\"mode\" value=\"spot\" class=\"btn " . ($mode == "spot" ? 'btn-primary' : 'btn-secondary') . "\">
+                                                <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"currentColor\" class=\"bi bi-2-square\" viewBox=\"0 0 16 16\">
+                                                    <path d=\"M6.646 6.24v.07H5.375v-.064c0-1.213.879-2.402 2.637-2.402 1.582 0 2.613.949 2.613 2.215 0 1.002-.6 1.667-1.287 2.43l-.096.107-1.974 2.22v.077h3.498V12H5.422v-.832l2.97-3.293c.434-.475.903-1.008.903-1.705 0-.744-.557-1.236-1.313-1.236-.843 0-1.336.615-1.336 1.306Z\"></path>
+                                                    <path d=\"M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2Zm15 0a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2Z\"></path>
+                                                </svg>
+                                                Spot
+                                            </button>
+                                        </div>
+                                        <div class=\"mode-control\">
+                                            <button type=\"submit\" name=\"mode\" value=\"edge\" class=\"btn " . ($mode == "edge" ? 'btn-primary' : 'btn-secondary') . "\">
+                                                <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"currentColor\" class=\"bi bi-3-square\" viewBox=\"0 0 16 16\">
+                                                    <path d=\"M7.918 8.414h-.879V7.342h.838c.78 0 1.348-.522 1.342-1.237 0-.709-.563-1.195-1.348-1.195-.79 0-1.312.498-1.348 1.055H5.275c.036-1.137.95-2.115 2.625-2.121 1.594-.012 2.608.885 2.637 2.062.023 1.137-.885 1.776-1.482 1.875v.07c.703.07 1.71.64 1.734 1.917.024 1.459-1.277 2.396-2.93 2.396-1.705 0-2.707-.967-2.754-2.144H6.33c.059.597.68 1.06 1.541 1.066.973.006 1.6-.563 1.588-1.354-.006-.779-.621-1.318-1.541-1.318Z\"></path>
+                                                    <path d=\"M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2Zm15 0a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2Z\"></path>
+                                                </svg>
+                                                Edge
+                                            </button>
+                                        </div>
+                                </form>
+                            </div>  
                         </div>
-                        <div class=\"mode-control\">
-                            <input type=\"radio\" id=\"mode-spot-1\" class=\"modecontrol-radio\" value=\"spot\" name=\"vacuum-cleaner-name\">
-                            <label for=\"mode-spot-1\" class=\"mode-label\">
-                                <span class=\"checkmark\">Spot</span>
-                            </label>
-                        </div>
-                        <div class=\"mode-control\">
-                            <input type=\"radio\" id=\"mode-edge-1\" class=\"modecontrol-radio\" value=\"edge\" name=\"vacuum-cleaner-name\">
-                            <label for=\"mode-edge-1\" class=\"mode-label\">
-                                <span class=\"checkmark\">Edge</span>
-                            </label>
-                        </div>
-                    </div>  
-                </div>
-                
-            </div> ";
+                        
+                    </div> ";
             }
 
             elseif($row['device_type'] == "washing machine") {
@@ -318,6 +320,7 @@ else {
                 $result2 = mysqli_query($conn, $sql2);
                 $row2 = mysqli_fetch_assoc($result2);
                 $isOpen = $row2['isOpen'];
+                $mode = $row2['mode'];
                 echo "<div class=\"device\">
                 <div class=\"device-status\">
                     <div class=\"device-name\">
@@ -334,18 +337,27 @@ else {
                 <div class=\"attribute\">
                     <h4>Mode</h4>
                     <div class=\"vacuum-cleaner-modes\">
+                    <form class=\"d-flex w-100 justify-content-around\" action=\"../php/update_ac_mode.php\" method=\"post\">
+                    <input type=\"hidden\" name=\"deviceID\" value=\"" . $row['deviceID'] . "\">
                         <div class=\"mode-control\">
-                            <input type=\"radio\" id=\"mode-auto-1\" class=\"modecontrol-radio\" value=\"wash\" name=\"washing-machine-name-1\">
-                            <label for=\"mode-auto-1\" class=\"mode-label\">
-                                <span class=\"checkmark\">Wash</span>
-                            </label>
+                            <button type=\"submit\" name=\"mode\" value=\"wash\" class=\"btn " . ($mode == "wash" ? 'btn-primary' : 'btn-secondary') . "\">
+                                <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"currentColor\" class=\"bi bi-1-square\" viewBox=\"0 0 16 16\">
+                                    <path d=\"M9.283 4.002V12H7.971V5.338h-.065L6.072 6.656V5.385l1.899-1.383h1.312Z\"></path>
+                                    <path d=\"M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2Zm15 0a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2Z\"></path>
+                                </svg>
+                                Wash
+                            </button>
                         </div>
                         <div class=\"mode-control\">
-                            <input type=\"radio\" id=\"mode-spot-1\" class=\"modecontrol-radio\" value=\"spot\" name=\"washing-machine-name-1\">
-                            <label for=\"mode-spot-1\" class=\"mode-label\">
-                                <span class=\"checkmark\">Dry</span>
-                            </label>
+                            <button type=\"submit\" name=\"mode\" value=\"dry\" class=\"btn " . ($mode == "dry" ? 'btn-primary' : 'btn-secondary') . "\">
+                                <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"currentColor\" class=\"bi bi-2-square\" viewBox=\"0 0 16 16\">
+                                    <path d=\"M6.646 6.24v.07H5.375v-.064c0-1.213.879-2.402 2.637-2.402 1.582 0 2.613.949 2.613 2.215 0 1.002-.6 1.667-1.287 2.43l-.096.107-1.974 2.22v.077h3.498V12H5.422v-.832l2.97-3.293c.434-.475.903-1.008.903-1.705 0-.744-.557-1.236-1.313-1.236-.843 0-1.336.615-1.336 1.306Z\"></path>
+                                    <path d=\"M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2Zm15 0a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2Z\"></path>
+                                </svg>
+                                Dry
+                            </button>
                         </div>
+                </form>
                     </div>  
                 </div>
                 
@@ -357,8 +369,5 @@ else {
     } 
 }
      
-
-
-// Close the database connection
 mysqli_close($conn);
 ?>
