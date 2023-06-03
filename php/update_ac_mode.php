@@ -5,9 +5,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Retrieve parameters
     $deviceID = $_POST['deviceID'];
     $mode = $_POST['mode'];
-
+    $sql_check = "SELECT * FROM device WHERE deviceID = '$deviceID'";
+    $result = mysqli_query($conn, $sql_check);
+    $row = mysqli_fetch_assoc($result);
     // SQL query (Note: Added single quotes around $color and $deviceID values)
-    $sql = "UPDATE air_conditioner SET mode = '$mode' WHERE deviceID = '$deviceID'";
+    if($row['device_type'] == "air conditioner")
+        $sql = "UPDATE air_conditioner SET mode = '$mode' WHERE deviceID = '$deviceID'";
+    elseif($row['device_type'] == "fan")
+        $sql = "UPDATE fan SET speed = '$mode' WHERE deviceID = $deviceID";
+    
 
     // Check if the database connection is successful
     if (!$conn) {
