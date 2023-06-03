@@ -16,7 +16,7 @@ if (mysqli_num_rows($result) > 0) {
         echo "<td>" . $row["name"] . "</td>";
         echo "<td>";
         echo "<a href='../producer/admin_update_users.php?userID=" . $row["userID"] . "' class='btn btn-primary mt-auto'>Edit</a>";
-        echo "<button class=\"btn btn-danger mt-auto\" onclick=\"deleteUser(" . $row["userID"] . ")\">Delete</button>";
+        echo "<button class=\"btn btn-danger mt-auto give-me-space\" onclick=\"deleteUser(" . $row["userID"] . ")\">Delete</button>";
         echo "</td>";
         echo "</tr>";
     }

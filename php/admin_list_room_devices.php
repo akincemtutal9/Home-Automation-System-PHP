@@ -66,60 +66,59 @@ if (mysqli_num_rows($result3) == 0) {
                 $sql2 = "SELECT * FROM air_conditioner WHERE deviceID ='$deviceID'";
                 $result2 = mysqli_query($conn, $sql2);
                 $row2 = mysqli_fetch_assoc($result2);
+                $isOpenAir = $row2['isOpen'];
+                $temperatureAir = $row2['temperature'];
+                $modeAir = $row2['mode'];
 
-                echo "<div class=\"device\">
-                <div class=\"device-status\">
-                    <div class=\"device-name\">
-                        <h3>" . $row['device_name'] . "</h3>
+                echo '<div class="col-md-4">
+                <div class="p-5 bg-white shadow-sm d-flex flex-column justify-content-center align-items-center rounded">
+                    <div>
+                        <h3 class="fs-2">' . $row['device_name'] . '</h3>
                     </div>
-                    <label class=\"switch\">
-                        <input type=\"checkbox\" name=\"air-conditioner-" . $row['deviceID'] . "\">
-                            <span class=\"slider round\"></span>
-                    </label>
-                </div>
-                <div class=\"attribute\">
-                    <h4>Mode</h4>
-                    <div class=\"air-conditioner-modes\">
-                        <form class=\"d-flex w-75 justify-content-around\"  id=\"form-" . $row['device_type'] . $row['deviceID'] . "\" method=\"post\">
-                            <div class=\"mode-control\" onclick=\"submitForm" . $row['deviceID'] . "()\">
-                                <input type=\"radio\"   id=\"mode-heat-" . $row['deviceID'] . "\" style=\"\" class=\"modecontrol-radio\" value=\"sun\" name=\"air-conditioner-mode-" . $row['deviceID'] . "\">
-                                <label for=\"mode-heat-" . $row['deviceID'] . "\" class=\"mode-label\">
-                                    <i class=\"fas fa-sun fa-2x\" ></i>
-                                </label>
-                            </div>
-                            <div class=\"mode-control\" onclick=\"submitForm" . $row['deviceID'] . "()\">
-                                <input type=\"radio\"   id=\"mode-cold-" . $row['deviceID'] . "\" class=\"modecontrol-radio\" value=\"ice\" name=\"air-conditioner-mode-" . $row['deviceID'] . "\">
-                                <label for=\"mode-cold-" . $row['deviceID'] . "\" class=\"mode-label\">
-                                    <i class=\"fas fa-snowflake fa-2x\" ></i>
-                                </label>
+                    <div class="device-status">
+                        <div class="device-name">
+                        </div>
+                        <form action="../admin_php/update_aircon_status.php" method="post">
+                            <input type="hidden" name="deviceID" value="' . $deviceID . '">
+                            <div class="aircon-status justify-content-center">
+                                <h3>Status</h3> 
+                                <button type="submit" name="statusAir" value="1" class="btn ' . ($isOpenAir == 1 ? 'btn-primary' : 'btn-secondary') . '">On</button>
+                                <button type="submit" name="statusAir" value="0" class="btn ' . ($isOpenAir == 0 ? 'btn-danger' : 'btn-secondary') . '">Off</button>
                             </div>
                         </form>
-                    </div>  
-                </div>
-                <div class=\"attribute\">
-                    <h4>Temperature</h4>
-                    <div class=\"air-conditioner-temperature\">
-                        <div class=\"mode-control\">
-                            <label for=\"mode-range-" . $row['deviceID'] . "\" class=\"mode-label\">
-                                20
-                            </label>
-                            <input type=\"range\" id=\"mode-range-" . $row['deviceID'] . "\" class=\"modecontrol-radio\" value=\"temperature\" name=\"temperature-" . $row['deviceID'] . "\"> 
+                    </div>
+                    <div class="device-status">
+                    <div class="device-name">
+                    </div>
+                    <form action="../admin_php/update_aircon_status.php" method="post">
+                        <input type="hidden" name="deviceID" value="' . $deviceID . '">
+                        <div class="aircon-status">
+                            <h3>Mode</h3>
+                            <button type="submit" name="modeAir" value="ice" class="btn ' . ($modeAir == 'ice' ? 'btn-primary' : 'btn-secondary') . '">Ice</button>
+                            <button type="submit" name="modeAir" value="sun" class="btn ' . ($modeAir == 'sun' ? 'btn-danger' : 'btn-secondary') . '">Sun</button>
                         </div>
-                    </div>  
+                    </form>
                 </div>
-            </div>
-            <style>
-            .air-conditioner-modes input[type=\"radio\"][id=\"mode-heat-" . $row['deviceID'] . "\"]:checked + label{
-                color: yellow;
-              }
-              
-              .air-conditioner-modes .mode-control input[type=\"radio\"][id=\"mode-cold-" . $row['deviceID'] . "\"]:checked + label {
-                color: aqua;
-              }
-            
-            </style>
-            
-            ";
+                    <div class="attribute">
+                        <h4>Temperature</h4>
+                        <div class="air-conditioner-temperature">
+                            <div class="mode-control">
+                                <input type="number" id="temperature-input-' . $row['deviceID'] . '" class="temperature-input" value="' . $temperatureAir . '" name="temperature-' . $row['deviceID'] . '">
+                                <button type="submit" class="btn btn-primary" onclick="submitTemperature' . $row['deviceID'] . '()">Submit</button>
+                            </div>
+                        </div>  
+                    </div>
+                </div>
+                <style>
+                    .mode-button[value="sun"] {
+                        background-color: yellow;
+                    }
+        
+                    .mode-button[value="ice"] {
+                        background-color: blue;
+                    }
+                </style>
+            </div>';
             } elseif ($row['device_type'] == "dishwasher") {
                 $sql2 = "SELECT * FROM dishwasher WHERE deviceID ='$deviceID'";
                 $result2 = mysqli_query($conn, $sql2);

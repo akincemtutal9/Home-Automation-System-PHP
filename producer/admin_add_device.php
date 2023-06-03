@@ -70,12 +70,12 @@ include '../php/session_admin.php';
             <div class="container-fluid px-4">
                 <div class="row my-5 mb-2">
                     <div class="col-12 text-center">
-                        <h3>Create Light</h3>
+                        <h3>Create Air Conditioner</h3>
                         <p class="text-muted">Click update after creating device</p>
                     </div>
 
                     <div class="col-12 col-md-6 offset-md-3">
-                        <form action="../admin_php/create_light.php?" method="post">
+                        <form action="../admin_php/create_air_conditioner.php?" method="post">
                             <div class="mb-3 d-flex-column align-items-center">
                                 <input type="hidden" name="roomID" value="<?php echo $_GET['roomID']; ?>">
                                 <label class="form-label rounded-pill px-3 py-2" style="color: #000000; font-weight: bold;">Device Name:</label>
