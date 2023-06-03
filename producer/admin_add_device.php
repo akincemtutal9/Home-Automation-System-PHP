@@ -55,11 +55,11 @@ include '../php/session_admin.php';
                         <form action="../admin_php/create_light.php?" method="post">
                             <div class="mb-3 d-flex-column align-items-center">
                                 <input type="hidden" name="roomID" value="<?php echo $_GET['roomID']; ?>">
-                                <label class="form-label rounded-pill px-3 py-2" style="color: #000000; font-weight: bold;">Device Name:</label>
-                                <input type="text" class="form-control form-control-lg rounded-pill border-0 shadow flex-grow-1" name="device_name" value="" placeholder="Device Name" style="border-radius: 20px;">
+                                <label class="form-label rounded-pill px-3 py-2" style="color: #000000; font-weight: bold;">Light Name:</label>
+                                <input type="text" class="form-control form-control-lg rounded-pill border-0 shadow flex-grow-1" name="device_name" value="" placeholder="Light Name" style="border-radius: 20px;">
                             </div>
                             <div class="text-center">
-                                <input type="submit" class="btn btn-primary btn-lg mt-2 rounded-pill w-100" name="submit" value="Create Device" style="border-radius: 20px;">
+                                <input type="submit" class="btn btn-primary btn-lg mt-2 rounded-pill w-100" name="submit" value="Create Light" style="border-radius: 20px;">
                             </div>
                         </form>
                     </div>
@@ -78,11 +78,33 @@ include '../php/session_admin.php';
                         <form action="../admin_php/create_air_conditioner.php?" method="post">
                             <div class="mb-3 d-flex-column align-items-center">
                                 <input type="hidden" name="roomID" value="<?php echo $_GET['roomID']; ?>">
-                                <label class="form-label rounded-pill px-3 py-2" style="color: #000000; font-weight: bold;">Device Name:</label>
-                                <input type="text" class="form-control form-control-lg rounded-pill border-0 shadow flex-grow-1" name="device_name" value="" placeholder="Device Name" style="border-radius: 20px;">
+                                <label class="form-label rounded-pill px-3 py-2" style="color: #000000; font-weight: bold;">Air Conditioner Name:</label>
+                                <input type="text" class="form-control form-control-lg rounded-pill border-0 shadow flex-grow-1" name="device_name" value="" placeholder="Air Conditioner Name" style="border-radius: 20px;">
                             </div>
                             <div class="text-center">
-                                <input type="submit" class="btn btn-primary btn-lg mt-2 rounded-pill w-100" name="submit" value="Create Device" style="border-radius: 20px;">
+                                <input type="submit" class="btn btn-primary btn-lg mt-2 rounded-pill w-100" name="submit" value="Create Air Conditioner" style="border-radius: 20px;">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container-fluid px-4">
+                <div class="row my-5 mb-2">
+                    <div class="col-12 text-center">
+                        <h3>Create Dishwasher</h3>
+                        <p class="text-muted">Click update after creating device</p>
+                    </div>
+
+                    <div class="col-12 col-md-6 offset-md-3">
+                        <form action="../admin_php/create_dishwasher.php?" method="post">
+                            <div class="mb-3 d-flex-column align-items-center">
+                                <input type="hidden" name="roomID" value="<?php echo $_GET['roomID']; ?>">
+                                <label class="form-label rounded-pill px-3 py-2" style="color: #000000; font-weight: bold;">Dishwasher Name:</label>
+                                <input type="text" class="form-control form-control-lg rounded-pill border-0 shadow flex-grow-1" name="device_name" value="" placeholder="Dishwasher Name" style="border-radius: 20px;">
+                            </div>
+                            <div class="text-center">
+                                <input type="submit" class="btn btn-primary btn-lg mt-2 rounded-pill w-100" name="submit" value="Create Dishwasher" style="border-radius: 20px;">
                             </div>
                         </form>
                     </div>
