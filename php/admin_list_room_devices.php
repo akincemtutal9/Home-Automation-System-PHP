@@ -104,9 +104,12 @@ if (mysqli_num_rows($result3) == 0) {
                         <h4>Temperature</h4>
                         <div class="air-conditioner-temperature">
                             <div class="mode-control">
-                                <input type="number" id="temperature-input-' . $row['deviceID'] . '" class="temperature-input" value="' . $temperatureAir . '" name="temperature-' . $row['deviceID'] . '">
+                            <form action="../admin_php/update_aircon_temperature.php" method="post">  
+                            <input type="hidden" name="deviceID" value="' . $deviceID . '"> 
+                            <input type="number" name="temperatureAir"id="temperature-input-' . $row['deviceID'] . '" class="temperature-input" value="' . $temperatureAir . '" name="temperature-' . $row['deviceID'] . '">
                                 <button type="submit" class="btn btn-primary" onclick="submitTemperature' . $row['deviceID'] . '()">Submit</button>
                             </div>
+                            </form> 
                         </div>  
                     </div>
                 </div>
