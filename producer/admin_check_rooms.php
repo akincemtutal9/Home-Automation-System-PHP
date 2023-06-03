@@ -79,9 +79,14 @@ include '../php/session_admin.php';
                         <br>
                         <a href='../producer/admin_edit_room.php?roomID=<?php echo $roomID?>' class="btn btn-primary mt-auto check-device-button">Edit Room</a>
                         <br>
-                        <a href="../producer/admin_edit_devices.php?userID=<?php echo $_GET['userID']; ?>&roomID=<?php echo $roomID; ?>" class="btn btn-primary mt-auto check-device-button">Edit Devices</a>
-
-
+                        <a href="../producer/admin_edit_devices.php?userID=<?php echo $_GET['userID']; ?>&roomID=<?php echo $roomID; ?>" class="btn btn-success mt-auto check-device-button">Edit Devices</a>
+                        <br>
+                        <form action="../admin_php/delete_room.php" method="post">
+                        <input type="hidden" name="deviceCount" value="<?php echo $row2["row_count"] ?>">
+                        <input type="hidden" name="userID" value="<?php echo $userID ?>">
+                        <input type="hidden" name="roomID" value="<?php echo $roomID ?>">
+                        <input type="submit" class="btn btn-danger mt-auto check-device-button" value="Delete room">
+                        </form>
                     </div>
                 </div>
                 <?php
