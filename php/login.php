@@ -35,11 +35,6 @@ if(isset($_POST['submit'])){
          header('location:../producer/admin_page.php');
 
       }elseif($row['user_type'] == 'user'){
-         $_SESSION['user_surname'] = $row['surname'];
-         $_SESSION['user_email'] = $row['email'];
-         $_SESSION['user_age'] = $row['age'];
-         $_SESSION['user_phonenumber'] = $row['phone_number'];
-         $_SESSION['user_address'] = $row['address'];
          $_SESSION['user_id'] = $row['userID'];
          $_SESSION['user_name'] = $row['name'];
          header('location:../consumer/consumernew.php');

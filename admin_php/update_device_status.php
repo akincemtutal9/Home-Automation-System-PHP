@@ -1,14 +1,13 @@
 <?php
-require_once "../database/config.php"; // Config dosyanızın yolunu doğru şekilde ayarlayın
+require_once "../database/config.php"; 
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Parametreleri al
     $deviceID = $_POST['deviceID'];
     $isOpen = $_POST['status'];
     $sql_check = "SELECT * FROM device WHERE deviceID = '$deviceID'";
     $result = mysqli_query($conn, $sql_check);
     $row = mysqli_fetch_assoc($result);
-    // SQL sorgusu
+
     if($row['device_type'] == "light")
         $sql = "UPDATE light SET isOpen = $isOpen WHERE deviceID = $deviceID";
     elseif($row['device_type'] == "air conditioner")
@@ -27,20 +26,29 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $sql = "UPDATE washing_machine SET isOpen = $isOpen WHERE deviceID = $deviceID";
 
 
-    // Bağlantıyı kapatmadan önce bağlantıyı kontrol edin
     if (!$conn) {
         die("Veritabanı bağlantısı başarısız: " . mysqli_connect_error());
     }
 
-    // Sorguyu çalıştır
+
     if (mysqli_query($conn, $sql)) {
+        if($isOpen)
+            $op = "".$row['device_type']." turned on.";
+        else
+            $op = "".$row['device_type']." turned off.";
+        $date = date('Y/m/d H:i:sa');
+        $sql_stat = "INSERT INTO statistics (deviceID, operation, date) VALUES ('$deviceID','$op','$date')";
+        if ($conn->query($sql_stat) === TRUE) {
+            echo "Record inserted successfully.";
+        } else {
+            echo "Error: " . $sql_stat . "<br>" . $conn->error;
+        }
         header("Location: " . $_SERVER["HTTP_REFERER"]); 
         exit();
     } else {
         echo "Güncelleme hatası: " . mysqli_error($conn);
     }
 
-    // Veritabanı bağlantısını kapat
     mysqli_close($conn);
 }
 ?>
