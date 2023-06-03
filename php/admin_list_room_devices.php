@@ -223,42 +223,34 @@ if (mysqli_num_rows($result3) == 0) {
                 $sql2 = "SELECT * FROM robot_vacum_cleaner WHERE deviceID ='$deviceID'";
                 $result2 = mysqli_query($conn, $sql2);
                 $row2 = mysqli_fetch_assoc($result2);
+                $isOpenVacuum = $row2['isOpen'];
+                $modeVacuum = $row2['mode'];
 
-                echo "<div class=\"device\">
-                <div class=\"device-status\">
-                    <div class=\"device-name\">
-                        <h3>" . $row['device_name'] . "</h3>
+                echo '<div class="col-md-4">
+                <div class="p-5 bg-white shadow-sm d-flex flex-column justify-content-center align-items-center rounded">
+                    <div>
+                        <h3 class="fs-2">' . $row['device_name'] . '</h3>
                     </div>
-                    <label class=\"switch\">
-                        <input type=\"checkbox\">
-                            <span class=\"slider round\"></span>
-                    </label>
+                    <form action="../admin_php/update_vacuum_status.php" method="post">
+                        <input type="hidden" name="deviceID" value="' . $deviceID . '">
+                        <div class="device-status">
+                            <h3>Status</h3>
+                            <button type="submit" name="isOpenVacuum" value="1" class="btn ' . ($isOpenVacuum == 1 ? 'btn-primary' : 'btn-secondary') . '">On</button>
+                            <button type="submit" name="isOpenVacuum" value="0" class="btn ' . ($isOpenVacuum == 0 ? 'btn-danger' : 'btn-secondary') . '">Off</button>
+                        </div>
+                    </form>
+            
+                    <h4>Speed</h4> 
+                    <form action="../admin_php/update_vacuum_mode.php" method="post">
+                        <input type="hidden" name="deviceID" value="' . $deviceID . '">
+                        <div class="aircon-status">
+                            <button type="submit" name="modeVacuum" value="auto" class="btn ' . ($modeVacuum == 'auto' ? 'btn-primary' : 'btn-secondary') . '">slow</button>
+                            <button type="submit" name="modeVacuum" value="spot" class="btn ' . ($modeVacuum == 'spot' ? 'btn-success' : 'btn-secondary') . '">medium</button>
+                            <button type="submit" name="modeVacuum" value="edge" class="btn ' . ($modeVacuum == 'edge' ? 'btn-danger' : 'btn-secondary') . '">fast</button>
+                        </div>
+                    </form>
                 </div>
-                <div class=\"attribute\">
-                    <h4>Mode</h4>
-                    <div class=\"vacuum-cleaner-modes\">
-                        <div class=\"mode-control\">
-                            <input type=\"radio\" id=\"mode-auto-1\" class=\"modecontrol-radio\" value=\"auto\" name=\"vacuum-cleaner-name\">
-                            <label for=\"mode-auto-1\" class=\"mode-label\">
-                                <span class=\"checkmark\">Auto</span>
-                            </label>
-                        </div>
-                        <div class=\"mode-control\">
-                            <input type=\"radio\" id=\"mode-spot-1\" class=\"modecontrol-radio\" value=\"spot\" name=\"vacuum-cleaner-name\">
-                            <label for=\"mode-spot-1\" class=\"mode-label\">
-                                <span class=\"checkmark\">Spot</span>
-                            </label>
-                        </div>
-                        <div class=\"mode-control\">
-                            <input type=\"radio\" id=\"mode-edge-1\" class=\"modecontrol-radio\" value=\"edge\" name=\"vacuum-cleaner-name\">
-                            <label for=\"mode-edge-1\" class=\"mode-label\">
-                                <span class=\"checkmark\">Edge</span>
-                            </label>
-                        </div>
-                    </div>  
-                </div>
-                
-            </div> ";
+            </div>';
             } elseif ($row['device_type'] == "washing machine") {
                 $sql2 = "SELECT * FROM washing_machine WHERE deviceID ='$deviceID'";
                 $result2 = mysqli_query($conn, $sql2);
