@@ -34,7 +34,7 @@ include '../php/session_admin.php';
             <nav class="navbar navbar-expand-lg navbar-light bg-transparent py-4 px-4">
                 <div class="d-flex align-items-center">
                     <i class="fas fa-align-left primary-text fs-4 me-3" id="menu-toggle"></i>
-                    <h2 class="fs-2 m-0">Reviews</h2>
+                    <h2 class="fs-2 m-0">Statistics</h2>
                 </div>
 
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -46,20 +46,20 @@ include '../php/session_admin.php';
 
             <div class="container-fluid px-4">
                 <div class="row my-5">
-                    <h3 class="fs-4 mb-3">Reviews</h3>
+                    <h3 class="fs-4 mb-3">Statistics</h3>
                     <div class="col">
                         <table class="table bg-white rounded shadow-sm  table-hover">
                             <thead>
                                 <tr>
-                                    <th scope="col">id</th>
-                                    <th scope="col">Email</th>
-                                    <th scope="col">Review</th>
-                                    
+                                    <th scope="col">Devide Id</th>
+                                    <th scope="col">Device Name</th>
+                                    <th scope="col">Operation</th>
+                                    <th scope="col">Date</th>
+                                    <th scope="col">Room name</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <!-- MESAJLARI BURAYA GİRCEN LİST MESAJ FALAN YAP -->
-                                <p>BURAYA Reviews Gircen</p>
+                                <?php include '../php/admin_list_statistics.php'?>
                             </tbody>
                         </table>
                     </div>

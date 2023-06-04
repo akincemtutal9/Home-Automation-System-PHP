@@ -51,15 +51,14 @@ include '../php/session_admin.php';
                         <table class="table bg-white rounded shadow-sm  table-hover">
                             <thead>
                                 <tr>
-                                    <th scope="col">id</th>
-                                    <th scope="col">Email</th>
-                                    <th scope="col">Message</th>
-                                    
+                                    <th scope="col">User Id</th>
+                                    <th scope="col">Name</th>
+                                    <th scope="col">Subject</th>
+                                    <th scope="col">Message</th>                                   
                                 </tr>
                             </thead>
                             <tbody>
-                                <!-- MESAJLARI BURAYA GİRCEN LİST MESAJ FALAN YAP -->
-                                <p>BURAYA MESAJLARI GİRCEN</p>
+                               <?php include '../php/admin_list_messages.php' ?>
                             </tbody>
                         </table>
                     </div>
