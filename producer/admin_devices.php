@@ -23,11 +23,9 @@ include '../php/session_admin.php'
 
 <body>
     <div class="d-flex" id="wrapper">
-        <!-- Sidebar -->
-        <?php include '../producer/admin_sidebar.php' ?>
-        <!-- /#sidebar-wrapper -->
 
-        <!-- Page Content -->
+        <?php include '../producer/admin_sidebar.php' ?>
+
         <div id="page-content-wrapper">
             <nav class="navbar navbar-expand-lg navbar-light bg-transparent py-4 px-4">
                 <div class="d-flex align-items-center">
@@ -39,73 +37,34 @@ include '../php/session_admin.php'
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
-                 <!--ADMIN dropdown-menu -->
                  <?php include '../producer/admin_dropdown.php'?>
             </nav>
 
 
 
             <div class="container-fluid px-5">
-                <div class="row g-4 my-2">
-                    <div class="col-md-4">
-                        <div class="p-5 bg-white shadow-sm d-flex justify-content-around align-items-center rounded">
-                            <div>
-                                <h3 class="fs-2">Beko Air Conditioner</h3>
-                                <p class="fs-5"></p>
-                            </div>
-                            <!-- <i class="fas fa-car fs-1 primary-text border rounded-full secondary-bg p-3"></i> -->
-                            <img src="../images/icon1.png" alt="">
-                        </div>
+            <div class="row my-5">
+                    <h3 class="fs-4 mb-3">Consumers Rooms</h3>
+                    <div class="col">
+                        <table class="table bg-white rounded shadow-sm  table-hover">
+                            <thead>
+                                <tr>
+                                    <th scope="col" width="50">id</th>
+                                    <th scope="col">Email</th>
+                                    <th scope="col">Name</th>
+                                    <th scope="col">Generate Data</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php 
+                                include '../php/admin_list_user_sensor.php';                                
+                                ?>
+                            </tbody>
+                        </table>
                     </div>
-
-                    <div class="col-md-4">
-                        <div class="p-5 bg-white shadow-sm d-flex justify-content-around align-items-center rounded">
-                            <div>
-                                <h3 class="fs-2">Vacuum Cleaner</h3>
-                                <p class="fs-5"></p>
-                            </div>
-                            <!-- <i class="fas fa-hand-holding-usd fs-1 primary-text border rounded-full secondary-bg p-3"></i> -->
-                            <img src="../images/icon2.png" alt="">
-                        </div>
-                    </div>
-
-                    <div class="col-md-4">
-                        <div class="p-5 bg-white shadow-sm d-flex justify-content-around align-items-center rounded">
-                            <div>
-                                <h3 class="fs-2">Washing Machine</h3>
-                                <p class="fs-5"></p>
-                            </div>
-                            <!-- <i class="fas fa-truck fs-1 primary-text border rounded-full secondary-bg p-3"></i> -->
-                            <img src="../images/icon3.png" alt="">
-                        </div>
-                    </div>
-
-                    <div class="col-md-4">
-                        <div class="p-5 bg-white shadow-sm d-flex justify-content-around align-items-center rounded">
-                            <div>
-                                <h3 class="fs-2">Coffee Machine</h3>
-                                <p class="fs-5"></p>
-                            </div>
-                            <!-- <i class="fas fa-chart-line fs-1 primary-text border rounded-full secondary-bg p-3"></i> -->
-                            <img src="../images/icon5.png" alt="">
-                        </div>
-                    </div>
-
-                    <div class="col-md-4">
-                        <div class="p-5 bg-white shadow-sm d-flex justify-content-around align-items-center rounded">
-                            <div>
-                                <h3 class="fs-2">Home Lights</h3>
-                                <p class="fs-5"></p>
-                            </div>
-                            <!-- <i class="fas fa-chart-line fs-1 primary-text border rounded-full secondary-bg p-3"></i> -->
-                            <img src="../images/icon4.png" alt="">
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
     </div>
-    <!-- /#page-content-wrapper -->
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"></script>

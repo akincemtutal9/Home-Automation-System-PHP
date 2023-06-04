@@ -9,15 +9,14 @@ if (isset($_SESSION['user_id'])) {
     die('User is not found');
 }
 
-// Create a query to select all users from the users table
+
 $sql = "SELECT * FROM room WHERE userID ='$user_id'";
 
-// Execute the query and get the result set
+
 $result = mysqli_query($conn, $sql);
 
-// Check if any users were found
+
 if (mysqli_num_rows($result) > 0) {
-    // Loop through the result set and display each user's data in a table row
     while ($row = mysqli_fetch_assoc($result)) {
         $roomID = $row["roomID"];
         $_SESSION['roomID'] = $roomID;
@@ -55,6 +54,5 @@ if (mysqli_num_rows($result) > 0) {
     echo "No users found";
 }
 
-// Close the database connection
 mysqli_close($conn);
 ?>
