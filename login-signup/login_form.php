@@ -23,6 +23,9 @@ include '../php/login.php'
          };
       };
       ?>
+            <input type="hidden" name="name">
+            <input type="hidden" name="cpassword">
+            <input type="hidden" name="user_type">
             <input type="email" name="email" required placeholder="Enter your email">
             <input type="password" name="password" required placeholder="Enter your password">
             <input type="submit" name="submit" value="Login" class="form-btn">
