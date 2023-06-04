@@ -23,7 +23,8 @@ if (mysqli_num_rows($result3) == 0) {
 
     // Check if any users were found
     if (mysqli_num_rows($result) > 0) {
-
+        echo '<div class="container-fluid px-5">';
+        echo '<div class="row g-4 my-2">';
         // Loop through the result set and display each user's data in a table row
         while ($row = mysqli_fetch_assoc($result)) {
             $deviceID = $row['deviceID'];
@@ -34,7 +35,7 @@ if (mysqli_num_rows($result3) == 0) {
                 $isOpen = $row2['isOpen'];
                 $color = $row2['color'];
 
-                echo '<div class="col-md-4">
+                echo '<div class="col-md-6">
                 <div class="p-5 bg-white shadow-sm d-flex flex-column justify-content-center align-items-center rounded">
                     <div>
                         <h3 class="fs-2">' . $row['device_name'] . '</h3>
@@ -84,14 +85,13 @@ if (mysqli_num_rows($result3) == 0) {
                 $temperatureAir = $row2['temperature'];
                 $modeAir = $row2['mode'];
 
-                echo '<div class="col-md-4">
+                echo '<div class="col-md-6">
                 <div class="p-5 bg-white shadow-sm d-flex flex-column justify-content-center align-items-center rounded">
                     <div>
                         <h3 class="fs-2">' . $row['device_name'] . '</h3>
                     </div>
                     <div class="device-status">
-                        <div class="device-name">
-                        </div>
+                        <div class="device-name"></div>
                         <form action="../admin_php/update_aircon_status.php" method="post">
                             <input type="hidden" name="deviceID" value="' . $deviceID . '">
                             <div class="aircon-status justify-content-center">
@@ -102,60 +102,52 @@ if (mysqli_num_rows($result3) == 0) {
                         </form>
                     </div>
                     <div class="device-status">
-                    <div class="device-name">
+                        <div class="device-name"></div>
+                        <form action="../admin_php/update_aircon_mode.php" method="post">
+                            <input type="hidden" name="deviceID" value="' . $deviceID . '">
+                            <div class="aircon-status">
+                                <h3>Mode</h3>
+                                <button type="submit" name="modeAir" value="ice" class="btn ' . ($modeAir == 'ice' ? 'btn-primary' : 'btn-secondary') . '">Ice</button>
+                                <button type="submit" name="modeAir" value="sun" class="btn ' . ($modeAir == 'sun' ? 'btn-danger' : 'btn-secondary') . '">Sun</button>
+                            </div>
+                        </form>
                     </div>
-                    <form action="../admin_php/update_aircon_mode.php" method="post">
-                        <input type="hidden" name="deviceID" value="' . $deviceID . '">
-                        <div class="aircon-status">
-                            <h3>Mode</h3>
-                            <button type="submit" name="modeAir" value="ice" class="btn ' . ($modeAir == 'ice' ? 'btn-primary' : 'btn-secondary') . '">Ice</button>
-                            <button type="submit" name="modeAir" value="sun" class="btn ' . ($modeAir == 'sun' ? 'btn-danger' : 'btn-secondary') . '">Sun</button>
-                        </div>
-                    </form>
-                </div>
                     <div class="attribute">
                         <h4>Temperature</h4>
                         <div class="air-conditioner-temperature">
                             <div class="mode-control">
-                            <form action="../admin_php/update_aircon_temperature.php" method="post">  
-                            <input type="hidden" name="deviceID" value="' . $deviceID . '"> 
-                            <input type="number" name="temperatureAir"id="temperature-input-' . $row['deviceID'] . '" class="temperature-input" value="' . $temperatureAir . '" name="temperature-' . $row['deviceID'] . '">
-                                <button type="submit" class="btn btn-primary" onclick="submitTemperature' . $row['deviceID'] . '()">Submit</button>
+                                <form action="../admin_php/update_aircon_temperature.php" method="post">
+                                    <input type="hidden" name="deviceID" value="' . $deviceID . '">
+                                    <input type="number" name="temperatureAir" id="temperature-input-' . $row['deviceID'] . '" class="temperature-input" value="' . $temperatureAir . '" name="temperature-' . $row['deviceID'] . '">
+                                    <button type="submit" class="btn btn-primary" onclick="submitTemperature' . $row['deviceID'] . '()">Submit</button>
+                                </form>
                             </div>
-                            </form> 
-                        </div>  
+                        </div>
                     </div>
-                
                     <br>
                     <form action="../admin_php/delete_air.php" method="post" onsubmit="return confirmDelete()">
-                    <input type="hidden" name="airID" value="' . $deviceID . '">
-                    <div class="device-status">   
-                    <input type="submit" name="status" value="Delete ' . $row['device_name'] . '" class="btn btn-danger" ></input>  
-                    </div>
-                </form>
-                
-                    </div>
-                    <script>
+                        <input type="hidden" name="airID" value="' . $deviceID . '">
+                        <div class="device-status">
+                            <input type="submit" name="status" value="Delete ' . $row['device_name'] . '" class="btn btn-danger" ></input>
+                        </div>
+                    </form>
+                </div>
+                <script>
                     function confirmDelete() {
                         return confirm("Are you sure you want to delete?");
                     }
-                    </script>
-                    </div>
-
-                
-                <style>
-                    .mode-button[value="sun"] {
-                        background-color: yellow;
-                    }
-        
-                    .mode-button[value="ice"] {
-                        background-color: blue;
-                    }
-                </style>
+                </script>
+            </div>
             
+            <style>
+                .mode-button[value="sun"] {
+                    background-color: yellow;
+                }
             
-            
-                </div>';
+                .mode-button[value="ice"] {
+                    background-color: blue;
+                }
+            </style>';
             } elseif ($row['device_type'] == "dishwasher") {
                 $sql2 = "SELECT * FROM dishwasher WHERE deviceID ='$deviceID'";
                 $result2 = mysqli_query($conn, $sql2);
@@ -317,6 +309,8 @@ if (mysqli_num_rows($result3) == 0) {
             </div>';
             }
         }
+        echo '</div>';
+        echo '</div>';
     } else {
         echo "No Device Found";
     }

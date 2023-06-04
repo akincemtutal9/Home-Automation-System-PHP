@@ -1,0 +1,46 @@
+<div class="col-md-4" style="display: flex; flex-wrap: wrap;">
+    <div class="p-5 bg-white shadow-sm d-flex flex-column justify-content-center align-items-center rounded">
+        <div>
+            <h3 class="fs-2">' . $row['device_name'] . '</h3>
+        </div>
+        <form action="../admin_php/update_light_status.php" method="post">
+            <input type="hidden" name="deviceID" value="' . $deviceID . '">
+            <div class="device-status">
+                <h3>Status</h3>
+                <button type="submit" name="status" value="1"
+                    class="btn ' . ($isOpen == 1 ? 'btn-primary' : 'btn-secondary') . '">On</button>
+                <button type="submit" name="status" value="0"
+                    class="btn ' . ($isOpen == 0 ? 'btn-danger' : 'btn-secondary') . '">Off</button>
+            </div>
+        </form>
+        <div class="row">
+            <h4>Color</h4>
+            <div id="swatch">
+                <form id="color-form" action="../admin_php/update_light_color.php" method="post">
+                    <input type="hidden" name="deviceID" value="' . $deviceID . '">
+                    <input type="color" id="color" name="color" value="' . $row2['color'] . '">
+                    <div class="info">
+                        <h1>Choose</h1>
+                        <h2>Color</h2>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="row">
+            <form action="../admin_php/delete_light.php" method="post" onsubmit="return confirmDelete()">
+                <input type="hidden" name="lightID" value="' . $deviceID . '">
+                <div class="device-status">
+                    <input type="submit" name="status" value="Delete ' . $row['device_name'] . '"
+                        class="btn btn-danger"></input>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script>
+        function confirmDelete() {
+            return confirm("Are you sure you want to delete?");
+        }
+    </script>
+</div>
