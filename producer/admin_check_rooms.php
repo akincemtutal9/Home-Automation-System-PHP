@@ -47,6 +47,13 @@ include '../php/session_admin.php';
                 <?php include '../producer/admin_dropdown.php'?>
             </nav>
             <div class="container-fluid px-5">
+                <div class="d-flex justify-content-end align-items-center w-100">
+                    <a href='../producer/admin_add_room.php?userID=<?php echo $_GET['userID']?>' class="btn btn-success btn-lg">
+                        <span class="fw-bold">+</span> Add More Room 
+                    </a>
+            </div>
+           
+            <div class="container-fluid px-5">
     <div class="row g-4 my-2">
         <?php
         // Create a query to select all users from the users table
@@ -77,15 +84,15 @@ include '../php/session_admin.php';
                             <p class="fs-5"><?php echo $row["icon"]; ?> icon</p>
                         </div>
                         <br>
-                        <a href='../producer/admin_edit_room.php?roomID=<?php echo $roomID?>' class="btn btn-primary mt-auto check-device-button">Edit Room</a>
+                        <a href='../producer/admin_edit_room.php?roomID=<?php echo $roomID?>' class="btn btn-primary mt-auto check-device-button">Edit Room  <?php echo $row["room_name"]; ?></a>
                         <br>
-                        <a href="../producer/admin_edit_devices.php?userID=<?php echo $_GET['userID']; ?>&roomID=<?php echo $roomID; ?>" class="btn btn-success mt-auto check-device-button">Edit Devices</a>
+                        <a href="../producer/admin_edit_devices.php?userID=<?php echo $_GET['userID']; ?>&roomID=<?php echo $roomID; ?>" class="btn btn-success mt-auto check-device-button">Check Devices In Room <?php echo $row["room_name"]; ?></a>
                         <br>
                         <form action="../admin_php/delete_room.php" method="post">
                         <input type="hidden" name="deviceCount" value="<?php echo $row2["row_count"] ?>">
                         <input type="hidden" name="userID" value="<?php echo $userID ?>">
                         <input type="hidden" name="roomID" value="<?php echo $roomID ?>">
-                        <input type="submit" class="btn btn-danger mt-auto check-device-button" value="Delete room">
+                        <input type="submit" class="btn btn-danger mt-auto check-device-button" value="Delete Room <?php echo $row["room_name"]; ?>">
                         </form>
                     </div>
                 </div>
