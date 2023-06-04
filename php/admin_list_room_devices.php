@@ -304,7 +304,7 @@ if (mysqli_num_rows($result3) == 0) {
                         </div>
                     </form>
                     <br>
-                    <form action="../admin_php/delete_vacuum.php" method="post" onsubmit="return confirmDelete()">
+                    <form action="../admin_php/delete_vacuumcleaner.php" method="post" onsubmit="return confirmDelete()">
                         <input type="hidden" name="vacuumID" value="' . $deviceID . '">
                         <div class="device-status">
                             <input type="submit" name="status" value="Delete ' . $row['device_name'] . '" class="btn btn-danger" ></input>
