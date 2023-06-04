@@ -35,7 +35,7 @@ if (mysqli_num_rows($result3) == 0) {
                 $isOpen = $row2['isOpen'];
                 $color = $row2['color'];
 
-                echo '<div class="col-md-6">
+                echo '<div class="col-md-4">
                 <div class="p-5 bg-white shadow-sm d-flex flex-column justify-content-center align-items-center rounded">
                     <div>
                         <h3 class="fs-2">' . $row['device_name'] . '</h3>
@@ -85,7 +85,7 @@ if (mysqli_num_rows($result3) == 0) {
                 $temperatureAir = $row2['temperature'];
                 $modeAir = $row2['mode'];
 
-                echo '<div class="col-md-6">
+                echo '<div class="col-md-4">
                 <div class="p-5 bg-white shadow-sm d-flex flex-column justify-content-center align-items-center rounded">
                     <div>
                         <h3 class="fs-2">' . $row['device_name'] . '</h3>
@@ -167,6 +167,14 @@ if (mysqli_num_rows($result3) == 0) {
                             <button type="submit" name="statusDishwasher" value="0" class="btn ' . ($isOpenDishwasher == 0 ? 'btn-danger' : 'btn-secondary') . '">Off</button>
                         </div>
                     </form>
+                    <br>
+                    <form action="../admin_php/delete_dishwasher.php" method="post" onsubmit="return confirmDelete()">
+                        <input type="hidden" name="dishID" value="' . $deviceID . '">
+                        <div class="device-status">
+                            <input type="submit" name="status" value="Delete ' . $row['device_name'] . '" class="btn btn-danger" ></input>
+                        </div>
+                    </form>
+
                 </div>
             </div>';
             } elseif ($row['device_type'] == "electric blanket") {
