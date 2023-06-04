@@ -342,7 +342,7 @@ if (mysqli_num_rows($result3) == 0) {
                         </div>
                     </form>
                     <br>
-                    <form action="../admin_php/delete_washingnachine.php" method="post" onsubmit="return confirmDelete()">
+                    <form action="../admin_php/delete_washingmachine.php" method="post" onsubmit="return confirmDelete()">
                         <input type="hidden" name="washingmachineID" value="' . $deviceID . '">
                         <div class="device-status">
                             <input type="submit" name="status" value="Delete ' . $row['device_name'] . '" class="btn btn-danger" ></input>
