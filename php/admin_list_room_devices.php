@@ -236,6 +236,13 @@ if (mysqli_num_rows($result3) == 0) {
                             <button type="submit" name="speedFan" value="fast" class="btn ' . ($speedFan == 'fast' ? 'btn-danger' : 'btn-secondary') . '">fast</button>
                         </div>
                     </form>
+                    <br>
+                    <form action="../admin_php/delete_fan.php" method="post" onsubmit="return confirmDelete()">
+                        <input type="hidden" name="fanID" value="' . $deviceID . '">
+                        <div class="device-status">
+                            <input type="submit" name="status" value="Delete ' . $row['device_name'] . '" class="btn btn-danger" ></input>
+                        </div>
+                    </form>
                 </div>
             </div>';
             } elseif ($row['device_type'] == "robot toy") {
@@ -257,7 +264,14 @@ if (mysqli_num_rows($result3) == 0) {
                             <button type="submit" name="statusToy" value="0" class="btn ' . ($statusToy == 0 ? 'btn-danger' : 'btn-secondary') . '">Off</button>
                         </div>
                     </form>
-                </div>
+                    <br>
+                    <form action="../admin_php/delete_toy.php" method="post" onsubmit="return confirmDelete()">
+                        <input type="hidden" name="toyID" value="' . $deviceID . '">
+                        <div class="device-status">
+                            <input type="submit" name="status" value="Delete ' . $row['device_name'] . '" class="btn btn-danger" ></input>
+                        </div>
+                    </form>
+                    </div>
             </div>';
             } elseif ($row['device_type'] == "robot vacuum cleaner") {
                 $sql2 = "SELECT * FROM robot_vacum_cleaner WHERE deviceID ='$deviceID'";
@@ -289,6 +303,13 @@ if (mysqli_num_rows($result3) == 0) {
                             <button type="submit" name="modeVacuum" value="edge" class="btn ' . ($modeVacuum == 'edge' ? 'btn-danger' : 'btn-secondary') . '">fast</button>
                         </div>
                     </form>
+                    <br>
+                    <form action="../admin_php/delete_vacuum.php" method="post" onsubmit="return confirmDelete()">
+                        <input type="hidden" name="vacuumID" value="' . $deviceID . '">
+                        <div class="device-status">
+                            <input type="submit" name="status" value="Delete ' . $row['device_name'] . '" class="btn btn-danger" ></input>
+                        </div>
+                    </form>
                 </div>
             </div>';
             } elseif ($row['device_type'] == "washing machine") {
@@ -318,6 +339,13 @@ if (mysqli_num_rows($result3) == 0) {
                         <div class="aircon-status">
                             <button type="submit" name="modeWashingMachine" value="wash" class="btn ' . ($modeWashingMachine == 'wash' ? 'btn-primary' : 'btn-secondary') . '">wash</button>
                             <button type="submit" name="modeWashingMachine" value="dry" class="btn ' . ($modeWashingMachine == 'dry' ? 'btn-danger' : 'btn-secondary') . '">dry</button>
+                        </div>
+                    </form>
+                    <br>
+                    <form action="../admin_php/delete_washingnachine.php" method="post" onsubmit="return confirmDelete()">
+                        <input type="hidden" name="washingmachineID" value="' . $deviceID . '">
+                        <div class="device-status">
+                            <input type="submit" name="status" value="Delete ' . $row['device_name'] . '" class="btn btn-danger" ></input>
                         </div>
                     </form>
                 </div>
