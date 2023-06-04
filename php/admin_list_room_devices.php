@@ -174,7 +174,11 @@ if (mysqli_num_rows($result3) == 0) {
                             <input type="submit" name="status" value="Delete ' . $row['device_name'] . '" class="btn btn-danger" ></input>
                         </div>
                     </form>
-
+                    <script>
+                    function confirmDelete() {
+                        return confirm("Are you sure you want to delete?");
+                    }
+                </script>
                 </div>
             </div>';
             } elseif ($row['device_type'] == "electric blanket") {
@@ -204,7 +208,12 @@ if (mysqli_num_rows($result3) == 0) {
                         </div>
                     </form>
                 </div>
-            </div>';
+                <script>
+                    function confirmDelete() {
+                        return confirm("Are you sure you want to delete?");
+                    }
+                </script>
+                </div>';
             } elseif ($row['device_type'] == "fan") {
                 $sql2 = "SELECT * FROM fan WHERE deviceID ='$deviceID'";
                 $result2 = mysqli_query($conn, $sql2);
@@ -243,7 +252,12 @@ if (mysqli_num_rows($result3) == 0) {
                             <input type="submit" name="status" value="Delete ' . $row['device_name'] . '" class="btn btn-danger" ></input>
                         </div>
                     </form>
-                </div>
+                    <script>
+                    function confirmDelete() {
+                        return confirm("Are you sure you want to delete?");
+                    }
+                </script>
+                    </div>
             </div>';
             } elseif ($row['device_type'] == "robot toy") {
                 $sql2 = "SELECT * FROM robot_toy WHERE deviceID ='$deviceID'";
@@ -271,6 +285,11 @@ if (mysqli_num_rows($result3) == 0) {
                             <input type="submit" name="status" value="Delete ' . $row['device_name'] . '" class="btn btn-danger" ></input>
                         </div>
                     </form>
+                    <script>
+                    function confirmDelete() {
+                        return confirm("Are you sure you want to delete?");
+                    }
+                </script>
                     </div>
             </div>';
             } elseif ($row['device_type'] == "robot vacuum cleaner") {
@@ -310,7 +329,12 @@ if (mysqli_num_rows($result3) == 0) {
                             <input type="submit" name="status" value="Delete ' . $row['device_name'] . '" class="btn btn-danger" ></input>
                         </div>
                     </form>
-                </div>
+                    <script>
+                    function confirmDelete() {
+                        return confirm("Are you sure you want to delete?");
+                    }
+                </script>
+                    </div>
             </div>';
             } elseif ($row['device_type'] == "washing machine") {
                 $sql2 = "SELECT * FROM washing_machine WHERE deviceID ='$deviceID'";
@@ -348,7 +372,12 @@ if (mysqli_num_rows($result3) == 0) {
                             <input type="submit" name="status" value="Delete ' . $row['device_name'] . '" class="btn btn-danger" ></input>
                         </div>
                     </form>
-                </div>
+                    <script>
+                    function confirmDelete() {
+                        return confirm("Are you sure you want to delete?");
+                    }
+                </script>
+                    </div>
             </div>';
             }
         }
