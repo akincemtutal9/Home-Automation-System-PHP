@@ -73,7 +73,7 @@ include '../php/session_user.php';
                     <span class="bg-light ps-5 pe-5 ms-4">Pie Chart for Device Types</span>
                 </div>
                 <div class="m-3 bg-light  rounded" >
-                    <canvas id="barChart" width="800" height="400"></canvas>
+                    <canvas id="barChart" width="400" height="200"></canvas>
                 </div>
             </div>
                 
@@ -180,6 +180,7 @@ include '../php/session_user.php';
                 scales: {
                     y: {
                         beginAtZero: true,
+
                         precision: 0,
                         stepSize: 1
                     }

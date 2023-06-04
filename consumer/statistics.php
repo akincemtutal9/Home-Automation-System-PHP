@@ -1,5 +1,6 @@
 <?php
 include '../php/session_user.php';
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -16,9 +17,10 @@ include '../php/session_user.php';
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
     <link rel="stylesheet" href="../css/adminstyle.css">
-
     <script src="../js/deleteuser.js"></script>
-    
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link href="https://cdn.datatables.net/1.13.4/css/dataTables.bootstrap5.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     
     <title>Statistics</title>
 </head>
@@ -68,9 +70,16 @@ include '../php/session_user.php';
                 
 
                 <div class="row my-5">
-                    <h3 class="fs-4 mb-3">Recent Activities</h3>
+                    <div class="d-flex justify-content-between">
+                        <div>
+                            <h3 class="fs-4 mb-3">Recent Activities</h3>
+                        </div>
+                    </div>
+                    <div class="m-3 bg-light  rounded" >
+                        <canvas id="barChart" width="800" height="400"></canvas>
+                    </div>
                     <div class="col">
-                        <table class="table bg-white rounded shadow-sm  table-hover">
+                        <table id="example" class="table bg-white rounded shadow-sm  table-hover">
                             <thead>
                                 <tr>
                                     <th scope="col" width="60">#</th>
@@ -94,6 +103,9 @@ include '../php/session_user.php';
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.4/js/dataTables.bootstrap5.min.js"></script>
     <script>
         var el = document.getElementById("wrapper");
         var toggleButton = document.getElementById("menu-toggle");
@@ -102,6 +114,58 @@ include '../php/session_user.php';
             el.classList.toggle("toggled");
         };
     </script>
+    <script>
+        $(document).ready(function () {
+    $('#example').DataTable();
+});
+    </script>
+    <script>
+        <?php
+        include '../database/config.php';
+        $sql = "SELECT DATE_FORMAT(date, '%Y/%m') as month, COUNT(*) as count FROM statistics GROUP BY month";
+        $result = $conn->query($sql);
+
+        $data = array();
+        while ($row = $result->fetch_assoc()) {
+            $data[$row['month']] = $row['count'];
+        }
+
+        $conn->close();
+        ?>
+
+        var labels = [];
+        var values = [];
+        <?php foreach ($data as $month => $count) { ?>
+            labels.push("<?php echo $month; ?>");
+            values.push("<?php echo $count; ?>");
+        <?php } ?>
+
+        var ctx = document.getElementById("barChart").getContext("2d");
+        var barChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: 'User Activity Count',
+                    data: values,
+                    backgroundColor: 'rgba(54, 162, 235, 0.7)',
+                    borderColor: 'rgba(54, 162, 235, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        precision: 0,
+                        stepSize: 1
+                    }
+                }
+            }
+        });
+
+
+    </script>    
 </body>
 
 </html>
