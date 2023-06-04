@@ -5,6 +5,7 @@ include '../php/session_admin.php';
 // $conn = mysqli_connect("hostname", "username", "password", "database_name");
 
 $room_id = $_GET['roomID'];
+$user_id = $_GET['userID'];
 
 // Create a query to select the user with the obtained user ID and additional condition
 $sql = "SELECT * FROM room WHERE roomID = '$room_id'"; // Enclose $user_id and $user_name with single quotes
@@ -31,7 +32,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   }
 
   // Redirect to a success page or do any additional processing
-  header("Location: ../producer/admin_edit_room.php?roomID=" . $room_id);
+  header("Location: ../producer/admin_edit_room.php?userID=". $user_id ."&roomID=" . $room_id);
   exit;
 }
 ?>
@@ -79,7 +80,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         <?php include '../producer/admin_dropdown.php'; ?>
       </nav>
-
+      <div class="container-fluid px-5">
+                <div class="d-flex justify-content-start align-items-center w-100">
+                    <a href='../producer/admin_check_rooms.php?userID=<?php echo $_GET['userID']?>' class="btn btn-danger btn-lg">
+                        <span class="fw-bold">-</span> Go Back To Check Rooms
+                    </a>
+            </div>
       <div class="container-fluid px-4">
   <div class="row my-5 mb-2">
     <div class="col-12 text-center">

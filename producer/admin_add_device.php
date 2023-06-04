@@ -44,6 +44,16 @@ include '../php/session_admin.php';
                 <?php include '../producer/admin_dropdown.php' ?>
             </nav>
 
+            <div class="container-fluid px-5">
+                <div class="d-flex justify-content-between align-items-center w-100">
+                    <div class="d-flex justify-content-start align-items-center">
+                    <a href="../producer/admin_edit_devices.php?userID=<?php echo $_GET['userID'] ?>&roomID=<?php echo $_GET['roomID'] ?>" class="btn btn-danger btn-lg">
+                            <span class="fw-bold">-</span> Go Back To Edit Devices
+                        </a>
+                    </div>
+                </div>
+
+
             <div class="container-fluid px-4">
                 <div class="row my-5 mb-3">
                     <div class="col-12 text-center">

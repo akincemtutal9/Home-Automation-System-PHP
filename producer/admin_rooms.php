@@ -308,7 +308,7 @@ include '../php/session_admin.php';
                                     <th scope="col" width="50">id</th>
                                     <th scope="col">Email</th>
                                     <th scope="col">Name</th>
-                                    <th scope="col">Check Rooms / Add Room</th>
+                                    <th scope="col">Check Rooms</th>
                                 </tr>
                             </thead>
                             <tbody>

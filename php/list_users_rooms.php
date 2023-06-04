@@ -16,7 +16,6 @@ if (mysqli_num_rows($result) > 0) {
         echo "<td>" . $row["name"] . "</td>";
         echo "<td>";
         echo "<a href='../producer/admin_check_rooms.php?userID=" . $row["userID"] . "' class='btn btn-primary mt-auto'>Check Rooms</a>";
-        echo "<a href='../producer/admin_add_room.php?userID=" . $row["userID"] . "' class='btn btn-primary mt-auto give-me-space'>Add Room</a>";
         echo "</td>";
         echo "</tr>";
         }

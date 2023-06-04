@@ -44,6 +44,13 @@ include '../php/session_admin.php';
                 <?php include '../producer/admin_dropdown.php'?>
             </nav>
 
+            <div class="container-fluid px-5">
+                <div class="d-flex justify-content-start align-items-center w-100">
+                    <a href='../producer/admin_check_rooms.php?userID=<?php echo $_GET['userID']?>' class="btn btn-danger btn-lg">
+                        <span class="fw-bold">-</span> Go Back To Check Rooms
+                    </a>
+            </div>
+
             <div class="container-fluid px-4">
                 <div class="row my-5 mb-2">
                     <div class="col-12 text-center">

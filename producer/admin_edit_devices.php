@@ -48,13 +48,20 @@ $room_id = $_GET['roomID'];
                 <!--ADMIN dropdown-menu -->
                 <?php include '../producer/admin_dropdown.php' ?>
             </nav>
-
             <div class="container-fluid px-5">
-                <div class="d-flex justify-content-end align-items-center w-100">
-                    <a href='../producer/admin_add_device.php?userID=<?php echo $user_id?>&roomID=<?php echo $room_id?>' class="btn btn-success btn-lg">
-                        <span class="fw-bold">+</span> Add Device To This Room
-                    </a>
-            </div>
+                <div class="d-flex justify-content-between align-items-center w-100">
+                    <div class="d-flex justify-content-end align-items-center">
+                        <a href='../producer/admin_check_rooms.php?userID=<?php echo $_GET['userID'] ?>' class="btn btn-danger btn-lg">
+                            <span class="fw-bold">-</span> Go Back To Rooms
+                        </a>
+                    </div>
+                    <div class="d-flex justify-content-start align-items-center">
+                    <a href="../producer/admin_add_device.php?userID=<?php echo $user_id ?>&roomID=<?php echo $room_id ?>" class="btn btn-primary btn-lg">
+                            <span class="fw-bold">+</span> Add Device
+                        </a>
+                    </div>
+                </div>
+           
             <div class="row g-4 my-2">
                 <?php
 
