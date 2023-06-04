@@ -196,6 +196,13 @@ if (mysqli_num_rows($result3) == 0) {
                             <button type="submit" name="statusBlanket" value="0" class="btn ' . ($isOpenBlanket == 0 ? 'btn-danger' : 'btn-secondary') . '">Off</button>
                         </div>
                     </form>
+                    <br>
+                    <form action="../admin_php/delete_blanket.php" method="post" onsubmit="return confirmDelete()">
+                        <input type="hidden" name="blanketID" value="' . $deviceID . '">
+                        <div class="device-status">
+                            <input type="submit" name="status" value="Delete ' . $row['device_name'] . '" class="btn btn-danger" ></input>
+                        </div>
+                    </form>
                 </div>
             </div>';
             } elseif ($row['device_type'] == "fan") {
