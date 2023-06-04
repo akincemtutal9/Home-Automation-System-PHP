@@ -6,7 +6,6 @@
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <li><a class="dropdown-item" href="../producer/admin_profile.php">Profile</a></li>
-                                <li><a class="dropdown-item" href="#">Settings</a></li>
                                 <li><a class="dropdown-item" href="../login-signup/login_form.php">Logout</a></li>
                             </ul>
                         </li>

@@ -5,8 +5,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $userID = $_SESSION['admin_id'];
 
     $password = md5($_POST['password']);
+    $cpassword = md5($_POST['cpassword']);
     // Retrieve the form input values
-    echo $userID;
+    
+    if($password != $cpassword){
+        echo '<script>alert("Passwords do not match!");</script>';
+    }else{
     // Perform the update query
     $query = "UPDATE user SET password = '$password' WHERE userID='$userID'";
     mysqli_query($conn, $query);
@@ -14,6 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Redirect to a success page or do any additional processing
     header("Location:../producer/admin_profile.php",$userID);
     exit;
+    }
 }
 ?>
 
@@ -69,8 +74,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <h1>Change Password</h1>     
                         <form  class="pt-4" action="" method="post">
                             <div class="row ">
-                                <div class="col-md-12"><label class="labels">New Password</label><input name="password" type="text" id="subject" name="subject" placeholder="Subject"></div>
-                                <div class="col-md-12"><label class="labels">Confirm New Password</label><input name= "password" type="text" id="subject" name="subject" placeholder="Subject"></div>
+                                <div class="col-md-12"><label class="labels">New Password</label><input name="password" type="password" id="subject" name="subject" placeholder="Password"></div>
+                                <div class="col-md-12"><label class="labels">Confirm New Password</label><input name= "cpassword" type="password" id="subject" name="subject" placeholder="Re-Password"></div>
                                 <div class=" text-center"><input class="btn btn-primary profile-button w-100" type="submit" name="submit" value="Change Password" ></input></div>
                         </form>
                      
