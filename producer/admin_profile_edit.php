@@ -1,19 +1,15 @@
 <?php
 include '../php/session_admin.php';
 
-// Assuming you have already established a database connection
-// $conn = mysqli_connect("hostname", "username", "password", "database_name");
 $user_name = $_SESSION['admin_name'];
 
 $user_id = $_SESSION['admin_id'];
 
-// Create a query to select the user with the obtained user ID and additional condition
-$sql = "SELECT * FROM user WHERE userID = '$user_id' AND name = '$user_name'"; // Enclose $user_id and $user_name with single quotes
+$sql = "SELECT * FROM user WHERE userID = '$user_id' AND name = '$user_name'"; 
 
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $user_id = $_SESSION['admin_id'];
-    // Retrieve the form input values
     $name = $_POST['name'];
     $surname = $_POST['surname'];
     $phone_number = $_POST['phone_number'];
@@ -21,11 +17,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email = $_POST['email'];
     $age = $_POST['age'];
 
-    // Perform the update query
     $query = "UPDATE user SET name='$name', surname='$surname', phone_number='$phone_number', address='$address', email='$email', age='$age' WHERE userID='$user_id'";
     mysqli_query($conn, $query);
-
-    // Redirect to a success page or do any additional processing
     header("Location:../producer/admin_profile.php");
     exit;
 }
@@ -56,11 +49,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 <body>
     <div class="d-flex" id="wrapper">
-        <!-- Sidebar -->
-        <?php include '../producer/admin_sidebar.php' ?>
-        <!-- /#sidebar-wrapper -->
 
-        <!-- Page Content -->
+        <?php include '../producer/admin_sidebar.php' ?>
+
         <div id="page-content-wrapper">
             <nav class="navbar navbar-expand-lg navbar-light bg-transparent py-4 px-4">
                 <div class="d-flex align-items-center">
@@ -77,7 +68,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             <div class="user-page">
 
-                <!--PROFILE SIDERBAR INCLUDE-->
                 <?php include '../producer/admin_profile_sidebar.php' ?>
 
                 <div class="user-info-board">
@@ -101,7 +91,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </div>
         </div>
     </div>
-    <!-- /#page-content-wrapper -->
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"></script>
     <script>

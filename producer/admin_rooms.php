@@ -45,11 +45,7 @@ include '../php/session_admin.php';
 
 <body>
     <div class="d-flex" id="wrapper">
-        <!-- Sidebar -->
         <?php include '../producer/admin_sidebar.php' ?>
-        <!-- /#sidebar-wrapper -->
-
-        <!-- Page Content -->
         <div id="page-content-wrapper">
             <nav class="navbar navbar-expand-lg navbar-light bg-transparent py-4 px-4">
                 <div class="d-flex align-items-center">
@@ -61,7 +57,6 @@ include '../php/session_admin.php';
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
-                 <!--ADMIN dropdown-menu -->
                  <?php include '../producer/admin_dropdown.php'?>
             </nav>
 
@@ -312,7 +307,6 @@ include '../php/session_admin.php';
                                 </tr>
                             </thead>
                             <tbody>
-                                <!-- LIST USERS -->
                                 <?php 
                                 include '../php/list_users_rooms.php';                                
                                 ?>
@@ -326,7 +320,7 @@ include '../php/session_admin.php';
             </div>
         </div>
     </div>
-    <!-- /#page-content-wrapper -->
+
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"></script>
     <script>

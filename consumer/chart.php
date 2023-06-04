@@ -16,8 +16,7 @@ include '../php/session_user.php';
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
     <link rel="stylesheet" href="../css/adminstyle.css">
-    <link rel="stylesheet" href="../css/style.css">
-    <link rel='stylesheet' type='text/css' media='screen' href='../css/user-account.css'>
+
     <script src="../js/deleteuser.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     
@@ -67,14 +66,34 @@ include '../php/session_user.php';
                     </ul>
                 </div>
             </nav>
-            <div class="d-flex flex-md-row flex-column">
-                <div class="m-3 bg-light w-25 rounded" style="height: 300px">
+            <div class="d-flex flex-md-row flex-column justify-content-center">
+                <div class="m-3 bg-light rounded" style="height: 300px">
                     <canvas id="pieChart"></canvas> 
-                    <span class="bg-light ps-5 pe-5 ms-4">Pie Chart for Device Types</span>
+                    <span class="bg-light pe-5 ps-5 ms-2">Pie Chart for Device Types</span>
                 </div>
-                <div class="m-3 bg-light  rounded" >
-                    <canvas id="barChart" width="400" height="200"></canvas>
+                <div>
+                <div class="col">
+                        <div>
+                            <h3 class="fs-4 mb-3">All Devices</h3>
+                        </div>
+                        <table id="example" class="table bg-white rounded shadow-sm  table-hover">
+                            <thead>
+                                <tr>
+                                    <th scope="col" width="60">#</th>
+                                    <th scope="col" width="130">Room ID</th>
+                                    <th scope="col" width="280">Device ID</th>
+                                    <th scope="col" width="400">Device Name</th>
+                                    <th scope="col">Device Type</th>
+                                    
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php include '../php/list_user_all_devices.php';  ?>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
+ 
             </div>
                 
 
@@ -95,7 +114,12 @@ include '../php/session_user.php';
 
         <?php
         include '../database/config.php';
-        $sql = "SELECT device_type, COUNT(*) as count FROM device GROUP BY device_type";
+        $sql = "SELECT device_type, COUNT(*) as count 
+        FROM device AS d 
+        INNER JOIN room AS r ON d.roomID = r.roomID
+        INNER JOIN user AS u ON r.userID = u.userID
+        WHERE u.userID = '{$_SESSION['user_id']}'
+        GROUP BY device_type";
         $result = $conn->query($sql);
 
         $data = array();

@@ -45,50 +45,45 @@ include '../php/session_admin.php';
             <div class="container-fluid px-5">
                 <div class="row g-4 my-2">
                     <?php 
-                        $user__id = $_GET['userID'];
-                        $sql = "SELECT * FROM room WHERE userID = '$user__id'";
+                        $user_id = $_GET['userID'];
+                        $sql = "SELECT * FROM room WHERE userID = '$user_id'";
                         $result = mysqli_query($conn, $sql);
                         if (mysqli_num_rows($result) > 0) {
 
                             while ($row = mysqli_fetch_assoc($result)) {
                                 $roomID = $row["roomID"];
                                 $userID = $row['userID'];
-                                $_SESSION['userID'] = $userID;
-                                $_SESSION['roomID'] = $roomID;
-                                $sql2 = "SELECT COUNT(*) AS row_count FROM device WHERE roomID = '$roomID'; ";
-                                $result2 = mysqli_query($conn, $sql2);
-                                $row2 = mysqli_fetch_assoc($result2);
-                    ?>
-                        <div class="col-md-4">
+                    
+                    echo '    <div class="col-md-4">
                             <div class="p-5 bg-white shadow-sm   rounded">
                                 <div class="d-flex justify-content-around align-items-center">
                                     <div >
-                                        <h3 class="fs-2"><?php echo $row['roomID'] .' '.$row['room_name']  ?></h3>
+                                        <h3 class="fs-2">'.$row['roomID'] .' '.$row['room_name'].'</h3>
                                         <p class="fs-5"></p>
                                     </div>
 
                                     <img src="../images/icon1.png" alt="">
                                 </div>
                                 <div class="text-center">
-                                    <button type="button"  class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                    <button type="button"  class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal'.$row['roomID'].'">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-circle" viewBox="0 0 16 16">
                                             <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"></path>
                                             <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"></path>
                                         </svg>
                                         Generate
                                     </button>
-                                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal fade" id="exampleModal'.$row['roomID'].'" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                         <div class="modal-dialog">
                                             <div class="modal-content">
-                                                <form action="../php/generate_data.php" method="post">
+                                                
                                                 <div class="modal-header">
                                                     <h5 class="modal-title" id="exampleModalLabel">Add Room</h5>
                                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                 </div>
                                                 <div class="modal-body h-100">
-                                                    
-                                                        <input type="hidden" name="userid" value="<?php echo $user__id?>">
-                                                        <input type="hidden" name="roomid" value="<?php echo $row['roomID']?>">
+                                                    <form action="../php/generate_data.php" method="post">
+                                                        <input type="hidden" name="userid" value="'. $user_id.'">
+                                                        <input type="hidden" name="roomid" value="'.$row['roomID'].'">
                                                         <div class="row w-100 m-auto ">
                                                             <div class="col-md-6 mt-2"><label class="labels">Temperature Lowest Limit</label><input type="text" name="min-temp" class="form-control " placeholder="Enter min Temperature"></div>
                                                             <div class="col-md-6 mt-2"><label class="labels">Temperature Highest Limit</label><input type="text" name="max-temp" class="form-control"  placeholder="Enter max Temperature"></div>
@@ -101,9 +96,9 @@ include '../php/session_admin.php';
                                                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                                                             <button type="submit" name="submit" class="btn btn-primary">Generate</button>
                                                         </div>
-                                                    
+                                                    </form>
                                                 </div>
-                                                </form>
+                                                
                                             </div>
                                         </div>
                                     </div>
@@ -111,12 +106,12 @@ include '../php/session_admin.php';
                                 </div>
                             </div>
                             
-                        </div>
-                        <?php
+                        </div>';
+                        
                             }
                         } else {
                             echo "No rooms found";
-                        }
+                        } 
 
                         ?>
                         

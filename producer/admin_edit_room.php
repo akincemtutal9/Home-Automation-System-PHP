@@ -1,37 +1,31 @@
 <?php
 include '../php/session_admin.php';
 
-// Assuming you have already established a database connection
-// $conn = mysqli_connect("hostname", "username", "password", "database_name");
-
 $room_id = $_GET['roomID'];
 $user_id = $_GET['userID'];
 
-// Create a query to select the user with the obtained user ID and additional condition
-$sql = "SELECT * FROM room WHERE roomID = '$room_id'"; // Enclose $user_id and $user_name with single quotes
+$sql = "SELECT * FROM room WHERE roomID = '$room_id'"; 
 
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   $room_id = $_GET['roomID'];
-  // Retrieve the form input values
   $room_name = $_POST['room_name'];
   $temperature = $_POST['temperature'];
   $humidity = $_POST['humidity'];
 
-  // Perform the update query
+
   $query = "UPDATE room SET room_name='$room_name', temperature='$temperature', humidity='$humidity' WHERE roomID = $room_id";
   mysqli_query($conn, $query);
   $result = mysqli_query($conn, $sql);
 
   if (mysqli_num_rows($result) > 0) {
-    // Loop through the result set and display each user's data in a table row
+
     $row = mysqli_fetch_assoc($result);
     echo $row;
   } else {
     echo "No editable found";
   }
 
-  // Redirect to a success page or do any additional processing
   header("Location: ../producer/admin_edit_room.php?userID=". $user_id ."&roomID=" . $room_id);
   exit;
 }
@@ -59,14 +53,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 <body>
   <div class="d-flex" id="wrapper">
-    <!-- Sidebar -->
+
     <?php
     include '../producer/admin_sidebar.php';
 
     ?>
-    <!-- /#sidebar-wrapper -->
 
-    <!-- Page Content -->
     <div id="page-content-wrapper">
       <nav class="navbar navbar-expand-lg navbar-light bg-transparent py-4 px-4">
         <div class="d-flex align-items-center">
@@ -132,7 +124,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       </div>
     </div>
   </div>
-  <!-- /#page-content-wrapper -->
+
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"></script>

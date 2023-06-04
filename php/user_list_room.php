@@ -21,8 +21,14 @@ if (mysqli_num_rows($result) > 0) {
         $roomID = $row["roomID"];
         $_SESSION['roomID'] = $roomID;
         $sql2 = "SELECT COUNT(*) AS row_count FROM device WHERE roomID = '$roomID'; ";
+        $sql_acc = "SELECT COUNT(*) AS ac_count FROM device WHERE roomID = '$roomID' AND device_type='air conditioner';";
         $result2 = mysqli_query($conn, $sql2);
+        $resultacc = mysqli_query($conn, $sql_acc);
         $row2 = mysqli_fetch_assoc($result2);
+        $rowacc = mysqli_fetch_assoc($resultacc);
+        if($rowacc['ac_count']>0){
+            
+        }
         echo "<a href=\"devices.php?roomID=" . $row["roomID"]. " \" class=\"to-devices\">
                     <div class=\"card\">
                         <div class=\"room-info\">

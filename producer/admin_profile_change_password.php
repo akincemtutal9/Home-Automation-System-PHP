@@ -6,16 +6,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $password = md5($_POST['password']);
     $cpassword = md5($_POST['cpassword']);
-    // Retrieve the form input values
+
     
     if($password != $cpassword){
         echo '<script>alert("Passwords do not match!");</script>';
     }else{
-    // Perform the update query
     $query = "UPDATE user SET password = '$password' WHERE userID='$userID'";
     mysqli_query($conn, $query);
-
-    // Redirect to a success page or do any additional processing
     header("Location:../producer/admin_profile.php",$userID);
     exit;
     }
@@ -46,11 +43,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 <body>
     <div class="d-flex" id="wrapper">
-        <!-- Sidebar -->
-        <?php include '../producer/admin_sidebar.php' ?>
-        <!-- /#sidebar-wrapper -->
 
-        <!-- Page Content -->
+        <?php include '../producer/admin_sidebar.php' ?>
+
         <div id="page-content-wrapper">
             <nav class="navbar navbar-expand-lg navbar-light bg-transparent py-4 px-4">
                 <div class="d-flex align-items-center">
@@ -62,12 +57,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
-                 <!--ADMIN dropdown-menu -->
                  <?php include '../producer/admin_dropdown.php'?>
             </nav>
 
             <div class="user-page">
-                <!--PROFILE SIDERBAR INCLUDE-->
+
                 <?php include '../producer/admin_profile_sidebar.php' ?>
                 
                 <div class="user-info-board">
@@ -83,7 +77,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </div>
         </div>
     </div>
-    <!-- /#page-content-wrapper -->
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"></script>

@@ -28,11 +28,8 @@ include '../php/session_admin.php';
 
     <div class="row g-4 my-2"></div>
     <div class="d-flex" id="wrapper">
-        <!-- Sidebar -->
-        <?php include '../producer/admin_sidebar.php' ?>
-        <!-- /#sidebar-wrapper -->
 
-        <!-- Page Content -->
+        <?php include '../producer/admin_sidebar.php' ?>
         <div id="page-content-wrapper">
             <nav class="navbar navbar-expand-lg navbar-light bg-transparent py-4 px-4">
                 <div class="d-flex align-items-center">
@@ -43,7 +40,7 @@ include '../php/session_admin.php';
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <!--ADMIN dropdown-menu -->
+
                 <?php include '../producer/admin_dropdown.php' ?>
             </nav>
 
@@ -65,15 +62,12 @@ include '../php/session_admin.php';
                 <div class="container-fluid px-5">
                     <div class="row g-4 my-2">
                         <?php
-                        // Create a query to select all users from the users table
+
                         $sql = "SELECT userID, roomID, room_name, temperature, humidity, icon FROM room WHERE userID = " . $_GET['userID'];
 
-                        // Execute the query and get the result set
                         $result = mysqli_query($conn, $sql);
 
-                        // Check if any users were found
                         if (mysqli_num_rows($result) > 0) {
-                            // Loop through the result set and display each user's data in a table row
                             while ($row = mysqli_fetch_assoc($result)) {
                                 $roomID = $row["roomID"];
                                 $userID = $row['userID'];
@@ -111,7 +105,6 @@ include '../php/session_admin.php';
                             echo "No rooms found";
                         }
 
-                        // Close the database connection
                         mysqli_close($conn);
                         ?>
                     </div>

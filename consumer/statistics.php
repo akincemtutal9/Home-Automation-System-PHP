@@ -75,8 +75,8 @@ include '../php/session_user.php';
                             <h3 class="fs-4 mb-3">Recent Activities</h3>
                         </div>
                     </div>
-                    <div class="m-3 bg-light  rounded" >
-                        <canvas id="barChart" width="800" height="400"></canvas>
+                    <div class="m-3 bg-light ms-5 w-75 h-50  rounded" >
+                        <canvas id="barChart" width="400" height="200"></canvas>
                     </div>
                     <div class="col">
                         <table id="example" class="table bg-white rounded shadow-sm  table-hover">
@@ -122,7 +122,13 @@ include '../php/session_user.php';
     <script>
         <?php
         include '../database/config.php';
-        $sql = "SELECT DATE_FORMAT(date, '%Y/%m') as month, COUNT(*) as count FROM statistics GROUP BY month";
+        $sql = "SELECT DATE_FORMAT(date, '%Y/%m') as month, COUNT(*) as count 
+        FROM statistics AS s
+        INNER JOIN device AS d ON d.deviceID = s.deviceID
+        INNER JOIN room AS r ON r.roomID = d.roomID
+        INNER JOIN user AS u ON u.userID = r.userID
+        WHERE u.userID = '$userID'
+        GROUP BY month";
         $result = $conn->query($sql);
 
         $data = array();

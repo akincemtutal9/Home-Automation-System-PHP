@@ -29,11 +29,9 @@ $room_id = $_GET['roomID'];
 
 <body>
     <div class="d-flex" id="wrapper">
-        <!-- Sidebar -->
-        <?php include '../producer/admin_sidebar.php' ?>
-        <!-- /#sidebar-wrapper -->
 
-        <!-- Page Content -->
+        <?php include '../producer/admin_sidebar.php' ?>
+
         <div id="page-content-wrapper">
             <nav class="navbar navbar-expand-lg navbar-light bg-transparent py-4 px-4">
                 <div class="d-flex align-items-center">
@@ -45,7 +43,6 @@ $room_id = $_GET['roomID'];
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
-                <!--ADMIN dropdown-menu -->
                 <?php include '../producer/admin_dropdown.php' ?>
             </nav>
             <div class="container-fluid px-5">
@@ -71,7 +68,7 @@ $room_id = $_GET['roomID'];
         </div>
     </div>
     </div>
-    <!-- /#page-content-wrapper -->
+
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"></script>
