@@ -29,7 +29,8 @@ if (mysqli_num_rows($result) > 0) {
         if($rowacc['ac_count']>0){
             
         }
-        echo "<a href=\"devices.php?roomID=" . $row["roomID"]. " \" class=\"to-devices\">
+        echo "<div>
+                <a href=\"devices.php?roomID=" . $row["roomID"]. " \" class=\"to-devices\">
                     <div class=\"card\">
                         <div class=\"room-info\">
                             <h3>" . $row["room_name"] . "</h3>
@@ -38,13 +39,13 @@ if (mysqli_num_rows($result) > 0) {
                                 <div class=\"temp-show\">
                                     <span>
                                         <i class=\"fas fa-temperature-three-quarters\"></i>
-                                        Temperature =" . $row["temperature"] . "<sup>o</sup>C</span>
+                                        Temperature =<span id=\"t" . $row["roomID"]. "\">" . $row["temperature"] . "</span><sup>o</sup>C</span>
                                 </div>
                                 <div class=\"humid-show\">
     
                                     <span>
                                         <i class=\"fa-solid fa-droplet fa-sm\" style=\"color: #00ffff;\"></i>
-                                        Humidity = " . $row["humidity"] . "
+                                        Humidity = %<span id=\"h" . $row["roomID"]. "\">" . $row["humidity"] . "</span>
                                     </span>
                                 </div>
                             </div>
@@ -54,7 +55,8 @@ if (mysqli_num_rows($result) > 0) {
                         </div>
                     
                     </div>
-                </a>";
+                </a>
+            </div>";
     }
 } else {
     echo "No users found";

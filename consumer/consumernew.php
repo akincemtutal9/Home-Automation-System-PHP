@@ -84,6 +84,46 @@ include '../php/session_user.php';
             el.classList.toggle("toggled");
         };
     </script>
+
+    <script>
+        <?php
+            include '../database/config.php';
+            if (isset($_SESSION['user_id'])) {
+                $user_id = $_SESSION['user_id'];
+            } else {
+                die('User is not found');
+            }
+
+            $sqlt = "SELECT * FROM room WHERE userID ='$user_id'";
+            $resultt = mysqli_query($conn, $sqlt);
+            
+            if (mysqli_num_rows($resultt) > 0) {
+                while ($rowt = mysqli_fetch_assoc($resultt)) {
+                    $temper= $rowt['temperature'];
+                    $humidi= $rowt['humidity'];
+                    echo 'function updateNumber' . $rowt['roomID'] . '() {
+                          var temper =Math.random() * (' . $temper + 0.5 . ' - ' . $temper . ' + 1) + ' . $temper . ';
+                          var humidi= Math.random() * (' . $humidi + 0.5 . ' - ' . $humidi . ' + 1) + ' . $humidi . ';
+                          document.getElementById("t' . $rowt['roomID'] . '").textContent = temper.toFixed(2);
+                          document.getElementById("h' . $rowt['roomID'] . '").textContent = humidi.toFixed(2);
+                        
+                          setTimeout(updateNumber' . $rowt['roomID'] . ', 4000);
+                          } ';
+
+                }
+                    $resultt = mysqli_query($conn, $sqlt);
+                   echo 'window.onload = function() {';
+                    while ($rowt = mysqli_fetch_assoc($resultt)) {
+
+                    echo 'updateNumber' . $rowt['roomID'] . '();';                   
+                }
+                    echo '};';
+
+               
+            }
+        ?>
+         </script>
+    
 </body>
 
 </html>
