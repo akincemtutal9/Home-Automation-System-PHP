@@ -15,28 +15,34 @@ include './php/session_user_index.php';
 <body>
     <div class="background-image">
         <nav class="navbar">
-            <div class="logo">LOGO</div>
-        
-            <a href="#" class="toggle-button">
-            <span class="bar"></span>
-            <span class="bar"></span>
-            <span class="bar"></span>
-            </a>
-            <div class="navbar-links">
-            <ul>
-                <div class="nav-middle">
-                    <li><a href="index.html">Home</a></li>
-                </div>
-                <div class="nav-logout">
-                    <li><a href="./login-signup/login_form.php">Login</a></li>
-                </div>
+            <div class="logo"><i class="fa-solid fa-house-signal" style="color: #80ffff;"></i></div>
                 
-            </ul>
-            </div>
-        </nav>
-      </div>
+            
 
-      <section class="services">
+                <a href="#" class="toggle-button">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+                </a>
+                <div class="navbar-links">
+                    <ul class="toggle-ul">
+                        <div class="nav-middle">
+                            <li><a href="index.php" class="text-white">Home</a></li>
+                        </div>
+                        <div class="nav-logout">
+                            <li><a href="./login-signup/login_form.php">Login</a></li>
+                        </div>
+                        
+                    </ul>
+                </div>
+        </nav>
+        <div class="containerew">
+        <div class="centered-text">
+            <h1 id="hidden-text">Experience the Future of Living: Transform Your Home with Smart Automation!</h1>
+        </div>
+    </div>
+    </div>
+    <section class="services">
         <h1 id="heading">Our Services</h1>
         <div class="box-container">
             <div class="box">
@@ -72,58 +78,61 @@ include './php/session_user_index.php';
             </div>
         </div>
 
-      </section>
+    </section>
  
-      <footer class="footer">
+    <footer class="footer">
         <div class="box">
             
-            <span>
+            <span id="footer-element">
                 <i class="fa-solid fa-envelope" style="color: #b6decd;"></i>
                 555-555-55-55
             </span>
-            <span>
+            <span id="footer-element">
                 <i class="fa-solid fa-phone" style="color: #b6decd;"></i>    
                 123-456-78-90
             </span>
-            <span>
+            <span id="footer-element">
                 <i class="fa-solid fa-envelope" style="color: #b6decd;"></i>
                 abc@gmail.com
             </span>
-            <span>
+            <span id="footer-element">
                 <i class="fa-sharp fa-solid fa-location-dot" style="color: #b6decd;"></i>
                 Antalya, Turkey
             </span>
         </div>
 
         <div class="box">
-            <span>
+            <span id="footer-element">
                 <i class="fa-brands fa-facebook" style="color: #b6decd;"></i>
                 Facebook
             </span>
-            <span>
+            <span id="footer-element">
+         
                 <i class="fa-brands fa-instagram" style="color: #b6decd;"></i>
                 Instagram
             </span>
-            <span>
+            <span id="footer-element">
+          
                 <i class="fa-brands fa-twitter" style="color: #b6decd;"></i>
                 Twitter
             </span>
-            <span>
+            <span id="footer-element">
+    
                 <i class="fa-brands fa-linkedin" style="color: #b6decd;"></i>
                 LinkedIn
             </span>
         </div>
         
-      </footer>
+    </footer>
 
-      <script>
+    <script>
         const toggleButton = document.getElementsByClassName('toggle-button')[0]
         const navbarLinks = document.getElementsByClassName('navbar-links')[0]
 
         toggleButton.addEventListener('click', () => {
             navbarLinks.classList.toggle('active')
         })  
-      </script>
+    </script>
     
 </body>
 </html>

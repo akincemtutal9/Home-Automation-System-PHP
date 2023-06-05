@@ -128,12 +128,12 @@ select {
   justify-content: space-between;
   align-items: center;
   color: #eee;
-  background-color: white;
+  background-color: rgba(255, 255, 255, 0);
   box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
 }
 
 .logo {
-  color: black;
+  color: white;
   font-size: 1.5rem;
   margin: .5rem;
   padding-left: 45px;
@@ -155,8 +155,16 @@ select {
   display: flex;
 }
 
+.nav-middle li {
+  background-color: rgba(255, 255, 255, 0);
+}
+
+.nav-middle li a {
+  color: white;
+}
+
 .nav-logout li {
-  background-color: #b6decd;
+  background-color: #b6decd00;
 }
 
 .navbar-links .nav-logout li a {
@@ -164,7 +172,7 @@ select {
 }
 
 .navbar-links .nav-logout li a:hover {
-  color: #b6decd;
+  color: rgb(21, 8, 76);
 }
 
 .navbar-links ul {
@@ -188,16 +196,17 @@ select {
 .navbar-links li a {
   display: block;
   text-decoration: none;
-  color: #333;
+  color: white;
   padding: 13px;
 }
 
 .navbar-links li:hover {
-  background-color: #eee;
+  background-color: #b6decd;
+
 }
 
 .navbar-links a:hover {
-  color: #333;
+  color: rgb(21, 8, 76);
   
 }
 
@@ -209,13 +218,15 @@ select {
   flex-direction: column;
   justify-content: space-between;
   width: 30px;
-  height: 21px;
+  height: 21px; 
 }
+
+
 
 .toggle-button .bar {
   height: 3px;
   width: 100%;
-  background-color: #333;
+  background-color: #ffffff;
   border-radius: 10px;
 }
 
@@ -251,6 +262,9 @@ select {
       
   }
 
+  .toggle-ul{
+    background-color: rgb(21, 8, 76);
+  }
   .navbar-links {
       display: none;
       width: 100%;
@@ -278,7 +292,7 @@ select {
 }
 
 .background-image {
-  background-image: url('../images/main-image.png');
+  background-image: url('../images/main.png');
   background-size: cover;
   background-repeat: no-repeat;
   height: 100vh;
@@ -336,18 +350,19 @@ select {
   font-size: 3rem;
 }
 .footer {
-  background-color: #333;
+  background-color:  rgb(21, 8, 76);
   color: white;
   display: flex;
-  justify-content:center;
+
+  justify-content: space-around;
 }
 
 .footer .box {
   display: flex;
   flex-direction: column;
-  padding: 3rem;
-  gap: 1rem;
-  margin: 2rem;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  
 }
 
 .main{
@@ -639,6 +654,8 @@ label {
   .room-container {
     grid-template-columns: 1fr;
   }
+
+  
 }
 
 .temp-humid-show {
@@ -651,6 +668,33 @@ label {
 
 .humid-show {
   color: aqua;
+}
+
+.containerew {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.centered-text {
+  text-align: center;
+}
+
+#hidden-text {
+  color: white;
+  visibility: hidden;
+}
+@media (max-width: 680px) {
+  #hidden-text{
+    visibility: visible;
+    padding-bottom: 200px;
+  }
+}
+
+#footer-element{
+  padding-top: 1rem;
 }
 
 
