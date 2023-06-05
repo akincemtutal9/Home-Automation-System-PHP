@@ -51,7 +51,7 @@ if (mysqli_num_rows($result) > 0) {
                             </div>
                         </div>
                         <div class=\"room-icon\">
-                            <i class=\"fas fa-couch fa-3x\" style=\"color: #b6decd;\"></i>
+                            <i class=\"" . $row['icon'] . "\" style=\"color: #b6decd;\"></i>
                         </div>
                     
                     </div>
