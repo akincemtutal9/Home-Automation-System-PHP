@@ -2,7 +2,7 @@
 include_once '../database/config.php';
 if (count($_POST) > 0) {
     
-    mysqli_query($conn, "UPDATE user SET userID='" . $_POST['userID'] . "', name='" . $_POST['name'] . "', surname='" . $_POST['surname'] . "', user_type='" . $_POST['user_type'] . "' ,email='" . $_POST['email'] . "' WHERE userID='" . $_POST['userID'] . "'");
+    mysqli_query($conn, "UPDATE user SET userID='" . $_POST['userID'] . "', name='" . mysqli_real_escape_string($conn ,$_POST['name']) . "', surname='" . mysqli_real_escape_string($conn ,$_POST['surname']) . "', user_type='" . mysqli_real_escape_string($conn ,$_POST['user_type']) . "' ,email='" . mysqli_real_escape_string($conn ,$_POST['email']) . "' WHERE userID='" . $_POST['userID'] . "'");
     $message = "Record Modified Successfully";
 }
 echo $_GET['userID'];

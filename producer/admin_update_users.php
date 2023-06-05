@@ -3,7 +3,7 @@ include '../php/session_admin.php';
 include_once '../database/config.php';
 if (count($_POST) > 0) {
     
-    mysqli_query($conn, "UPDATE user SET name='" . $_POST['name'] . "', surname='" . $_POST['surname'] . "', phone_number='" . $_POST['phone_number'] . "', address='" . $_POST['address'] . "', email='". $_POST['email'] . "', age='". $_POST['age'] . "' WHERE userID='" . $_GET['userID'] . "'");
+    mysqli_query($conn, "UPDATE user SET name='" . mysqli_real_escape_string($conn ,$_POST['name']) . "', surname='" . mysqli_real_escape_string($conn ,$_POST['surname']) . "', phone_number='" . mysqli_real_escape_string($conn ,$_POST['phone_number']) . "', address='" . mysqli_real_escape_string($conn ,$_POST['address']) . "', email='". mysqli_real_escape_string($conn ,$_POST['email']) . "', age='". $_POST['age'] . "' WHERE userID='" . $_GET['userID'] . "'");
 
     $message = "Record Modified Successfully";
 }

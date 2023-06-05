@@ -15,7 +15,7 @@ include './php/session_user_index.php';
 <body>
     <div class="background-image">
         <nav class="navbar">
-            <div class="logo"><i class="fa-solid fa-house-signal" style="color: #80ffff;"></i></div>
+            <div class="logo"><i class="fa-solid fa-house-signal" style="color: #80ffff;"> </i></div>
                 
             
 

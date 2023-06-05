@@ -10,11 +10,11 @@ $sql = "SELECT * FROM user WHERE userID = '$user_id' AND name = '$user_name'";
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $user_id = $_SESSION['admin_id'];
-    $name = $_POST['name'];
-    $surname = $_POST['surname'];
-    $phone_number = $_POST['phone_number'];
-    $address = $_POST['address'];
-    $email = $_POST['email'];
+    $name = mysqli_real_escape_string($conn ,$_POST['name']);
+    $surname = mysqli_real_escape_string($conn ,$_POST['surname']);
+    $phone_number = mysqli_real_escape_string($conn ,$_POST['phone_number']);
+    $address = mysqli_real_escape_string($conn ,$_POST['address']);
+    $email = mysqli_real_escape_string($conn ,$_POST['email']);
     $age = $_POST['age'];
 
     $query = "UPDATE user SET name='$name', surname='$surname', phone_number='$phone_number', address='$address', email='$email', age='$age' WHERE userID='$user_id'";

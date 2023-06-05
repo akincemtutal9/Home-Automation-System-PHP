@@ -3,7 +3,7 @@ require_once "../database/config.php";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $deviceID = $_POST['deviceID'];
-    $mode = $_POST['mode'];
+    $mode = mysqli_real_escape_string($conn ,$_POST['mode']);
     $sql_check = "SELECT * FROM device WHERE deviceID = '$deviceID'";
     $result = mysqli_query($conn, $sql_check);
     $row = mysqli_fetch_assoc($result);

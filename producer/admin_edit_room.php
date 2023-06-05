@@ -9,7 +9,7 @@ $sql = "SELECT * FROM room WHERE roomID = '$room_id'";
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   $room_id = $_GET['roomID'];
-  $room_name = $_POST['room_name'];
+  $room_name = mysqli_real_escape_string($conn ,$_POST['room_name']);
   $temperature = $_POST['temperature'];
   $humidity = $_POST['humidity'];
 
