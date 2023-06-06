@@ -74,7 +74,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         <ul>
                             <li><a href="profil.php" class="not-chosen"> My Account</a></li>
                             <li><a href="profiledit.php" class="chosen">Edit Account</a></li>
-                            <li><a href="profilsupport.php" class="not-chosen">Support</a></li>
                             <li><a href="profilpassword.php" class="not-chosen">Change Password</a></li>
                         </ul>
                     </div>

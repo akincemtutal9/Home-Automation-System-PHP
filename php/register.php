@@ -10,7 +10,7 @@ $cpass = md5($_POST['cpassword']);
 $phone_number = mysqli_real_escape_string($conn , $_POST['phone_number']);
 $age = mysqli_real_escape_string($conn , $_POST['age']);
 $address = mysqli_real_escape_string($conn , $_POST['address']);
-$user_type = $_POST['user_type'];
+$user_type = mysqli_real_escape_string($conn ,$_POST['user_type']);
 
 $select = " SELECT * FROM user WHERE email = '$email' && password = '$pass' ";
 

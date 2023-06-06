@@ -62,7 +62,7 @@ include '../php/session_admin.php';
                                         <p class="fs-5"></p>
                                     </div>
 
-                                    <img src="../images/icon1.png" alt="">
+                                    <i class="'. $row['icon'] . '" style="color: #b6decd;"></i>
                                 </div>
                                 <div class="text-center">
                                     <button type="button"  class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal'.$row['roomID'].'">

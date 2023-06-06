@@ -24,8 +24,8 @@ include '../php/register.php'
          };
       };
       ?>
-            <input type="text" name="name" required placeholder="Enter your name">
-            <input type="text" name="surname" required placeholder="Enter your last name">
+            <input type="text" name="name" pattern="[A-Za-z]+" required placeholder="Enter your name">
+            <input type="text" name="surname" pattern="[A-Za-z]+" required placeholder="Enter your last name">
             <input type="email" name="email" required placeholder="Enter your email">
             <input type="password" name="password" required placeholder="Enter your password">
             <input type="password" name="cpassword" required placeholder="Confirm your password">

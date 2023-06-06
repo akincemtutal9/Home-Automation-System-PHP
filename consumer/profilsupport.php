@@ -15,7 +15,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $query = "INSERT INTO message (userID, subject, message) VALUES ('$user_id', '$subject', '$message')";
     mysqli_query($conn, $query);
 
-    header("Location:profil.php");
+    header("Location:profilsupport.php");
     exit;
 }
 ?>
@@ -55,24 +55,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 
             <?php include 'navbar.php';?>
 
-            <div class="user-page">
-                <div class="sidebar-user">
-                    <div class="user-photo">
-                        <img src="../images/profile.png" alt="user image">
-                        <h3><?php echo $_SESSION['user_name']  ?></h3>
-                    </div>
-                    <div class="actions">
-                        <ul>
-                            <li><a href="profil.php" class="not-chosen"> My Account</a></li>
-                            <li><a href="profiledit.php" class="not-chosen">Edit Account</a></li>
-                            <li><a href="profilsupport.php" class="chosen">Support</a></li>
-                            <li><a href="profilpassword.php" class="not-chosen">Change Password</a></li>
-                        </ul>
-                    </div>
-                </div>
+            <div class="user-page mt-3">
+                
                 <div class="user-info-board">
-                    <h1>Support</h1>
-                    
+                    <h1>Support</h1> 
                         <form  action="" method="post">
                             <div class="row ">
                                 <div class="col-md-12"><label class="labels">Subject</label><input type="text" id="subject" name="subject" placeholder="Subject"></div>

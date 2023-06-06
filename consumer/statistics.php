@@ -47,8 +47,8 @@ include '../php/session_user.php';
                             <h3 class="fs-4 mb-3">Recent Activities</h3>
                         </div>
                     </div>
-                    <div class="m-3 bg-light ms-5 w-75 h-50  rounded" >
-                        <canvas id="barChart" width="400" height="200"></canvas>
+                    <div class="m-3 bg-light ms-5 w-75 h-50 rounded" >
+                        <canvas id="barChart" width="400" height="100"></canvas>
                     </div>
                     <div class="col">
                         <table id="example" class="table bg-white rounded shadow-sm  table-hover">
