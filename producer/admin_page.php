@@ -16,6 +16,9 @@ $robotToyCount = 0;
 $robotVacuumCount = 0;
 $washingMachineCount = 0;
 
+$statisticsCount = 0;
+$messagesCount = 0;
+
 
 // Count of Used Devices
 $usedDevicesSql = 'SELECT COUNT(*) as count FROM device';
@@ -106,37 +109,21 @@ if ($washingMachineResult && $washingMachineResult->num_rows > 0) {
     $washingMachineCount = $washingMachineRow['count'];
 }
 
-// Sayıları kullanarak Chart 1'e aktarabilirsiniz
-echo "
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            var ctx1 = document.getElementById('myChart1').getContext('2d');
-            var myChart1 = new Chart(ctx1, {
-                type: 'line',
-                data: {
-                    labels: ['Air Conditioner', 'Dishwasher', 'Electric Blanket', 'Fan', 'Light', 'Robot Toy', 'Robot Vacuum Cleaner', 'Washing Machine'],
-                    datasets: [{
-                        label: 'TOTAL DEVICES',
-                        data: [$airCount, $dishwasherCount, $electricBlanketCount, $fanCount, $lightCount, $robotToyCount, $robotVacuumCount, $washingMachineCount],
-                        backgroundColor: 'rgba(0, 123, 255, 0.5)',
-                        borderColor: 'rgba(0, 123, 255, 1)',
-                        borderWidth: 2,
-                        pointBackgroundColor: 'rgba(0, 123, 255, 1)',
-                        pointRadius: 4
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    scales: {
-                        y: {
-                            beginAtZero: true
-                        }
-                    }
-                }
-            });
-        });
-    </script>
-";
+$messagesSql = 'SELECT COUNT(*) as count FROM message';
+$messagesResult = $conn->query($messagesSql);
+if ($messagesResult && $messagesResult->num_rows > 0) {
+    $messagesRow = $messagesResult->fetch_assoc();
+    $messagesCount = $messagesRow['count'];
+}
+
+// Count of Statistics
+
+$statisticsSql = 'SELECT COUNT(*) as count FROM statistics';
+$statisticsResult = $conn->query($statisticsSql);
+if ($statisticsResult && $statisticsResult->num_rows > 0) {
+    $statisticsRow = $statisticsResult->fetch_assoc();
+    $statisticsCount = $statisticsRow['count'];
+}
 ?>
 
 <!DOCTYPE html>
@@ -186,7 +173,7 @@ echo "
                                 <h3 class="fs-2"><?php echo $totalUsersCount?></h3>
                                 <p class="fs-5">Total Users</p>
                             </div>
-                            <i class="fas fa-car fs-1 primary-text border rounded-full secondary-bg p-3"></i>
+                            <i class="fas fa-user fs-1 primary-text border rounded-full secondary-bg p-3"></i>
                         </div>
                     </div>
 
@@ -194,9 +181,9 @@ echo "
                         <div class="p-3 bg-white shadow-sm d-flex justify-content-around align-items-center rounded">
                             <div>
                                 <h3 class="fs-2"><?php echo $usedDevicesCount?></h3>
-                                <p class="fs-5">Sales</p>
+                                <p class="fs-5">Total Devices </p>
                             </div>
-                            <i class="fas fa-hand-holding-usd fs-1 primary-text border rounded-full secondary-bg p-3"></i>
+                            <i class="fas fa-laptop fs-1 primary-text border rounded-full secondary-bg p-3"></i>
                         </div>
                     </div>
 
@@ -204,9 +191,9 @@ echo "
                         <div class="p-3 bg-white shadow-sm d-flex justify-content-around align-items-center rounded">
                             <div>
                                 <h3 class="fs-2"><?php echo $totalRoomsCount?></h3>
-                                <p class="fs-5">Delivery</p>
+                                <p class="fs-5">Total Rooms</p>
                             </div>
-                            <i class="fas fa-truck fs-1 primary-text border rounded-full secondary-bg p-3"></i>
+                            <i class="fas fa-home fs-1 primary-text border rounded-full secondary-bg p-3"></i>
                         </div>
                     </div>
 
@@ -214,7 +201,7 @@ echo "
                         <div class="p-3 bg-white shadow-sm d-flex justify-content-around align-items-center rounded">
                             <div>
                                 <h3 class="fs-2">%25</h3>
-                                <p class="fs-5">Increase</p>
+                                <p class="fs-5">Web Usage</p>
                             </div>
                             <i class="fas fa-chart-line fs-1 primary-text border rounded-full secondary-bg p-3"></i>
                         </div>
@@ -247,79 +234,70 @@ echo "
 
                 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
                 <script>
-                    // document.addEventListener('DOMContentLoaded', function() {
-                    //     var ctx1 = document.getElementById('myChart1').getContext('2d');
-                    //     var myChart1 = new Chart(ctx1, {
-                    //         type: 'line',
-                    //         data: {
-                    //             labels: ['Air Conditioner', 'Dishwasher', 'Electric Blanket', 'Fan', 'Light', 'Robot Toy', 'Robot Vacuum Cleaner', 'Washing Machine'],
-                    //             datasets: [{
-                    //                 label: 'Device Count',
-                    //                 data: [12
-                                    
-                                    
-                    //                 , 19, 3, 5, 2, 3, 3, 3],
-                    //                 backgroundColor: 'rgba(0, 123, 255, 0.5)',
-                    //                 borderColor: 'rgba(0, 123, 255, 1)',
-                    //                 borderWidth: 2,
-                    //                 pointBackgroundColor: 'rgba(0, 123, 255, 1)',
-                    //                 pointRadius: 4
-                    //             }]
-                    //         },
-                    //         options: {
-                    //             responsive: true,
-                    //             scales: {
-                    //                 y: {
-                    //                     beginAtZero: true
-                    //                 }
-                    //             }
-                    //         }
-                    //     });
+    document.addEventListener('DOMContentLoaded', function() {
+        var ctx1 = document.getElementById('myChart1').getContext('2d');
+        var myChart1 = new Chart(ctx1, {
+            type: 'line',
+            data: {
+                labels: ['Air Conditioner', 'Dishwasher', 'Electric Blanket', 'Fan', 'Light', 'Robot Toy', 'Robot Vacuum Cleaner', 'Washing Machine'],
+                datasets: [{
+                    label: 'Device Count',
+                    data: [
+                        <?php echo $airCount; ?>,
+                        <?php echo $dishwasherCount; ?>,
+                        <?php echo $electricBlanketCount; ?>,
+                        <?php echo $fanCount; ?>,
+                        <?php echo $lightCount; ?>,
+                        <?php echo $robotToyCount; ?>,
+                        <?php echo $robotVacuumCount; ?>,
+                        <?php echo $washingMachineCount; ?>
+                    ],
+                    backgroundColor: 'rgba(0, 123, 255, 0.5)',
+                    borderColor: 'rgba(0, 123, 255, 1)',
+                    borderWidth: 2,
+                    pointBackgroundColor: 'rgba(0, 123, 255, 1)',
+                    pointRadius: 4
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
 
-                        var ctx2 = document.getElementById('myChart2').getContext('2d');
-                        var myChart2 = new Chart(ctx2, {
-                            type: 'bar',
-                            data: {
-                                labels: ['Category 1', 'Category 2', 'Category 3', 'Category 4', 'Category 5'],
-                                datasets: [{
-                                    label: 'Sales',
-                                    data: [50, 30, 20, 45, 60],
-                                    backgroundColor: 'rgba(0, 123, 255, 0.5)',
-                                    borderColor: 'rgba(0, 123, 255, 1)',
-                                    borderWidth: 2,
-                                    hoverBackgroundColor: 'rgba(0, 123, 255, 0.8)',
-                                    hoverBorderColor: 'rgba(0, 123, 255, 1)',
-                                }]
-                            },
-                            options: {
-                                responsive: true,
-                                scales: {
-                                    y: {
-                                        beginAtZero: true
-                                    }
-                                }
-                            }
-                        });
-                   // });
-                </script>
-                <!-- ... -->
-
-
-
-            </div>
-        </div>
-    </div>
-    </div>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"></script>
-    <script>
-        var el = document.getElementById("wrapper");
-        var toggleButton = document.getElementById("menu-toggle");
-
-        toggleButton.onclick = function() {
-            el.classList.toggle("toggled");
-        };
-    </script>
+        var ctx2 = document.getElementById('myChart2').getContext('2d');
+        var myChart2 = new Chart(ctx2, {
+            type: 'bar',
+            data: {
+                labels: ['Messages', 'Statistics'],
+                datasets: [{
+                    label: 'Messages & Statistics',
+                    data: [
+                        <?php echo $messagesCount; ?>,
+                        <?php echo $statisticsCount; ?>
+                    ],
+                    backgroundColor: 'rgba(0, 123, 255, 0.5)',
+                    borderColor: 'rgba(0, 123, 255, 1)',
+                    borderWidth: 2,
+                    hoverBackgroundColor: 'rgba(0, 123, 255, 0.8)',
+                    hoverBorderColor: 'rgba(0, 123, 255, 1)',
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    });
+</script>
 </body>
 
 </html>
