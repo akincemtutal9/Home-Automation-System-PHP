@@ -84,7 +84,7 @@ include '../php/session_admin.php';
                                             <p class="fs-5"><?php echo $row2["row_count"]; ?> devices</p>
                                             <p class="fs-5"><?php echo $row["temperature"]; ?> temperature</p>
                                             <p class="fs-5"><?php echo $row["humidity"]; ?> humidity</p>
-                                            <p class="fs-5"><?php echo $row["icon"]; ?> icon</p>
+                                            
                                         </div>
                                         <br>
                                         <a href='../producer/admin_edit_room.php?userID=<?php echo $_GET['userID']; ?>&roomID=<?php echo $roomID; ?>' class="btn btn-primary mt-auto check-device-button">Edit Room <?php echo $row["room_name"]; ?></a>

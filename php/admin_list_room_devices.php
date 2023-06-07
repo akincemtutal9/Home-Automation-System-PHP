@@ -37,7 +37,8 @@ if (mysqli_num_rows($result3) == 0) {
 
                 echo '<div class="col-md-4">
                 <div class="p-5 bg-white shadow-sm d-flex flex-column justify-content-center align-items-center rounded">
-                    <div>
+                <h1>Light</h1>    
+                <div>
                         <h3 class="fs-2">' . $row['device_name'] . '</h3>
                     </div>
                     <form action="../admin_php/update_light_status.php" method="post">
@@ -87,7 +88,8 @@ if (mysqli_num_rows($result3) == 0) {
 
                 echo '<div class="col-md-4">
                 <div class="p-5 bg-white shadow-sm d-flex flex-column justify-content-center align-items-center rounded">
-                    <div>
+                <h1> Air Conditioner</h1>    
+                <div>
                         <h3 class="fs-2">' . $row['device_name'] . '</h3>
                     </div>
                     <div class="device-status">
@@ -156,7 +158,8 @@ if (mysqli_num_rows($result3) == 0) {
 
                 echo '<div class="col-md-4">
                 <div class="p-5 bg-white shadow-sm d-flex flex-column justify-content-center align-items-center rounded">
-                    <div>
+                <h1>Dishwasher</h1>    
+                <div>
                         <h3 class="fs-2">' . $row['device_name'] . '</h3>
                     </div>
                     <form action="../admin_php/update_dishwasher_status.php" method="post">
@@ -189,7 +192,8 @@ if (mysqli_num_rows($result3) == 0) {
 
                 echo '<div class="col-md-4">
                 <div class="p-5 bg-white shadow-sm d-flex flex-column justify-content-center align-items-center rounded">
-                    <div>
+                    <h1> Blanket </h1>    
+                <div>
                         <h3 class="fs-2">' . $row['device_name'] . '</h3>
                     </div>
                     <form action="../admin_php/update_electric_blanket_status.php" method="post">
@@ -224,7 +228,8 @@ if (mysqli_num_rows($result3) == 0) {
                 echo
                 '<div class="col-md-4">
                 <div class="p-5 bg-white shadow-sm d-flex flex-column justify-content-center align-items-center rounded">
-                    <div>
+                <h1>Fan</h1>    
+                <div>
                         <h3 class="fs-2">' . $row['device_name'] . '</h3>
                     </div>
                     <form action="../admin_php/update_fan_status.php" method="post">
@@ -267,7 +272,8 @@ if (mysqli_num_rows($result3) == 0) {
 
                 echo '<div class="col-md-4">
                 <div class="p-5 bg-white shadow-sm d-flex flex-column justify-content-center align-items-center rounded">
-                    <div>
+                <h1>Robot Toy</h1>    
+                <div>
                         <h3 class="fs-2">' . $row['device_name'] . '</h3>
                     </div>
                     <form action="../admin_php/update_toy_status.php" method="post">
@@ -301,7 +307,8 @@ if (mysqli_num_rows($result3) == 0) {
 
                 echo '<div class="col-md-4">
                 <div class="p-5 bg-white shadow-sm d-flex flex-column justify-content-center align-items-center rounded">
-                    <div>
+                <h1>Robot Vacuum</h1>    
+                <div>
                         <h3 class="fs-2">' . $row['device_name'] . '</h3>
                     </div>
                     <form action="../admin_php/update_vacuum_status.php" method="post">
@@ -345,6 +352,7 @@ if (mysqli_num_rows($result3) == 0) {
 
                 echo '<div class="col-md-4">
                 <div class="p-5 bg-white shadow-sm d-flex flex-column justify-content-center align-items-center rounded">
+                <h1>Wash Machine</h1>
                     <div>
                         <h3 class="fs-2">' . $row['device_name'] . '</h3>
                     </div>
