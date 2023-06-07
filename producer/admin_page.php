@@ -160,8 +160,6 @@ if ($statisticsResult && $statisticsResult->num_rows > 0) {
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-
-
                 <?php include '../producer/admin_dropdown.php' ?>
             </nav>
 
