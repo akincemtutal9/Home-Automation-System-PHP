@@ -17,8 +17,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $phone_number = mysqli_real_escape_string($conn ,$_POST['phone_number']);
     $address = mysqli_real_escape_string($conn ,$_POST['address']);
     $email = mysqli_real_escape_string($conn ,$_POST['email']);
-    $age = $_POST['age'];
-    $query = "UPDATE user SET name='$name', surname='$surname', phone_number='$phone_number', address='$address', email='$email', age='$age' WHERE userID='$user_id'";
+
+    $query = "UPDATE user SET name='$name', surname='$surname', phone_number='$phone_number', address='$address', email='$email'  WHERE userID='$user_id'";
     mysqli_query($conn, $query);
 
     header("Location:profil.php");
@@ -91,7 +91,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                     <div class="col-md-12"><label class="labels">Mobile Number</label><input type="text" name="phone_number" class="form-control form-control-sm" placeholder="enter phone number" value="<?php echo $row['phone_number'] ?>"></div>
                                     <div class="col-md-12"><label class="labels">Address Line 1</label><input type="text" name="address" class="form-control form-control-sm" placeholder="enter address line 1" value="<?php echo $row['address'] ?>"></div>
                                     <div class="col-md-12"><label class="labels">Email ID</label><input type="text" name="email" class="form-control form-control-sm" placeholder="enter email id" value="<?php echo $row['email'] ?>"></div>
-                                    <div class="col-md-12"><label class="labels">Age</label><input type="text" name="age" class="form-control form-control-sm" placeholder="age" value="<?php echo $row['age'] ?>"></div>
                                 </div>
                                 <div class=" text-center"><button class="btn btn-primary profile-button w-100" type="submit">Save Profile</button></div>
                             </form>

@@ -22,7 +22,7 @@ if(mysqli_num_rows($result) > 0){
     if($pass != $cpass){
         $error[]= 'password not matched!';
     }else{
-        $insert = "INSERT INTO user(name,surname,email,password,user_type,phone_number,age,address)
+        $insert = "INSERT INTO user(name,surname,email,password,user_type,phone_number,birthdate,address)
                     VALUES ('$name','$surname','$email','$pass','$user_type','$phone_number','$age','$address')";
         
         mysqli_query($conn,$insert);

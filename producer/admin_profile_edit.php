@@ -15,9 +15,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $phone_number = mysqli_real_escape_string($conn ,$_POST['phone_number']);
     $address = mysqli_real_escape_string($conn ,$_POST['address']);
     $email = mysqli_real_escape_string($conn ,$_POST['email']);
-    $age = $_POST['age'];
 
-    $query = "UPDATE user SET name='$name', surname='$surname', phone_number='$phone_number', address='$address', email='$email', age='$age' WHERE userID='$user_id'";
+    $query = "UPDATE user SET name='$name', surname='$surname', phone_number='$phone_number', address='$address', email='$email' WHERE userID='$user_id'";
     mysqli_query($conn, $query);
     header("Location:../producer/admin_profile.php");
     exit;
@@ -82,7 +81,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                     <div class="col-md-12"><label class="labels">Mobile Number</label><input name="phone_number" type="text" class="form-control form-control-sm" placeholder="enter phone number" value="<?php echo $_SESSION['admin_phonenumber'] ?>"></div>
                                     <div name="address" class="col-md-12"><label class="labels">Address Line 1</label><input name="address" type="text" class="form-control form-control-sm" placeholder="enter address line 1" value="<?php echo $_SESSION['admin_address'] ?>"></div>
                                     <div name="email" class="col-md-12"><label class="labels">Email ID</label><input name="email" type="text" class="form-control form-control-sm" placeholder="enter email id" value="<?php echo $_SESSION['admin_email'] ?>"></div>
-                                    <div name="age" class="col-md-12"><label class="labels">Age</label><input name="age" type="text" class="form-control form-control-sm" placeholder="age" value="<?php echo $_SESSION['admin_age'] ?>"></d>
+                                    
                                     </div>
                                     <div class=" text-center"><input class="btn btn-primary profile-button w-100" name="submit" type="submit" value="Save Profile"></input></div>
                         </form>

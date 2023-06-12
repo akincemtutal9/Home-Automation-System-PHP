@@ -3,7 +3,7 @@ include '../php/session_admin.php';
 include_once '../database/config.php';
 if (count($_POST) > 0) {
     
-    mysqli_query($conn, "UPDATE user SET name='" . mysqli_real_escape_string($conn ,$_POST['name']) . "', surname='" . mysqli_real_escape_string($conn ,$_POST['surname']) . "', phone_number='" . mysqli_real_escape_string($conn ,$_POST['phone_number']) . "', address='" . mysqli_real_escape_string($conn ,$_POST['address']) . "', email='". mysqli_real_escape_string($conn ,$_POST['email']) . "', age='". $_POST['age'] . "' WHERE userID='" . $_GET['userID'] . "'");
+    mysqli_query($conn, "UPDATE user SET name='" . mysqli_real_escape_string($conn ,$_POST['name']) . "', surname='" . mysqli_real_escape_string($conn ,$_POST['surname']) . "', phone_number='" . mysqli_real_escape_string($conn ,$_POST['phone_number']) . "', address='" . mysqli_real_escape_string($conn ,$_POST['address']) . "', email='". mysqli_real_escape_string($conn ,$_POST['email']) . "' WHERE userID='" . $_GET['userID'] . "'");
 
     $message = "Record Modified Successfully";
 }
@@ -81,7 +81,7 @@ $row = mysqli_fetch_array($result);
                                 <div name ="phone_number" class="col-md-12"><label class="labels">Mobile Number</label><input name="phone_number" type="text" class="form-control form-control-sm" placeholder="enter phone number" value=""></div>
                                 <div name ="address" class="col-md-12"><label class="labels">Address Line 1</label><input name="address" type="text" class="form-control form-control-sm" placeholder="enter address line 1" value=""></div>
                                 <div name ="email" class="col-md-12"><label class="labels">Email ID</label><input name="email" type="text" class="form-control form-control-sm" placeholder="enter email id" value=""></div>
-                                <div name ="age" class="col-md-12"><label class="labels">Age</label><input name="age" type="text" class="form-control form-control-sm" placeholder="age" value=""></div>
+                                
                             </div>
                             <div  class=" text-center"><input class="btn btn-primary profile-button w-100" name="submit" type="submit" value="Save Profile"></input></div>
                         </form>

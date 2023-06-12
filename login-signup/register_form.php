@@ -30,7 +30,7 @@ include '../php/register.php'
             <input type="password" name="password" required placeholder="Enter your password">
             <input type="password" name="cpassword" required placeholder="Confirm your password">
             <input type="text" name="phone_number" required placeholder="Enter your phone number">
-            <input type="text" name="age" required placeholder="Enter your age">
+            <input type="date" name="age" required pattern="\d{4}-\d{2}-\d{2}" required placeholder="Enter your age">
             <input type="text" name="address" required placeholder="Enter your address">
             <select name="user_type">
                 <option value="user">user</option>

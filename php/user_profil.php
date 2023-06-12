@@ -25,7 +25,7 @@ if (mysqli_num_rows($result) > 0) {
         <div class=\"col-md-12\"><label class=\"labels\">Mobile Number</label><input type=\"text\" class=\"form-control form-control-sm\" placeholder=\"". $row['phone_number']."\" value=\"\" readonly></div>
         <div class=\"col-md-12\"><label class=\"labels\">Address Line 1</label><input type=\"text\" class=\"form-control form-control-sm\" placeholder=\"". $row['address']."\" value=\"\" readonly></div>
         <div class=\"col-md-12\"><label class=\"labels\">Email ID</label><input type=\"text\" class=\"form-control form-control-sm\" placeholder=\"". $row['email']."\" value=\"\" readonly></div>
-        <div class=\"col-md-12\"><label class=\"labels\">Age</label><input type=\"text\" class=\"form-control form-control-sm\" placeholder=\"". $row['age']."\" value=\"\" readonly></div>
+        <div class=\"col-md-12\"><label class=\"labels\">Birthday</label><input type=\"text\" class=\"form-control form-control-sm\" placeholder=\"". $row['birthdate']."\" value=\"\" readonly></div>
     </div>";
     
 } else {
