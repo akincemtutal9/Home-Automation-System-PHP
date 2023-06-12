@@ -50,6 +50,7 @@ include '../php/session_admin.php';
                             <thead>
                                 <tr>
                                     <th scope="col">Devide Id</th>
+                                    <th scope="col">User Name</th>
                                     <th scope="col">Device Name</th>
                                     <th scope="col">Operation</th>
                                     <th scope="col">Date</th>
