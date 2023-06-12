@@ -24,7 +24,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if (mysqli_query($conn, $sql)) {
         $op = "" . $row['device_type'] ." mode set to " . $mode .".";
-        $date = date('Y/m/d H:i:sa');
+        $date = date('Y/m/d H:i:sa', strtotime('+1 hours'));
         $sql_stat = "INSERT INTO statistics (deviceID, operation, date) VALUES ('$deviceID','$op','$date')";
         if ($conn->query($sql_stat) === TRUE) {
             echo "Record inserted successfully.";

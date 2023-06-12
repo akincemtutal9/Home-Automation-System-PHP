@@ -22,7 +22,7 @@ include '../php/session_user.php';
     <script src="../js/slider.js"></script>
     
     
-    <title>Bedroom</title>
+    <title>Devices</title>
 </head>
 
 <body>
