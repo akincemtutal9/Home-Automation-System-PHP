@@ -109,8 +109,8 @@ if (mysqli_num_rows($result3) == 0) {
                             <input type="hidden" name="deviceID" value="' . $deviceID . '">
                             <div class="aircon-status">
                                 <h3>Mode</h3>
-                                <button type="submit" name="modeAir" value="ice" class="btn ' . ($modeAir == 'ice' ? 'btn-primary' : 'btn-secondary') . '">Ice</button>
-                                <button type="submit" name="modeAir" value="sun" class="btn ' . ($modeAir == 'sun' ? 'btn-danger' : 'btn-secondary') . '">Sun</button>
+                                <button type="submit" name="modeAir" value="cold" class="btn ' . ($modeAir == 'cold' ? 'btn-primary' : 'btn-secondary') . '">Cold</button>
+                                <button type="submit" name="modeAir" value="hot" class="btn ' . ($modeAir == 'hot' ? 'btn-danger' : 'btn-secondary') . '">Hot</button>
                             </div>
                         </form>
                     </div>

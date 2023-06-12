@@ -10,7 +10,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($conn->query($deviceSql) === TRUE) {
         $deviceID = $conn->insert_id;
 
-        $sql = "INSERT INTO air_conditioner (deviceID, mode , temperature , isOpen) VALUES ($deviceID,'sun','0', 0)";
+        $sql = "INSERT INTO air_conditioner (deviceID, mode , temperature , isOpen) VALUES ($deviceID,'hot','0', 0)";
 
         if ($conn->query($sql) === TRUE) {
             header("Location: " . $_SERVER["HTTP_REFERER"]); 
