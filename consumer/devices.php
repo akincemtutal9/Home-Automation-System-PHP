@@ -1,7 +1,20 @@
 <?php
 include '../php/session_user.php';
-
+include '../database/config.php';
+if (isset($_SESSION['user_id']) ) {
+    $user_id = $_SESSION['user_id'];
+   
+} else {
+   
+    die('User is not found');
+}
+$user_id = $_SESSION['user_id'];
+$room_id = $_GET['roomID'];
+$sql_room = "SELECT * FROM room WHERE userID='$user_id' AND roomID = '$room_id'";
+$result_room = mysqli_query($conn, $sql_room);
+$row_room = mysqli_fetch_assoc($result_room);
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -37,18 +50,20 @@ include '../php/session_user.php';
                 </div>
             <?php include 'navbar.php';?>
 
-            <div class="pt-2">
-            <button type="button" onclick="window.location.href='consumernew.php'" class="btn btn-outline-dark ms-5">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-left-fill" viewBox="0 0 16 16">
-                <path d="m3.86 8.753 5.482 4.796c.646.566 1.658.106 1.658-.753V3.204a1 1 0 0 0-1.659-.753l-5.48 4.796a1 1 0 0 0 0 1.506z"></path>
-                </svg>
-                Back to Rooms
-              </button></div>
+            <div class="pt-2 d-flex col-sm-12 col-md-9 col-lg-10 col-xl-10">
+                <button type="button" onclick="window.location.href='consumernew.php'" class="btn btn-outline-dark ms-5">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-left-fill" viewBox="0 0 16 16">
+                    <path d="m3.86 8.753 5.482 4.796c.646.566 1.658.106 1.658-.753V3.204a1 1 0 0 0-1.659-.753l-5.48 4.796a1 1 0 0 0 0 1.506z"></path>
+                    </svg>
+                    Back to Rooms
+                </button>
+                <h2 class="m-auto"><?php echo $row_room['room_name'];?></h2>
+            </div>
             <div class="device-container">
                 <?php
-                include '../php/user_list_devices.php';
+                    include '../php/user_list_devices.php';
                 ?>
-                
+                    
             </div>
         </div>
     </div>

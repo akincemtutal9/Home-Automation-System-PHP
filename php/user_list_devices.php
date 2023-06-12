@@ -21,6 +21,7 @@ if (mysqli_num_rows($result3) == 0){
     echo "<script>window.location.href = '$url';</script>";
 }
 else {
+    
     $sql = "SELECT * FROM device AS d
         INNER JOIN room AS r ON d.roomID = r.roomID
         WHERE d.roomID = '$room_id' AND 
