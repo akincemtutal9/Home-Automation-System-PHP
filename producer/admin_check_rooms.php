@@ -1,6 +1,17 @@
 <?php
 include '../database/config.php';
 include '../php/session_admin.php';
+$sql = "SELECT name FROM user WHERE userID = " . $_GET['userID'];
+$result = mysqli_query($conn, $sql);
+
+if (mysqli_num_rows($result) > 0) {
+
+    while ($row = mysqli_fetch_assoc($result)) {
+        $odaAdi = $row['name'];
+        
+    }
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -34,7 +45,7 @@ include '../php/session_admin.php';
             <nav class="navbar navbar-expand-lg navbar-light bg-transparent py-4 px-4">
                 <div class="d-flex align-items-center">
                     <i class="fas fa-align-left primary-text fs-4 me-3" id="menu-toggle"></i>
-                    <h2 class="fs-2 m-0">Consumer <?php $_GET['userID'] ?></h2>
+                    <h2 class="fs-2 m-0">Consumer <?php echo $odaAdi?></h2>
                 </div>
 
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
