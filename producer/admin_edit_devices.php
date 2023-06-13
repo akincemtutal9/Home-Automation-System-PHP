@@ -4,6 +4,30 @@ include '../php/session_admin.php';
 $user_id = $_GET['userID'];
 $room_id = $_GET['roomID'];
 
+$sql = "SELECT name FROM user WHERE userID = " . $user_id;
+$result = mysqli_query($conn, $sql);
+
+if (mysqli_num_rows($result) > 0) {
+
+    while ($row = mysqli_fetch_assoc($result)) {
+        $userAdi = $row['name'];
+        
+    }
+}
+
+$sql = "SELECT room_name FROM room WHERE roomID = " . $room_id;
+$result = mysqli_query($conn, $sql);
+
+if (mysqli_num_rows($result) > 0) {
+
+    while ($row = mysqli_fetch_assoc($result)) {
+        $odaAdi = $row['room_name'];
+        
+    }
+}
+
+
+
 ?>
 
 <!DOCTYPE html>
@@ -36,7 +60,7 @@ $room_id = $_GET['roomID'];
             <nav class="navbar navbar-expand-lg navbar-light bg-transparent py-4 px-4">
                 <div class="d-flex align-items-center">
                     <i class="fas fa-align-left primary-text fs-4 me-3" id="menu-toggle"></i>
-                    <h2 class="fs-2 m-0" style="color: black;">Devices</h2>
+                    <h2 class="fs-2 m-0" style="color: black;">Devices in Room : <?php echo $odaAdi?> User: <?php echo $userAdi ?> </h2>
                 </div>
 
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -61,7 +85,6 @@ $room_id = $_GET['roomID'];
            
             <div class="row g-4 my-2">
                 <?php
-
                 include '../php/admin_list_room_devices.php'
                 ?>
             </div>
