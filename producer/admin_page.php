@@ -165,7 +165,7 @@ if ($statisticsResult && $statisticsResult->num_rows > 0) {
 
             <div class="container-fluid px-4">
                 <div class="row g-3 my-2">
-                    <div class="col-md-3">
+                    <div class="col-md-4">
                         <div class="p-3 bg-white shadow-sm d-flex justify-content-around align-items-center rounded">
                             <div>
                                 <h3 class="fs-2"><?php echo $totalUsersCount?></h3>
@@ -175,7 +175,7 @@ if ($statisticsResult && $statisticsResult->num_rows > 0) {
                         </div>
                     </div>
 
-                    <div class="col-md-3">
+                    <div class="col-md-4">
                         <div class="p-3 bg-white shadow-sm d-flex justify-content-around align-items-center rounded">
                             <div>
                                 <h3 class="fs-2"><?php echo $usedDevicesCount?></h3>
@@ -185,23 +185,13 @@ if ($statisticsResult && $statisticsResult->num_rows > 0) {
                         </div>
                     </div>
 
-                    <div class="col-md-3">
+                    <div class="col-md-4">
                         <div class="p-3 bg-white shadow-sm d-flex justify-content-around align-items-center rounded">
                             <div>
                                 <h3 class="fs-2"><?php echo $totalRoomsCount?></h3>
                                 <p class="fs-5">Total Rooms</p>
                             </div>
                             <i class="fas fa-home fs-1 primary-text border rounded-full secondary-bg p-3"></i>
-                        </div>
-                    </div>
-
-                    <div class="col-md-3">
-                        <div class="p-3 bg-white shadow-sm d-flex justify-content-around align-items-center rounded">
-                            <div>
-                                <h3 class="fs-2">%25</h3>
-                                <p class="fs-5">Web Usage</p>
-                            </div>
-                            <i class="fas fa-chart-line fs-1 primary-text border rounded-full secondary-bg p-3"></i>
                         </div>
                     </div>
                 </div>
