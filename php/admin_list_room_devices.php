@@ -37,9 +37,9 @@ if (mysqli_num_rows($result3) == 0) {
 
                 echo '<div class="col-md-6">
                 <div class="p-5 bg-white shadow-sm d-flex flex-column justify-content-center align-items-center rounded">
-                <h1>Light</h1>    
+                <h1><b>Light</b></h1>    
                 <div>
-                        <h3 class="fs-2">' . $row['device_name'] . '</h3>
+                    <h3 class="fs-2"><i>' . $row['device_name'] . '</i></h3>
                     </div>
                     <form action="../admin_php/update_light_status.php" method="post">
                         <input type="hidden" name="deviceID" value="' . $deviceID . '">
@@ -56,8 +56,6 @@ if (mysqli_num_rows($result3) == 0) {
             <input type="hidden" name="deviceID" value="' . $deviceID . '">
             <input type="color" id="color" name="color" value="' . $row2['color'] . '">
             <div class="info">
-                <h1>Choose</h1>
-                <h2>Color</h2>
             </div>
             <button type="submit" class="btn btn-primary">Submit</button>
             </form>
@@ -88,9 +86,9 @@ if (mysqli_num_rows($result3) == 0) {
 
                 echo '<div class="col-md-6">
                 <div class="p-5 bg-white shadow-sm d-flex flex-column justify-content-center align-items-center rounded">
-                <h1> Air Conditioner</h1>    
+                <h1><b>Air Conditioner</b></h1>    
                 <div>
-                        <h3 class="fs-2">' . $row['device_name'] . '</h3>
+                <h3 class="fs-2"><i>' . $row['device_name'] . '</i></h3>
                     </div>
                     <div class="device-status">
                         <div class="device-name"></div>
@@ -158,9 +156,9 @@ if (mysqli_num_rows($result3) == 0) {
 
                 echo '<div class="col-md-6">
                 <div class="p-5 bg-white shadow-sm d-flex flex-column justify-content-center align-items-center rounded">
-                <h1>Dishwasher</h1>    
+                <h1><b>Dishwasher</b></h1>    
                 <div>
-                        <h3 class="fs-2">' . $row['device_name'] . '</h3>
+                <h3 class="fs-2"><i>' . $row['device_name'] . '</i></h3>
                     </div>
                     <form action="../admin_php/update_dishwasher_status.php" method="post">
                         <input type="hidden" name="deviceID" value="' . $deviceID . '">
@@ -192,9 +190,9 @@ if (mysqli_num_rows($result3) == 0) {
 
                 echo '<div class="col-md-6">
                 <div class="p-5 bg-white shadow-sm d-flex flex-column justify-content-center align-items-center rounded">
-                    <h1> Blanket </h1>    
+                    <h1><b> Blanket </b></h1>    
                 <div>
-                        <h3 class="fs-2">' . $row['device_name'] . '</h3>
+                    <h3 class="fs-2"><i>' . $row['device_name'] . '</i></h3>
                     </div>
                     <form action="../admin_php/update_electric_blanket_status.php" method="post">
                         <input type="hidden" name="deviceID" value="' . $deviceID . '">
@@ -228,9 +226,9 @@ if (mysqli_num_rows($result3) == 0) {
                 echo
                 '<div class="col-md-6">
                 <div class="p-5 bg-white shadow-sm d-flex flex-column justify-content-center align-items-center rounded">
-                <h1>Fan</h1>    
+                <h1><b>Fan</b></h1>    
                 <div>
-                        <h3 class="fs-2">' . $row['device_name'] . '</h3>
+                <h3 class="fs-2"><i>' . $row['device_name'] . '</i></h3>
                     </div>
                     <form action="../admin_php/update_fan_status.php" method="post">
                         <input type="hidden" name="deviceID" value="' . $deviceID . '">
@@ -272,9 +270,9 @@ if (mysqli_num_rows($result3) == 0) {
 
                 echo '<div class="col-md-6">
                 <div class="p-5 bg-white shadow-sm d-flex flex-column justify-content-center align-items-center rounded">
-                <h1>Robot Toy</h1>    
+                <h1><b>Robot Toy</b></h1>    
                 <div>
-                        <h3 class="fs-2">' . $row['device_name'] . '</h3>
+                <h3 class="fs-2"><i>' . $row['device_name'] . '</i></h3>
                     </div>
                     <form action="../admin_php/update_toy_status.php" method="post">
                         <input type="hidden" name="deviceID" value="' . $deviceID . '">
@@ -307,9 +305,9 @@ if (mysqli_num_rows($result3) == 0) {
 
                 echo '<div class="col-md-6">
                 <div class="p-5 bg-white shadow-sm d-flex flex-column justify-content-center align-items-center rounded">
-                <h1>Robot Vacuum</h1>    
+                <h1><b>Robot Vacuum</b></h1>    
                 <div>
-                        <h3 class="fs-2">' . $row['device_name'] . '</h3>
+                <h3 class="fs-2"><i>' . $row['device_name'] . '</i></h3>
                     </div>
                     <form action="../admin_php/update_vacuum_status.php" method="post">
                         <input type="hidden" name="deviceID" value="' . $deviceID . '">
@@ -352,9 +350,9 @@ if (mysqli_num_rows($result3) == 0) {
 
                 echo '<div class="col-md-6">
                 <div class="p-5 bg-white shadow-sm d-flex flex-column justify-content-center align-items-center rounded">
-                <h1>Wash Machine</h1>
+                <h1><b>Wash Machine</b></h1>
                     <div>
-                        <h3 class="fs-2">' . $row['device_name'] . '</h3>
+                    <h3 class="fs-2"><i>' . $row['device_name'] . '</i></h3>
                     </div>
                     <form action="../admin_php/update_washingmachine_status.php" method="post">
                         <input type="hidden" name="deviceID" value="' . $deviceID . '">
@@ -391,6 +389,9 @@ if (mysqli_num_rows($result3) == 0) {
         }
         echo '</div>';
         echo '</div>';
+        echo '</div>';
+        
+    
     } else {
         echo "No Device Found";
     }
