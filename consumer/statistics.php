@@ -33,7 +33,7 @@ include '../php/session_user.php';
             <nav class="navbar navbar-expand-lg navbar-light bg-transparent py-4 px-4">
                 <div class="d-flex align-items-center">
                     <i class="fas fa-align-left primary-text fs-4 me-3" id="menu-toggle"></i>
-                    <h2 class="fs-2 m-0 text-dark">Statistics</h2>
+                    <h2 class="fs-2 m-0 text-dark">Activities</h2>
                 </div>
                 
                 <?php include 'navbar.php';?>
@@ -47,7 +47,7 @@ include '../php/session_user.php';
                             <h3 class="fs-4 mb-3">Recent Activities</h3>
                         </div>
                     </div>
-                    <div class="m-3 bg-light ms-5 w-75 h-50 rounded" >
+                    <div class=" bg-light   h-50 rounded" >
                         <canvas id="barChart" width="400" height="100"></canvas>
                     </div>
                     <div class="col">
