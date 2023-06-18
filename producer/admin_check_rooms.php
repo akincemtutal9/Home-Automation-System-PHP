@@ -88,7 +88,7 @@ if (mysqli_num_rows($result) > 0) {
                                 $result2 = mysqli_query($conn, $sql2);
                                 $row2 = mysqli_fetch_assoc($result2);
                         ?>
-                                <div class="col-lg-4">
+                                <div class="col-lg-6">
                                     <div class="p-5 bg-white shadow-sm d-flex flex-column justify-content-center align-items-center rounded">
                                         <div class="text-center">
                                             <h3 class="fs-2"><?php echo $row["room_name"]; ?></h3>
@@ -100,7 +100,7 @@ if (mysqli_num_rows($result) > 0) {
                                         <br>
                                         <a href='../producer/admin_edit_room.php?userID=<?php echo $_GET['userID']; ?>&roomID=<?php echo $roomID; ?>' class="btn btn-primary mt-auto check-device-button">Edit Room <?php echo $row["room_name"]; ?></a>
                                         <br>
-                                        <a href="../producer/admin_edit_devices.php?userID=<?php echo $_GET['userID']; ?>&roomID=<?php echo $roomID; ?>" class="btn btn-success mt-auto check-device-button">Check Devices In Room <?php echo $row["room_name"]; ?></a>
+                                        <a href="../producer/admin_edit_devices.php?userID=<?php echo $_GET['userID']; ?>&roomID=<?php echo $roomID; ?>" class="btn btn-success mt-auto check-device-button">Devices In Room <?php echo $row["room_name"]; ?></a>
                                         <br>
                                         <form action="../admin_php/delete_room.php" method="post">
                                             <input type="hidden" name="deviceCount" value="<?php echo $row2["row_count"] ?>">
