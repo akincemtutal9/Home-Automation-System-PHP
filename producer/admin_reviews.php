@@ -49,12 +49,11 @@ include '../php/session_admin.php';
                         <table class="table bg-white rounded shadow-sm  table-hover">
                             <thead>
                                 <tr>
-                                    <th scope="col">Devide Id</th>
                                     <th scope="col">User Name</th>
                                     <th scope="col">Device Name</th>
+                                    <th scope="col">Room Name</th>
                                     <th scope="col">Operation</th>
                                     <th scope="col">Date</th>
-                                    <th scope="col">Room name</th>
                                 </tr>
                             </thead>
                             <tbody>                               

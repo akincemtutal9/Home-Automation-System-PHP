@@ -12,12 +12,11 @@ $result = mysqli_query($conn, $sql);
 if (mysqli_num_rows($result) > 0) {
     while ($row = mysqli_fetch_assoc($result)) {
         echo "<tr>";
-        echo "<th scope=\"row\">" . $row["deviceID"] . "</th>";
         echo "<td>" . $row["name"] ." " . $row["surname"] . "</td>";
         echo "<td>" . $row["device_name"] . "</td>";
+        echo "<td>" . $row["room_name"] . "</td>";
         echo "<td>" . $row["operation"] . "</td>";
         echo "<td>" . $row["date"] . "</td>";
-        echo "<td>" . $row["room_name"] . "</td>";
         echo "</tr>";
     }
 } else {

@@ -300,7 +300,6 @@ include '../php/session_admin.php';
                         <table class="table bg-white rounded shadow-sm  table-hover">
                             <thead>
                                 <tr>
-                                    <th scope="col" width="50">id</th>
                                     <th scope="col">Email</th>
                                     <th scope="col">Name</th>
                                     <th scope="col">Check Rooms</th>
