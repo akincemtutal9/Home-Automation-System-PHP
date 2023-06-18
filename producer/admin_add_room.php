@@ -60,7 +60,7 @@ include '../php/session_admin.php';
                                 <input type="hidden" name="userID" value="<?php echo $_GET['userID'] ?>">
                                 <label class="form-label rounded-pill px-3 py-2" style="color: #000000; font-weight: bold;">Room Name:</label>
                                 <input type="text" class="form-control form-control-lg rounded-pill border-0 shadow flex-grow-1" name="room_name" value="" placeholder="Room Name" style="border-radius: 20px;">
-                                <label class="form-label rounded-pill px-3 mt-3" style="color: #000000; font-weight: bold;">Icon:</label>
+                                <label class="form-label rounded-pill px-3 mt-3" style="color: #000000; font-weight: bold;">Icon Type:</label>
                                 <select class="form-select form-select-lg rounded-pill border-0 shadow flex-grow-1" name="icon" aria-label="Default select example">
                                     <option value="fas fa-couch fa-3x">Living Room</option>
                                     <option value="fas fa-bed fa-3x">Bedroom</option>
