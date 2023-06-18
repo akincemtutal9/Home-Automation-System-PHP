@@ -59,7 +59,7 @@ $row_room = mysqli_fetch_assoc($result_room);
                 </button>
                 <h2 class="m-auto"><?php echo $row_room['room_name'];?></h2>
             </div>
-            <div class="device-container">
+            <div class="device-container w-75">
                 <?php
                     include '../php/user_list_devices.php';
                 ?>
