@@ -57,10 +57,11 @@ include '../php/session_admin.php';
                                     <th scope="col">Room name</th>
                                 </tr>
                             </thead>
-                            <tbody>
-                                <?php include '../php/admin_list_statistics.php'?>
+                            <tbody>                               
+                                <?php include '../php/admin_list_activities.php'?>
                             </tbody>
                         </table>
+                        <?php include '../php/admin_list_statistics.php'?>
                     </div>
                 </div>
             </div>

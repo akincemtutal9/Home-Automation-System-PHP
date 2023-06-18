@@ -1,33 +1,105 @@
 <?php
 include '../database/config.php';
 
-// Create a query to select statistics, corresponding room names, device name, and room information
 $sql = "SELECT statistics.*, room.room_name, room.roomID, device.device_name, user.name, user.surname
         FROM statistics
         JOIN device ON statistics.deviceID = device.deviceID
         JOIN room ON device.roomID = room.roomID
         JOIN user ON user.userID = room.userID";
 
-// Execute the query and get the result set
 $result = mysqli_query($conn, $sql);
 
-// Check if any statistics were found
 if (mysqli_num_rows($result) > 0) {
-    // Loop through the result set and display each statistic's data in a table row
+
+    $deviceIDs = [];
+    $operationCounts = [];
+
     while ($row = mysqli_fetch_assoc($result)) {
-        echo "<tr>";
-        echo "<th scope=\"row\">" . $row["deviceID"] . "</th>";
-        echo "<td>" . $row["name"] ." " . $row["surname"] . "</td>";
-        echo "<td>" . $row["device_name"] . "</td>";
-        echo "<td>" . $row["operation"] . "</td>";
-        echo "<td>" . $row["date"] . "</td>";
-        echo "<td>" . $row["room_name"] . "</td>";
-        echo "</tr>";
+        $deviceID = $row["deviceID"];
+        $operation = $row["operation"];
+
+        if (array_key_exists($deviceID, $operationCounts)) {
+            $operationCounts[$deviceID]++;
+        } else {
+            $deviceIDs[] = $deviceID;
+            $operationCounts[$deviceID] = 1;
+        }
     }
+
+    $labels = [];
+    $data = [];
+
+    foreach ($deviceIDs as $deviceID) {
+        $labels[] = $deviceID;
+        $data[] = $operationCounts[$deviceID];
+    }
+
+    $deviceNames = [];
+    // Close the database connection
+    mysqli_close($conn);
+?>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Statistics Graph</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <canvas id="statisticsChart"></canvas>
+
+    <script>
+        // Retrieve data from PHP variables
+        var labels = <?php echo json_encode($labels); ?>;
+        var data = <?php echo json_encode($data); ?>;
+        var deviceNames = <?php echo json_encode($deviceNames); ?>;
+        // Create the chart
+        var ctx = document.getElementById('statisticsChart').getContext('2d');
+        var chart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: 'Operation Count',
+                    data: data,
+                    backgroundColor: 'rgba(0, 123, 255, 0.5)',
+                    borderColor: 'rgba(0, 123, 255, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        stepSize: 1,
+                        precision: 0 // Display whole numbers only
+                    }
+                },
+                plugins: {
+                    tooltip: {
+                        callbacks: {
+                            title: function(tooltipItem) {
+                                var index = tooltipItem[0].dataIndex;
+                                return labels[index];
+                            },
+                            label: function(context) {
+                                var index = context.dataIndex;
+                                var deviceID = labels[index];
+                                var deviceName = deviceNames[deviceID];
+                                return 'Device: ' + deviceName;
+                            }
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
+
+<?php
 } else {
     echo "No statistics found";
 }
-
-// Close the database connection
-mysqli_close($conn);
 ?>
