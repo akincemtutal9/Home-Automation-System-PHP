@@ -51,7 +51,7 @@ include '../php/session_admin.php';
                 <div class="row my-5 mb-2">
                     <div class="col-12 text-center">
                         <h3>Create Room</h3>
-                        <p class="text-muted">Click update after creating room</p>
+                        <p class="text-muted">Click create room button after creating room</p>
                     </div>
 
                     <div class="col-12 col-md-6 offset-md-3">
