@@ -11,7 +11,7 @@ if (mysqli_num_rows($result) > 0) {
     // Loop through the result set and display each user's data in a table row
     while ($row = mysqli_fetch_assoc($result)) {
         echo "<tr>";
-        echo "<th scope=\"row\">" . $row["userID"] . "</th>";
+        echo "<th scope=\"row\">" . $row["name"] . "</th>";
         echo "<td>" . $row["email"] . "</td>";
         echo "<td>" . $row["name"] . "</td>";
         echo "<td>";

@@ -35,7 +35,7 @@ if (mysqli_num_rows($result3) == 0) {
                 $isOpen = $row2['isOpen'];
                 $color = $row2['color'];
 
-                echo '<div class="col-md-4">
+                echo '<div class="col-md-6">
                 <div class="p-5 bg-white shadow-sm d-flex flex-column justify-content-center align-items-center rounded">
                 <h1>Light</h1>    
                 <div>
@@ -86,7 +86,7 @@ if (mysqli_num_rows($result3) == 0) {
                 $temperatureAir = $row2['temperature'];
                 $modeAir = $row2['mode'];
 
-                echo '<div class="col-md-4">
+                echo '<div class="col-md-6">
                 <div class="p-5 bg-white shadow-sm d-flex flex-column justify-content-center align-items-center rounded">
                 <h1> Air Conditioner</h1>    
                 <div>
@@ -156,7 +156,7 @@ if (mysqli_num_rows($result3) == 0) {
                 $row2 = mysqli_fetch_assoc($result2);
                 $isOpenDishwasher = $row2['isOpen'];
 
-                echo '<div class="col-md-4">
+                echo '<div class="col-md-6">
                 <div class="p-5 bg-white shadow-sm d-flex flex-column justify-content-center align-items-center rounded">
                 <h1>Dishwasher</h1>    
                 <div>
@@ -190,7 +190,7 @@ if (mysqli_num_rows($result3) == 0) {
                 $row2 = mysqli_fetch_assoc($result2);
                 $isOpenBlanket = $row2['isOpen'];
 
-                echo '<div class="col-md-4">
+                echo '<div class="col-md-6">
                 <div class="p-5 bg-white shadow-sm d-flex flex-column justify-content-center align-items-center rounded">
                     <h1> Blanket </h1>    
                 <div>
@@ -226,7 +226,7 @@ if (mysqli_num_rows($result3) == 0) {
                 $speedFan = $row2['speed'];
 
                 echo
-                '<div class="col-md-4">
+                '<div class="col-md-6">
                 <div class="p-5 bg-white shadow-sm d-flex flex-column justify-content-center align-items-center rounded">
                 <h1>Fan</h1>    
                 <div>
@@ -270,7 +270,7 @@ if (mysqli_num_rows($result3) == 0) {
                 $row2 = mysqli_fetch_assoc($result2);
                 $statusToy = $row2['isOpen'];
 
-                echo '<div class="col-md-4">
+                echo '<div class="col-md-6">
                 <div class="p-5 bg-white shadow-sm d-flex flex-column justify-content-center align-items-center rounded">
                 <h1>Robot Toy</h1>    
                 <div>
@@ -305,7 +305,7 @@ if (mysqli_num_rows($result3) == 0) {
                 $isOpenVacuum = $row2['isOpen'];
                 $modeVacuum = $row2['mode'];
 
-                echo '<div class="col-md-4">
+                echo '<div class="col-md-6">
                 <div class="p-5 bg-white shadow-sm d-flex flex-column justify-content-center align-items-center rounded">
                 <h1>Robot Vacuum</h1>    
                 <div>
@@ -350,7 +350,7 @@ if (mysqli_num_rows($result3) == 0) {
                 $isOpenWashingMachine = $row2['isOpen'];
                 $modeWashingMachine = $row2['mode'];
 
-                echo '<div class="col-md-4">
+                echo '<div class="col-md-6">
                 <div class="p-5 bg-white shadow-sm d-flex flex-column justify-content-center align-items-center rounded">
                 <h1>Wash Machine</h1>
                     <div>

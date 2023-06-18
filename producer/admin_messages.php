@@ -49,7 +49,7 @@ include '../php/session_admin.php';
                             <thead>
                                 <tr>
                                     <th scope="col">User Id</th>
-                                    <th scope="col">Name</th>
+                                    <th scope="col">Sender</th>
                                     <th scope="col">Subject</th>
                                     <th scope="col">Message</th>                                   
                                 </tr>
