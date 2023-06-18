@@ -184,7 +184,7 @@ include '../php/session_admin.php';
                         <form action="../admin_php/create_vacuum.php?" method="post">
                             <div class="mb-3 d-flex-column align-items-center">
                                 <input type="hidden" name="roomID" value="<?php echo $_GET['roomID']; ?>">
-                                <label class="form-label rounded-pill px-3 py-2" style="color: #000000; font-weight: bold;">Toy Name:</label>
+                                <label class="form-label rounded-pill px-3 py-2" style="color: #000000; font-weight: bold;">Vacuum Cleaner Name:</label>
                                 <input type="text" class="form-control form-control-lg rounded-pill border-0 shadow flex-grow-1" name="device_name" value="" placeholder="Vacuum Cleaner Name" style="border-radius: 20px;">
                             </div>
                             <div class="text-center">
@@ -208,7 +208,7 @@ include '../php/session_admin.php';
                                 <input type="text" class="form-control form-control-lg rounded-pill border-0 shadow flex-grow-1" name="device_name" value="" placeholder="Washing Machine Name" style="border-radius: 20px;">
                             </div>
                             <div class="text-center">
-                                <input type="submit" class="btn btn-primary btn-lg mt-2 rounded-pill w-100" name="submit" value="Create Vacuum Cleaner" style="border-radius: 20px;">
+                                <input type="submit" class="btn btn-primary btn-lg mt-2 rounded-pill w-100" name="submit" value="Create Washing Machine" style="border-radius: 20px;">
                             </div>
                         </form>
                     </div>
