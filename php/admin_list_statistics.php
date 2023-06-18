@@ -10,7 +10,6 @@ $sql = "SELECT statistics.*, room.room_name, room.roomID, device.device_name, us
 $result = mysqli_query($conn, $sql);
 
 if (mysqli_num_rows($result) > 0) {
-
     $deviceIDs = [];
     $operationCounts = [];
 
@@ -34,7 +33,17 @@ if (mysqli_num_rows($result) > 0) {
         $data[] = $operationCounts[$deviceID];
     }
 
+    
     $deviceNames = [];
+    $sql2 = "SELECT deviceID, device_name FROM device";
+    $result2 = mysqli_query($conn, $sql2);
+
+    while ($row2 = mysqli_fetch_assoc($result2)) {
+        $deviceID = $row2["deviceID"];
+        $deviceName = $row2["device_name"];
+        $deviceNames[$deviceID] = $deviceName;
+    }
+
     // Close the database connection
     mysqli_close($conn);
 ?>
@@ -49,10 +58,11 @@ if (mysqli_num_rows($result) > 0) {
     <canvas id="statisticsChart"></canvas>
 
     <script>
-        // Retrieve data from PHP variables
+        
         var labels = <?php echo json_encode($labels); ?>;
         var data = <?php echo json_encode($data); ?>;
         var deviceNames = <?php echo json_encode($deviceNames); ?>;
+
         // Create the chart
         var ctx = document.getElementById('statisticsChart').getContext('2d');
         var chart = new Chart(ctx, {
